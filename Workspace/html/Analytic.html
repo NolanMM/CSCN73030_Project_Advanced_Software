@@ -4,7 +4,7 @@
     <style>
       body {
           opacity: 0;
-          transition: opacity 5s;
+          transition: opacity 2s;
       }
   </style>
     <meta charset="UTF-8">
@@ -45,10 +45,13 @@
  <!-- Navigation Bar -->
 <nav class="navigation-bar">
   <ul>
+    <button type="submit" onclick="window.location.href = '/html/Analytic.html';">
   <img class="logo" src="/images/logo.png" alt="Logo">
-  <a href="#profile"><i class="fa fa-fw fa-home"></i>Profile</a>
-  <a href="#contact"><i class="fa fa-fw fa-support"></i>Support</a>
-  <a href="#cart"><i class="fa fa-fw fa-shopping-cart"></i>Cart</a>
+</button>
+  <a href="/html/Profile.html"><i class="fa fa-fw fa-home"></i>Profile</a>
+  <a href="/html/Support.html"><i class="fa fa-fw fa-support"></i>Support</a>
+  <a href="/html/Cart.html"><i class="fa fa-fw fa-shopping-cart"></i>Cart</a>
+  <input type="text" placeholder="Search...">
 </ul>
 </nav>
   
@@ -65,17 +68,28 @@
       <div>Today's Sales Total</div>
       <div>Today's View Total</div>
       <div>Total Lifetime Sales</div>
-      <div>4</div>
+      <div>Average Customer Satisfaction</div>
     </div>
   </div>
-
-
 
    <!-- Product Chart -->
   <div class="section3">
     <style>
-      table, th, td {
+      table {
+        border-collapse: collapse;
+        width: 100%;
         border: 1px solid #f6f7f3;
+        border-collapse: collapse;
+      }
+      th, td {
+        color: white;
+        border: 1px solid #f6f7f3;
+        font-family:verdana;
+        font-size: 32px;
+       
+      }
+      tr:not(:first-child):hover {
+        background-color: black;
       }
       </style>
   <table style="width:100%">
@@ -83,7 +97,7 @@
     <th>Product</th>
     <th>Selling Price</th>
     <th>Today's Sales</th>
-    <th></th>
+    <th>More Info</th>
   </tr>
   <tr>
     <td>Honey</td>
@@ -99,6 +113,7 @@
   </tr>
   </table>
 </div>
-</body>
 
+
+</body>
 </html>

@@ -9,6 +9,15 @@ body {
   margin: 0;
   background: linear-gradient(#040c0f, #0e151a);
 }
+button {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+}
+button:hover {
+  background-color: black;
+}
 
 
 /* Navigation Bar */
@@ -45,6 +54,15 @@ body {
   color: black;
   border-radius: 20px;
 }
+/* Style the search box inside the navigation bar */
+.navigation-bar input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: -5px;
+  margin-right: 20px;
+  font-size: 17px;
+}
 
 
 /* Section/div Customization */
@@ -52,7 +70,6 @@ div {
   margin-top: 80px;
   margin-bottom: 20px;
 }
-
 
   /* Section 1 Customization */
 .section1 { 
@@ -78,15 +95,4 @@ div {
     /*border: 5px solid blue;
    /*  background-color: rgb(41, 43, 44);*/
     padding: 20px;
-  }
-  /* table stuff */
-  .section3 th {
-    color: white;
-    font-family:verdana;
-    font-size: 32px;
-  }
-  .section3 td {
-    color: white;
-    font-family:verdana;
-    font-size: 32px;
   }
