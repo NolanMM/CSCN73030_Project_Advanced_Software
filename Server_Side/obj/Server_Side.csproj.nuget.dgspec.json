@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gautam\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {}
+    "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gautam\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {
+    "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gautam\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+        "projectUniqueName": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
         "projectName": "Server_Side",
-        "projectPath": "C:\\Users\\gautam\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+        "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
         "packagesPath": "C:\\Users\\gautam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gautam\\CSCN73030_Project_Advanced_Software\\Server_Side\\obj\\",
+        "outputPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gautam\\AppData\\Roaming\\NuGet\\NuGet.Config",

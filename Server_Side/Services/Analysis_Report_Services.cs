@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class AnalyticsService
+    public class Analysis_Report_Services
     {
         // Private inner data classes
 

@@ -29,3 +29,26 @@ C:\Users\gautam\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0
 C:\Users\gautam\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.dll
 C:\Users\gautam\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
 C:\Users\gautam\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.pdb
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.exe
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.deps.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.runtimeconfig.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.pdb
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQLParser.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.Authorization.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.MicrosoftDI.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.Server.Transports.AspNetCore.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.Server.Ui.Voyager.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\GraphQL.SystemTextJson.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.csproj.AssemblyReference.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfoInputs.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfo.cs
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CoreCompileInputs.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CopyComplete
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.pdb
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
