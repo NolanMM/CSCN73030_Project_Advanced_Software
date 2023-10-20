@@ -4,7 +4,6 @@ using Server_Side.GraphQL;
 using Server_Side.Controllers;
 using Server_Side.Services;
 
-
 namespace Analysis_Report_Module{
     public class Source
     {
@@ -20,9 +19,6 @@ namespace Analysis_Report_Module{
             dataWarehouse_Analysis_Reports_Services.Test_DataWarehouse_Analysis_Reports_Services();
             graphQL_Schemas.GraphQL_Schemas_Services();
             graphQL_Controllers.Test_GraphQL_Controllers_Services();
-            analysis_Report_Services.Test_Analysis_Report_Services();
-
-            Console.WriteLine("\nSource code done!");
         }
     }
 }
