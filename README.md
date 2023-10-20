@@ -6,6 +6,10 @@
 - **CSCN73030_Project_Advanced_Software/**
   - .git/
   - .gitignore/
+  - **AnalysisServiceTests**
+    - **Analysis_Report_Services_Test.cs**
+      - This file stores our regression tests for Services   
+    - **GlobalUsings.cs**
   - **Server_Side/**
     - **Controllers/**
       - This class for GraphQL controllers and endpoints
