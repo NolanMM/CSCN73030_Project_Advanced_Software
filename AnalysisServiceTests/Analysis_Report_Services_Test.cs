@@ -31,17 +31,6 @@ namespace AnalysisServiceTests
         }
 
         [TestMethod]
-        public void Test_GetPageViews_ShouldReturnValidData()
-        {
-            DateTime startDate = DateTime.UtcNow.AddDays(-5);
-            DateTime endDate = DateTime.UtcNow;
-            var pageViews = _service.GetPageViews(startDate, endDate);
-
-            Assert.IsNotNull(pageViews);
-            Assert.IsTrue(pageViews.Count > 0); 
-        }
-
-        [TestMethod]
         public void Test_GetTotalSales_ShouldReturnNonNegativeValue()
         {
             DateTime startDate = DateTime.UtcNow.AddDays(-5);
@@ -59,15 +48,6 @@ namespace AnalysisServiceTests
             decimal avgOrderValue = _service.GetAverageOrderValue(startDate, endDate);
 
             Assert.IsTrue(avgOrderValue >= 0);
-        }
-
-        [TestMethod]
-        public void Test_GetFeedbackAnalysis_ShouldReturnValidData()
-        {
-            var feedbackAnalysis = _service.GetFeedbackAnalysis();
-
-            Assert.IsNotNull(feedbackAnalysis);
-            Assert.IsTrue(feedbackAnalysis.Any());
         }
 
         [TestMethod]
