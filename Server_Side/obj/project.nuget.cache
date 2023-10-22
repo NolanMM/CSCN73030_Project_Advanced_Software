@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "qXYBLllmEjopZr/+rXuCq1Zew02MlfMexqojprvjmTiTsemLl70wdI+D8r3mCypqc5BiNLw1/KZsHsJahg6DCg==",
+  "dgSpecHash": "c0JyaSQ6yukDVFgH9GftNp7zEyf5ktbB7cPn8uOykH07DLPxeSAc5Yqa8IpDHznDK353kogdOee7cQbQMs6a/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+  "projectFilePath": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\Server_Side.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql\\7.6.1\\graphql.7.6.1.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql-parser\\8.4.0\\graphql-parser.8.4.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql.authorization\\7.0.0\\graphql.authorization.7.0.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql.microsoftdi\\7.6.0\\graphql.microsoftdi.7.6.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql.server.transports.aspnetcore\\7.6.0\\graphql.server.transports.aspnetcore.7.6.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql.server.ui.voyager\\7.6.0\\graphql.server.ui.voyager.7.6.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\graphql.systemtextjson\\7.6.0\\graphql.systemtextjson.7.6.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
-    "C:\\Users\\lknap\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql\\7.6.1\\graphql.7.6.1.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql-parser\\8.4.0\\graphql-parser.8.4.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql.authorization\\7.0.0\\graphql.authorization.7.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql.microsoftdi\\7.6.0\\graphql.microsoftdi.7.6.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql.server.transports.aspnetcore\\7.6.0\\graphql.server.transports.aspnetcore.7.6.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql.server.ui.voyager\\7.6.0\\graphql.server.ui.voyager.7.6.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\graphql.systemtextjson\\7.6.0\\graphql.systemtextjson.7.6.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

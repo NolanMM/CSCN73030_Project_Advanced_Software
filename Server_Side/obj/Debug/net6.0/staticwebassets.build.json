@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h0e2z367VnyDQZd9VPmB9CJCqe0EYuwQCSmFrqZQU48=",
+  "Hash": "BnA6V9Vb4T3HlaBEDZNRNmAmewNXfsVbyjiDEG5IFSU=",
   "Source": "Server_Side",
   "BasePath": "_content/Server_Side",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Server_Side\\wwwroot",
       "Source": "Server_Side",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\css\\style.css",
+      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\css\\style.css",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\html\\Charts.html",
+      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\html\\Charts.html",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "html/Charts.html",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\html\\Charts.html"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\image\\logo.png",
+      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\image\\logo.png",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "image/logo.png",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\image\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\chart.js",
+      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\js\\chart.js",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "js/chart.js",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\js\\chart.js"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\script.js",
+      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\js\\script.js",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "js/script.js",
       "AssetKind": "All",
