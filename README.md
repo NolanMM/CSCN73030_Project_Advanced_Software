@@ -12,15 +12,21 @@
     - **GlobalUsings.cs**
   - **Server_Side/**
     - **Controllers/**
-      - This class for GraphQL controllers and endpoints
+      - This class for all Server controllers and endpoints
     - **Database_Services/**
       - This class for data models and database-related services
     - **GraphQL/**
       - This class for defining GraphQL schema
     - **Services/**
       - This class for business logic and services of Analysis Report Module
-    - Souce.cs/
+    - **Views/**
+      - This class for HTML templates and embedded code 
+    - **wwwroot/**
+      - This class for contents and static files of the project
+    - Source.cs (rudiment)
+    - Program.cs
     - Server_Side.sln
+    - Server_Side.csproj
   - **Server_Side/**
     - css/
     - html/
