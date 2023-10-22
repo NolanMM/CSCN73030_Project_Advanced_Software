@@ -5,16 +5,17 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Server_Side
 build_property.RootNamespace = Server_Side
-build_property.ProjectDir = D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\
+build_property.ProjectDir = C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side
+build_property.MSBuildProjectDirectory = C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/VSCode/Repositories/CSCN73030_Project_Advanced_Software-1/Server_Side/Views/Analytics/Index.cshtml]
+[C:/Users/lknap/Desktop/CSCN73030_Project_Advanced_Software/Server_Side/Views/Analytics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
