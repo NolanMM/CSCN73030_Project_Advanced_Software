@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // This is the part that used to be in ConfigureServices
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -15,15 +16,17 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseHttpsRedirection();  //more info about pages
+app.UseStaticFiles();       //allows to use wwwroot
 
 app.UseRouting();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Analytics}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
 });
 
 app.Run();
