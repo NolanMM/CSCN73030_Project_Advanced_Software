@@ -2,8 +2,23 @@
 
 // Function to receive data from c# berkley socket server restful
 
-// Example data for the flex containers
-const values = ["+0.45%", "Placeholder"];
+// Example data for the flex containers/ array to hold data for flex containers
+const values = ["Error: Fetching", "Error: Fetching"];
+function fetchFlexDataFromServer() {
+  fetch("https://localhost:5001/charts/productInfoData")
+    .then((response) => response.json())
+    .then((data) => {
+      values[0] = data.salesRate;
+      values[1] = data.placeHolder;
+      // Call the updateFlexContainer function to update the containers
+      updateFlexContainer();
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}
+// Call the function to fetch data when the page loads
+window.addEventListener("load", fetchFlexDataFromServer);
 // Function to update the flex containers
 function updateFlexContainer() {
   const valueElements = document.querySelectorAll(".flex-value");
@@ -12,8 +27,6 @@ function updateFlexContainer() {
     valueElements[i].textContent = values[i];
   }
 }
-// Call the updateFlexContainer function on page load
-window.addEventListener("load", updateFlexContainer);
 
 // Sample data for monthly sales
 var salesData = {
