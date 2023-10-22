@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BnA6V9Vb4T3HlaBEDZNRNmAmewNXfsVbyjiDEG5IFSU=",
+  "Hash": "qF5iPxrS3CStK6wh2s73GtB468Cx4qhYrJKcXOsZwD0=",
   "Source": "Server_Side",
   "BasePath": "_content/Server_Side",
   "Mode": "Default",
@@ -32,23 +32,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
-    },
-    {
-      "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\html\\Charts.html",
-      "SourceId": "Server_Side",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\",
-      "BasePath": "_content/Server_Side",
-      "RelativePath": "html/Charts.html",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\html\\Charts.html"
     },
     {
       "Identity": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\wwwroot\\image\\logo.png",

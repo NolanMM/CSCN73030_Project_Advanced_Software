@@ -83,7 +83,7 @@ function updateTable(tableData) {
       if (key === "col5") {
         const detailsLink = document.createElement("a");
         detailsLink.textContent = "Details";
-        detailsLink.href = "html/Charts.html"; // Specify the correct URL here
+        detailsLink.href = "/analytics/charts"; // Specify the correct URL here
         cell.appendChild(detailsLink);
       } else {
         cell.textContent = rowData[key];

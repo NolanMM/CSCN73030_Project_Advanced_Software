@@ -11,6 +11,13 @@ namespace Server_Side.Controllers
             return View();
         }
 
+        //Route to the charts.cshtml
+        [Route("analytics/charts")]
+        public IActionResult Charts()
+        {
+            return View();
+        }
+
         [HttpGet("/analytic/salesData")]
         public IActionResult GetSalesData()
         {
