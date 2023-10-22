@@ -1,0 +1,322 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+/* Page Customization */
+HTML {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+/* full page body tag Customization */
+body {
+  margin: 0;
+  background: linear-gradient(#040c0f, #0e151a);
+}
+/* full page div tag Customization */
+div {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+/* full page Button tag customization */
+button {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+}
+button:hover {
+  background-color: white;
+}
+
+/* Navigation Bar Customization */
+/*          
+            Used code from
+https://codepen.io/alvarotrigo/pen/MWEJEWG
+
+This code was used to help build the navigation bar
+*/
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease; /* smooth transition */
+  border-radius: 10px; /* initial rounded corners */
+  padding: 5px 10px;
+  font-size: 22px;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+.menu > li:hover {
+  background-color: white; /* change background color on hover */
+  color: black; /* change text color on hover */
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+.menu > li:hover > a {
+  color: black;
+}
+/* Responsive Navigation Bar Styles */
+.logo img {
+  width: 175px;
+  margin-top: -30%;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00baf0;
+  background-image: linear-gradient(to right, #082839, #005052, #082839);
+  box-shadow: 0px 10px 25px #0b0c10;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  height: 50px;
+  padding: 1em;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+.menu-button-container {
+  display: none;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 15%;
+}
+#menu-toggle {
+  display: none;
+}
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+.menu-button::before {
+  content: "";
+  margin-top: -8px;
+}
+.menu-button::after {
+  content: "";
+  margin-top: 8px;
+}
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+@media (max-width: 790px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 82px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+}
+
+/* Section 1 Customization */
+.section1 {
+  /*border: 5px solid green;
+ /*background-color: rgb(41, 43, 44);*/
+  text-align: center;
+}
+/* Welcome text */
+.section1 h1 {
+  margin-top: 180px;
+  color: #f6f7f3;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 420%;
+}
+
+/* Section 2 Customization */
+.section2 {
+  /* border: 5px solid red;
+  background-color: rgb(41, 43, 44);*/
+}
+/* flex container customization */
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin: auto;
+}
+/* flex container div customization */
+.flex-container > div {
+  /*background-color:  #005052;*/
+  background-image: linear-gradient(to bottom left, #005052, #0b3149);
+  box-shadow: -10px 10px 10px #09283b;
+  color: #f6f7f3;
+  border-radius: 20px;
+  width: 290px;
+  height: 225px;
+  padding: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+  font-family: verdana;
+}
+/* items inside the container customization */
+.flex-item > div {
+  margin: auto;
+  font-weight: bold;
+}
+/* flex item title inside the container customization  */
+.flex-title {
+}
+/* flex item value inside the container customization  */
+.flex-value {
+  color: #00e4cc;
+  font-size: 45px;
+}
+/* Media Query: Adjust flex container for smaller screens */
+@media (max-width: 1000px) {
+  /* Change flex container to display vertically */
+  .flex-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: auto;
+  }
+  /* Reset some styles to adapt for smaller screens */
+  .flex-container > div {
+    width: 50%; /* Full width for smaller screens */
+    height: auto;
+  }
+}
+
+/* Section 3  Customization */
+.section3 {
+  /*border: 5px solid blue;
+    background-color: rgb(41, 43, 44);*/
+}
+/* table Customization */
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border: thick solid #0b3149;
+  background-image: linear-gradient(
+    to bottom left,
+    #005052,
+    #0b3149
+  ); /* the gradient */
+  background-origin: border-box; /* set background to start from border-box */
+  border-spacing: 5px; /* space between each cell */
+  border: 5px solid transparent; /* optional */
+}
+/*all headers in table customization*/
+thead {
+  background-image: linear-gradient(to bottom left, #005052, #0b3149);
+}
+/*all cells in table customization*/
+tbody {
+  background: #0e151a;
+}
+/*individual cells customization for heads*/
+th {
+  color: #f6f7f3;
+  font-family: verdana;
+  font-size: 28px;
+  text-align: left;
+  padding-left: 8px;
+}
+/*individual cells customization for body*/
+td {
+  color: #f6f7f3;
+  border: thin solid #09283b;
+  font-family: verdana;
+  font-size: 24px;
+  padding-left: 12px;
+}
+/* Charts Customization */
+/* Charts Customization for the flex */
+.chart-container-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* Charts Customization for the charts them selves */
+.chart-container {
+  flex: 1 1 calc(50% - 20px); /* Allow only two side by side with some spacing */
+  width: 400px; /* Set a fixed width for each chart */
+  height: 400px; /* Set a fixed height for each chart */
+  margin: 10px; /* Add some spacing between charts */
+}
+/* Add a class for full-width layout */
+.full-width-chart {
+  flex: 1 0 calc(100% - 20px); /* Take the full width when in a row by itself */
+  width: 100%; /* Set full width for a chart in a row by itself */
+}
+/* Media Query: Adjust chats container for smaller screens */
+@media (max-width: 1000px) {
+  /* Change chart container to display vertically */
+  .chart-container-flex {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Reset some styles to adapt for smaller screens */
+  .chart-container {
+    flex: 1; /* Allow charts to grow equally */
+    width: 100%; /* Set a fixed width for each chart */
+    height: 400px; /* Set a fixed height for each chart */
+    margin-top: 50px; /* Add some spacing between charts */
+  }
+}

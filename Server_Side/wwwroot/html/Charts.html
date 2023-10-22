@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 2s;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <!-- Navigation Bar -->
+  <section class="navbar">
+    <div>
+      <a href="./" class="logo">
+        <img src="/images/logo.png" alt="logo" />
+      </a>
+    </div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class="menu-button-container" for="menu-toggle">
+      <div class="menu-button"></div>
+    </label>
+    <ul class="menu">
+      <li><a href="#">Cart</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="/Views/Analytics/">Analytic</a></li>
+      <li><a href="#">Products</a></li>
+    </ul>
+  </section>
+
+  <!-- Body Code Start -->
+  <body onload="document.body.style.opacity='1'">
+    <!-- Welcome message -->
+    <div class="section1">
+      <center><h1>Welcome to Product Info</h1></center>
+    </div>
+
+    <!-- flex container / square tiles -->
+    <div class="section2">
+      <div class="flex-container">
+        <div class="flex-item">
+          <div class="flex-title">Sale Rate</div>
+          <div class="flex-value">Placeholder</div>
+        </div>
+        <div class="flex-item">
+          <div class="flex-title">Placeholder</div>
+          <div class="flex-value">Placeholder</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display Charts -->
+    <div class="section3">
+      <div class="chart-container-flex">
+        <div class="chart-container">
+          <canvas id="MonthlySales"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="MonthlyViews"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="MonthlySatisfaction"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="MonthlySalesAndViews"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/chart.js"></script>
+</html>
