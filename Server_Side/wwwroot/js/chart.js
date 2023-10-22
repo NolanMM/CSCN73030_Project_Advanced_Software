@@ -34,7 +34,7 @@ var salesData = {
   datasets: [
     {
       label: "Monthly Sales",
-      data: [50, 75, 60, 80, 95],
+      data: [0, 0, 0, 0, 0],
       backgroundColor: "rgba(75, 192, 192, 0.2)",
       borderColor: "rgba(75, 192, 192, 1)",
       borderWidth: 2,
@@ -63,7 +63,7 @@ var viewsData = {
   datasets: [
     {
       label: "Page Views",
-      data: [3000, 3500, 4200, 2800, 5500],
+      data: [0, 0, 0, 0, 0],
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgba(54, 162, 235, 1)",
       borderWidth: 2,
@@ -101,7 +101,7 @@ var satisfactionData = {
   datasets: [
     {
       label: "Average Satisfaction (1-5)",
-      data: [3, 3.5, 4, 4.1, 4.25, 4.35, 4.45, 4.5, 4.4, 4.3, 4.15, 4],
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       backgroundColor: "rgba(75, 192, 192, 0.2)",
       borderColor: "rgba(75, 192, 192, 1)",
       borderWidth: 2,
@@ -151,8 +151,54 @@ var myChartSalesAndViews = new Chart(ctxSalesAndViews, {
   },
 });
 
+
+//Fetch and update data for monthly sales and monthly viesw and sales charts 
+function fetchMonthlySalesFromServer() {
+  fetch("https://localhost:5001/charts/monthlySalesData")
+    .then((response) => response.json())
+    .then((data) => {
+      salesData.datasets[0].data = data.monthlySales;
+      myChartSales.update();
+      myChartSalesAndViews.update();
+    })
+    .catch((error) => {
+      console.error("Error fetching monthly sales data:", error);
+    });
+}
+window.addEventListener("load", fetchMonthlySalesFromServer);
+
+//Fetch and update data for monthly views chart and monthly viesw and sales charts 
+function fetchMonthlyViewsFromServer() {
+  fetch("https://localhost:5001/charts/monthlyViewsData")
+    .then((response) => response.json())
+    .then((data) => {
+      viewsData.datasets[0].data = data.monthlyViews;
+      myChartViews.update();
+      myChartSalesAndViews.update();
+    })
+    .catch((error) => {
+      console.error("Error fetching monthly views data:", error);
+    });
+}
+window.addEventListener("load", fetchMonthlyViewsFromServer);
+
+//Fetch data for monthly satisfaction
+function fetchMonthlySatisfactionFromServer() {
+  fetch("https://localhost:5001/charts/monthlySatisfactionData")
+    .then((response) => response.json())
+    .then((data) => {
+      satisfactionData.datasets[0].data = data.monthlySatisfaction;
+      myChartSatisfaction.update();
+    })
+    .catch((error) => {
+      console.error("Error fetching monthly satisfaction data:", error);
+    });
+}
+window.addEventListener("load", fetchMonthlySatisfactionFromServer);
+
 // Check if chart3 is the only child
 if (document.querySelectorAll(".chart-container").length === 1) {
   // Add a class for full-width layout
   document.querySelector(".chart-container").classList.add("full-width-chart");
 }
+

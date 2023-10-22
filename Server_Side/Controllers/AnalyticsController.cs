@@ -18,6 +18,7 @@ namespace Server_Side.Controllers
             return View();
         }
 
+        //Gets infromation that is going to be used by flex containers 
         [HttpGet("/analytic/salesData")]
         public IActionResult GetSalesData()
         {
@@ -34,6 +35,7 @@ namespace Server_Side.Controllers
             return Json(data);
         }
 
+        //
         [HttpGet("/analytic/tableData")]
         public IActionResult GettableData()
         {
@@ -71,6 +73,7 @@ namespace Server_Side.Controllers
         }
 
 
+        //Get information that is going to be used by flex containers in Charts.cshtml
         [HttpGet("/charts/productInfoData")]
         public IActionResult GetProductInfoData()
         {
@@ -85,6 +88,48 @@ namespace Server_Side.Controllers
 
             // Return the data as a JSON response
             return Json(data);
+        }
+
+        [HttpGet("/charts/monthlySalesData")]
+        public IActionResult GetMonthlySalesData()
+        {
+            var salesData = new
+            {
+                monthlySales = new[] {50, 75, 60, 80, 95}
+            };
+
+            // Set the Content-Type header to "application/json"
+            Response.ContentType = "application/json";
+
+            return Json(salesData);
+        }
+
+        [HttpGet("/charts/monthlyViewsData")]
+        public IActionResult GetMonthlyViewsData()
+        {
+            var viewsData = new
+            {
+                monthlyViews = new[] {3000, 3500, 4200, 2800, 5500}
+            };
+
+            // Set the Content-Type header to "application/json"
+            Response.ContentType = "application/json";
+            
+            return Json(viewsData);
+        }
+
+        [HttpGet("/charts/monthlySatisfactionData")]
+        public IActionResult GetMonthlySatisfactionData()
+        {
+            var satisfactionData = new
+            {
+                monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 }
+            };
+
+            // Set the Content-Type header to "application/json"
+            Response.ContentType = "application/json";
+            
+            return Json(satisfactionData);
         }
     }
 }
