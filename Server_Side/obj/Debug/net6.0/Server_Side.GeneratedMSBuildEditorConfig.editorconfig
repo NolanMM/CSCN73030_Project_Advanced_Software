@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/VSCode/Repositories/CSCN73030_Project_Advanced_Software-1/Server_Side/Views/Analytics/Charts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXENoYXJ0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/VSCode/Repositories/CSCN73030_Project_Advanced_Software-1/Server_Side/Views/Analytics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
