@@ -8,8 +8,7 @@ using AspNetCoreRateLimit;
 
 // Now:
 // dynamic variables
-// dynamic ip?
-// dynamic port?
+// set port
 
 // Later:
 // Encrypted bytes (server to server)
@@ -68,6 +67,7 @@ app.UseHttpsRedirection();  //more info about pages
 app.UseStaticFiles();       //allows to use wwwroot
 
 app.UseRouting();
+
 
 app.UseEndpoints(endpoints =>
 {
