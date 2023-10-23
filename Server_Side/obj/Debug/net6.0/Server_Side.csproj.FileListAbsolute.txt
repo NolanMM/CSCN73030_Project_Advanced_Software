@@ -119,3 +119,6 @@ D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Deb
 D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.pdb
 D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
 D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Newtonsoft.Json.dll

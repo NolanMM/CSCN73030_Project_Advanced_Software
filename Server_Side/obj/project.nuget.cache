@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "c0JyaSQ6yukDVFgH9GftNp7zEyf5ktbB7cPn8uOykH07DLPxeSAc5Yqa8IpDHznDK353kogdOee7cQbQMs6a/w==",
+  "dgSpecHash": "DjFje+l0VIO86vWUNzaKRJid+KoCCEayJFc4KeD/1XzP3fc+iKsSimrWOWrBa2mTplf2SCUjeI1xsAFPB4zhSg==",
   "success": true,
   "projectFilePath": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\Server_Side.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ignat\\.nuget\\packages\\aspnetcoreratelimit\\5.0.0\\aspnetcoreratelimit.5.0.0.nupkg.sha512",
     "C:\\Users\\ignat\\.nuget\\packages\\graphql\\7.6.1\\graphql.7.6.1.nupkg.sha512",
     "C:\\Users\\ignat\\.nuget\\packages\\graphql-parser\\8.4.0\\graphql-parser.8.4.0.nupkg.sha512",
     "C:\\Users\\ignat\\.nuget\\packages\\graphql.authorization\\7.0.0\\graphql.authorization.7.0.0.nupkg.sha512",
@@ -11,10 +12,13 @@
     "C:\\Users\\ignat\\.nuget\\packages\\graphql.server.transports.aspnetcore\\7.6.0\\graphql.server.transports.aspnetcore.7.6.0.nupkg.sha512",
     "C:\\Users\\ignat\\.nuget\\packages\\graphql.server.ui.voyager\\7.6.0\\graphql.server.ui.voyager.7.6.0.nupkg.sha512",
     "C:\\Users\\ignat\\.nuget\\packages\\graphql.systemtextjson\\7.6.0\\graphql.systemtextjson.7.6.0.nupkg.sha512",
-    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
-    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
-    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
-    "C:\\Users\\ignat\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.3\\microsoft.extensions.logging.abstractions.6.0.3.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\ignat\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
