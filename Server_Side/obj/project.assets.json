@@ -608,24 +608,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ignat\\.nuget\\packages\\": {}
+    "C:\\Users\\gautam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\Server_Side.csproj",
+      "projectUniqueName": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
       "projectName": "Server_Side",
-      "projectPath": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\Server_Side.csproj",
-      "packagesPath": "C:\\Users\\ignat\\.nuget\\packages\\",
-      "outputPath": "D:\\VSCode\\Repositories\\CSCN73030_Project_Advanced_Software-1\\Server_Side\\obj\\",
+      "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
+      "packagesPath": "C:\\Users\\gautam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ignat\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gautam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -684,7 +686,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.415\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

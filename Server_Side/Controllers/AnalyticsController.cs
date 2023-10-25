@@ -1,41 +1,48 @@
 using Microsoft.AspNetCore.Mvc;
+using Server_Side.Services;
+using System;
+using System.Linq;
 
 namespace Server_Side.Controllers
 {
     public class AnalyticsController : Controller
     {
-        //[Route("")] // This means it maps to /analytics
-        //[Route("index")] // This means it maps to /analytics/index
+        private readonly Analysis_Report_Services _reportServices;
+
+        public AnalyticsController(Analysis_Report_Services reportServices)
+        {
+            _reportServices = reportServices;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        //Route to the charts.cshtml
         [Route("analytics/charts")]
         public IActionResult Charts()
         {
             return View();
         }
 
-        //Gets infromation that is going to be used by flex containers 
         [HttpGet("/analytic/salesData")]
         public IActionResult GetSalesData()
         {
+            var startDate = DateTime.Now.AddMonths(-1);
+            var endDate = DateTime.Now;
+
             var data = new
             {
-                salesTotal = 1000,
-                viewTotal = 5000,
-                lifetimeSales = 50000,
-                averageSatisfaction = 4.5
+                salesTotal = _reportServices.GetTotalSales(startDate, endDate),
+                viewTotal = _reportServices.GetPageViews(startDate, endDate).Sum(x => x.Value),
+                lifetimeSales = _reportServices.GetSalesAnalysis().Sum(x => x.Value),
+                averageSatisfaction = _reportServices.GetFeedbackAnalysis().Average(x => int.Parse(x.Key) * x.Value) // Simplified
             };
-            // Set the Content-Type header to "application/json"
+
             Response.ContentType = "application/json";
-            // Return the data as a JSON response
             return Json(data);
         }
 
-        //
         [HttpGet("/analytic/tableData")]
         public IActionResult GettableData()
         {
@@ -66,69 +73,65 @@ namespace Server_Side.Controllers
                     col5 = "Details"
                 }
             };
-            // Set the Content-Type header to "application/json"
             Response.ContentType = "application/json";
-            // Return the data as a JSON response
             return Json(data);
         }
 
-
-        //Get information that is going to be used by flex containers in Charts.cshtml
         [HttpGet("/charts/productInfoData")]
         public IActionResult GetProductInfoData()
         {
+            var startDate = DateTime.Now.AddMonths(-1);
+            var endDate = DateTime.Now;
+
             var data = new
             {
-                salesRate = 0.45,
+                salesRate = _reportServices.GetConversionRate("", startDate, endDate), // Placeholder for product ID
                 placeHolder = "placeholder"
             };
 
-            // Set the Content-Type header to "application/json"
             Response.ContentType = "application/json";
-
-            // Return the data as a JSON response
             return Json(data);
         }
 
         [HttpGet("/charts/monthlySalesData")]
         public IActionResult GetMonthlySalesData()
         {
+            var monthlySales = _reportServices.GetTimeAnalysis().Values.ToArray();
+
             var salesData = new
             {
-                monthlySales = new[] {50, 75, 60, 80, 95}
+                monthlySales
             };
 
-            // Set the Content-Type header to "application/json"
             Response.ContentType = "application/json";
-
             return Json(salesData);
         }
 
         [HttpGet("/charts/monthlyViewsData")]
         public IActionResult GetMonthlyViewsData()
         {
+            var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500 };
+
             var viewsData = new
             {
-                monthlyViews = new[] {3000, 3500, 4200, 2800, 5500}
+                monthlyViews
             };
 
-            // Set the Content-Type header to "application/json"
             Response.ContentType = "application/json";
-            
             return Json(viewsData);
         }
 
         [HttpGet("/charts/monthlySatisfactionData")]
         public IActionResult GetMonthlySatisfactionData()
         {
+            var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
+
             var satisfactionData = new
             {
-                monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 }
+                monthlySatisfaction
             };
 
-            // Set the Content-Type header to "application/json"
             Response.ContentType = "application/json";
-            
             return Json(satisfactionData);
         }
     }

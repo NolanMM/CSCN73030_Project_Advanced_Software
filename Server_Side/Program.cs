@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AspNetCoreRateLimit;
+using Server_Side.Services;
 
 // Done:
 // ddos protection
@@ -46,11 +47,14 @@ builder.Services.Configure<IpRateLimitOptions>(options =>
         }
     };
 });
+
+builder.Services.AddSingleton<Analysis_Report_Services>();
 builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
 builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
 builder.Services.AddInMemoryRateLimiting();
+
 
 var app = builder.Build();
 
@@ -63,7 +67,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseIpRateLimiting(); // Add the rate limiting middleware
 
-app.UseHttpsRedirection();  //more info about pages
+//app.UseHttpsRedirection();  //more info about pages
 app.UseStaticFiles();       //allows to use wwwroot
 
 app.UseRouting();
