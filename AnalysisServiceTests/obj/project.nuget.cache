@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Fi4p90CEkfSjclarWzl430b45gM8TICsm7PKQZEFItjJyw3MuA4KiAYf2/reU8c4Ch2IYL3GpAgd3+eZhj3NxA==",
+  "dgSpecHash": "lJMZnGBF8Hq6wOggBjW8iNgR6Gbl6i/bOO76dEfZt9DZ3U+L2KbnpTX6m8NU/F23KQJcUMCEULxqo+S86xxfmg==",
   "success": true,
   "projectFilePath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\Minh\\.nuget\\packages\\microsoft.testplatform.testhost\\17.7.2\\microsoft.testplatform.testhost.17.7.2.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\mstest.testadapter\\2.2.10\\mstest.testadapter.2.2.10.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\mstest.testframework\\2.2.10\\mstest.testframework.2.2.10.nupkg.sha512",
+    "C:\\Users\\Minh\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",

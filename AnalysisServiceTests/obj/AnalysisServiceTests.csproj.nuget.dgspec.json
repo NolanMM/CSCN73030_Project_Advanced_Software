@@ -156,6 +156,10 @@
             "GraphQL.Server.Ui.Voyager": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.7, )"
             }
           },
           "imports": [

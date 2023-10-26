@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EUMLR9ZP2gT4PHmDksekgsNBZ3N+QGaM/F7Yz0odNJSKKUViDPdv2xGyaOBFG3byScs2AK7+8xo4q333dClrtw==",
+  "dgSpecHash": "88r5fbLT8uzJYzapsJj5GYnrTl1VEGy3V1drVO2TGWA9VoWYFXsD4b7dmIVRDor14KhX/olgJsA37jYoYWohOw==",
   "success": true,
   "projectFilePath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Minh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\microsoft.extensions.options\\2.0.0\\microsoft.extensions.options.2.0.0.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+    "C:\\Users\\Minh\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
   ],
   "logs": []
