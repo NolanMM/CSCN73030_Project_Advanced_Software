@@ -15,8 +15,4 @@
     <PackageReference Include="MySqlConnector" Version="2.2.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database_Services\Output_Schema\" />
-  </ItemGroup>
-
 </Project>

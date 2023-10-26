@@ -4,6 +4,7 @@
     using Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class;
     using Server_Side.Database_Services.Table_Interface;
     using MySqlConnector;
+    using Server_Side.Database_Services.Output_Schema.Log_Database_Schema;
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Userview_table;
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Pageview_table;
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Salestransaction_table;
@@ -38,7 +39,34 @@
             }
             return instance;
         }
-        public void ProcessAndPrintTableData(string tableName, List<List<object>> dataAsList)
+
+        public async Task<bool> Database_Services_Control_NotificationAsync(string Request_Type, string Session_ID)
+        {
+            var analysisTable = Analysis_and_reporting_log_data_table.SetUp(Session_ID);
+            DateTime date = DateTime.Now;
+            bool isConnected = analysisTable.Test_Connection_To_Table();
+            bool createResult = false;
+            if (isConnected)
+            {
+                createResult = await analysisTable.Create_Async(date, Request_Type, Session_ID);
+            }
+            else
+            {
+                Console.WriteLine("Failed to connect to the table.");
+            }
+            // For testing when developing
+            //if (createResult)
+            //{
+            //    Console.WriteLine("Record inserted successfully.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Failed to insert the record.");
+            //}
+            return createResult;
+        }
+
+        public void Process_And_Print_Table_Data(string tableName, List<List<object>> dataAsList)
         {
             //Console.WriteLine($"{tableName} Data:");
 
@@ -73,7 +101,7 @@
                 }
             }
         }
-        public async Task RetrieveAllTables()
+        public async Task Retrieve_All_Tables()
         {
             All_Tables_Data_Retrive_Link_With_Session_ID = new List<(string, List<List<object>>)>();
 
@@ -88,17 +116,17 @@
             }
             foreach (var (tableName, dataAsList) in All_Tables_Data_Retrive_Link_With_Session_ID)
             {
-                ProcessAndPrintTableData(tableName, dataAsList);
+                Process_And_Print_Table_Data(tableName, dataAsList);
             }
         }
 
-        public async Task InitializeTables(string sessionID)
+        public async Task Initialize_Tables(string sessionID)
         {
-            await RetrieveTableNameList();
+            await Retrieve_TableName_List();
 
             foreach (var tableName in table_names_list)
             {
-                Input_Tables_Template table = CreateTableForName(tableName, sessionID);
+                Input_Tables_Template table = Create_Table_ForName(tableName, sessionID);
 
                 if (table != null)
                 {
@@ -107,7 +135,7 @@
                 }
             }
         }
-        private Input_Tables_Template? CreateTableForName(string tableName, string sessionID)
+        private Input_Tables_Template? Create_Table_ForName(string tableName, string sessionID)
         {
             switch (tableName)
             {
@@ -127,7 +155,7 @@
 
         public async Task<Input_Tables_Template?> Retrieve_Connection_To_TableAsync(string table_name, string session_ID)
         {
-            await RetrieveTableNameList();
+            await Retrieve_TableName_List();
             var existingTable = table_names_link_session_id_table_oject_list
             .FirstOrDefault(t => t.Item1 == table_name && t.Item2 == session_ID);
             if (existingTable != default)
@@ -160,7 +188,7 @@
                             return temp;
                             break;
                         default:
-                            Console.WriteLine("Table name does not exist");
+                            //Console.WriteLine("Table name does not exist");
                             return null;
                     }
                 }
@@ -172,7 +200,7 @@
             }
         }
 
-        public async Task<List<string>>? RetrieveTableNameList()
+        public async Task<List<string>>? Retrieve_TableName_List()
         {
             string constring = "server=analysisreportingmoduledatabasegroup1.mysql.database.azure.com; uid=analysisreportingmodulegroup1;pwd=Conkhunglongtovai1;database=" + Input_schemma + ";SslMode=Required";
             try
@@ -200,7 +228,7 @@
             }
         }
 
-        public void PrintUserData(List<UserView> userViews)
+        public static void Print_UserData(List<UserView> userViews)
         {
             Console.WriteLine("UserView Data:");
             foreach (var userView in userViews)
@@ -209,7 +237,7 @@
             }
         }
 
-        public void PrintPageViewData(List<PageView> pageViews)
+        public static void Print_PageViewData(List<PageView> pageViews)
         {
             Console.WriteLine("PageView Data:");
             foreach (var pageView in pageViews)
@@ -218,7 +246,7 @@
             }
         }
 
-        public void PrintSaleTransactionData(List<SaleTransaction> saleTransactions)
+        public static void Print_SaleTransactionData(List<SaleTransaction> saleTransactions)
         {
             Console.WriteLine("SaleTransaction Data:");
             foreach (var saleTransaction in saleTransactions)
@@ -227,7 +255,7 @@
             }
         }
 
-        public void PrintFeedbackData(List<Feedback> feedbackData)
+        public static void Print_FeedbackData(List<Feedback> feedbackData)
         {
             Console.WriteLine("Feedback Data:");
             foreach (var feedback in feedbackData)
