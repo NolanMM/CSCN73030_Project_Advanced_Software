@@ -1,16 +1,11 @@
 ﻿using MySqlConnector;
 using Server_Side.Database_Services.Table_Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
 {
     class Userview_table : Input_Tables_Template
     {
-        private class UserView
+        internal class UserView
         {
             public string User_Id { get; set; }
             public DateTime Timestamp { get; set; }

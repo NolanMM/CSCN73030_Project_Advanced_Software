@@ -1,9 +1,4 @@
 ﻿using Server_Side.Database_Services.Table_Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySqlConnector;
 
 namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
@@ -11,7 +6,7 @@ namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
     class Feedback_table : Input_Tables_Template
     {
         // Private inner data classes just when developing
-        private class Feedback
+        internal class Feedback
         {
             public int FeedbackId { get; set; }
             public string UserId { get; set; }

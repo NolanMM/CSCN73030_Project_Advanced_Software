@@ -1,16 +1,11 @@
 ﻿using MySqlConnector;
 using Server_Side.Database_Services.Table_Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
 {
     class Pageview_table : Input_Tables_Template
     {
-        private class PageView
+        internal class PageView
         {
             public string SessionId { get; set; }
             public string UserId { get; set; }
