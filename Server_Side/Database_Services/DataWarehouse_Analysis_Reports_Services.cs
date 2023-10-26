@@ -148,7 +148,7 @@
                 case "userview":
                     return Userview_table.SetUp(sessionID);
                 default:
-                    Console.WriteLine(tableName + " template does not exist");
+                    //Console.WriteLine(tableName + " template does not exist");
                     return null;
             }
         }
@@ -194,7 +194,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("Table name does not exist");
+                    //Console.WriteLine("Table name does not exist");
                     return null;
                 }
             }
