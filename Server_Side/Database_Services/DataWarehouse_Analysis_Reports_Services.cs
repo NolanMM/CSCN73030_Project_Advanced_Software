@@ -228,40 +228,44 @@
             }
         }
 
-        public static void Print_UserData(List<UserView> userViews)
+        public static bool Print_UserData(List<UserView> userViews)
         {
             Console.WriteLine("UserView Data:");
             foreach (var userView in userViews)
             {
                 Console.WriteLine($"User_Id: {userView.User_Id}, Timestamp: {userView.Timestamp}, End_Date: {userView.End_Date}, Start_Date: {userView.Start_Date}");
             }
+            return true;
         }
 
-        public static void Print_PageViewData(List<PageView> pageViews)
+        public static bool Print_PageViewData(List<PageView> pageViews)
         {
             Console.WriteLine("PageView Data:");
             foreach (var pageView in pageViews)
             {
                 Console.WriteLine($"SessionId: {pageView.SessionId}, UserId: {pageView.UserId}, PageUrl: {pageView.PageUrl}, PageInfo: {pageView.PageInfo}, ProductId: {pageView.ProductId}, DateTime: {pageView.DateTime}, Start_Time: {pageView.Start_Time}, End_Time: {pageView.End_Time}");
             }
+            return true;
         }
 
-        public static void Print_SaleTransactionData(List<SaleTransaction> saleTransactions)
+        public static bool Print_SaleTransactionData(List<SaleTransaction> saleTransactions)
         {
             Console.WriteLine("SaleTransaction Data:");
             foreach (var saleTransaction in saleTransactions)
             {
                 Console.WriteLine($"TransactionId: {saleTransaction.TransactionId}, UserId: {saleTransaction.UserId}, TransactionValue: {saleTransaction.TransactionValue}, Date: {saleTransaction.Date}");
             }
+            return true;
         }
 
-        public static void Print_FeedbackData(List<Feedback> feedbackData)
+        public static bool Print_FeedbackData(List<Feedback> feedbackData)
         {
             Console.WriteLine("Feedback Data:");
             foreach (var feedback in feedbackData)
             {
                 Console.WriteLine($"FeedbackId: {feedback.FeedbackId}, UserId: {feedback.UserId}, ProductId: {feedback.ProductId}, StarRating: {feedback.StarRating}");
             }
+            return true;
         }
     }
 }

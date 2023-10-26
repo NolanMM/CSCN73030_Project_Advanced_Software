@@ -3,7 +3,7 @@ using Server_Side.Database_Services.Table_Interface;
 
 namespace Server_Side.Database_Services.Output_Schema.Log_Database_Schema
 {
-    class Analysis_and_reporting_log_data_table : Output_Tables_Template
+    public class Analysis_and_reporting_log_data_table : Output_Tables_Template
     {
         private class Log_Item
         {

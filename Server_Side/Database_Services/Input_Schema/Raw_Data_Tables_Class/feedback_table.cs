@@ -3,7 +3,7 @@ using MySqlConnector;
 
 namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
 {
-    class Feedback_table : Input_Tables_Template
+    public class Feedback_table : Input_Tables_Template
     {
         // Private inner data classes just when developing
         internal class Feedback
@@ -19,7 +19,7 @@ namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
         private string connect_String { get; set; } = "";
         private string Session_ID { get; set; } = "";
 
-        private bool Connected_Status { get; set; } = false;
+        public bool Connected_Status { get; set; } = false;
         private bool Created_Status { get; set; } = false;
 
         private static Feedback_table? feedback_table;

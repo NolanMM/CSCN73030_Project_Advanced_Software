@@ -3,7 +3,7 @@ using Server_Side.Database_Services.Table_Interface;
 
 namespace Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class
 {
-    class Pageview_table : Input_Tables_Template
+    public class Pageview_table : Input_Tables_Template
     {
         internal class PageView
         {
