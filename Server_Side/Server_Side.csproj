@@ -14,4 +14,9 @@
     <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="7.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database_Services\Input_Schema\" />
+    <Folder Include="Database_Services\Output_Schema\" />
+  </ItemGroup>
+
 </Project>
