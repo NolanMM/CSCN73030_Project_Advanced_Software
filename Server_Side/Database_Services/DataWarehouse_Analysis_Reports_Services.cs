@@ -9,7 +9,9 @@
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Pageview_table;
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Salestransaction_table;
     using static Server_Side.Database_Services.Input_Schema.Raw_Data_Tables_Class.Feedback_table;
-    class Database_Analysis_And_Reporting_Services_Control
+    using static Server_Side.Services.Analysis_Report_Services;
+
+    public class Database_Analysis_And_Reporting_Services_Control
     {
         public List<UserView> Valid_User_Views_Table = new List<UserView>();
         public List<PageView> Website_logs_table = new List<PageView>();
@@ -19,9 +21,9 @@
         private readonly string Input_schemma = "analysis_and_reporting_raw_data";
         private readonly string Log_schemma = "analysis_and_reporting_log_data";
         private List<(string, string)> table_names_link_session_id_list;
-        // List hold the table name and the table object link with the session ID
+        // List hold the table name and the table object link with the session IDW
         private List<(string, string, Input_Tables_Template)> table_names_link_session_id_table_oject_list;
-        public List<(string, List<List<object>>)> All_Tables_Data_Retrive_Link_With_Session_ID; // turn to private later
+        public List<(string, List<List<object>>)> All_Tables_Data_Retrive_Link_With_Session_ID;
         private List<string> table_names_list;
 
         private static Database_Analysis_And_Reporting_Services_Control instance;
@@ -66,74 +68,91 @@
             return createResult;
         }
 
-        public void Process_And_Print_Table_Data(string tableName, List<List<object>> dataAsList)
+        public bool Process_And_Print_Table_Data(List<List<object>> dataAsList)
         {
             //Console.WriteLine($"{tableName} Data:");
-
-            foreach (var data in dataAsList)
+            try
             {
-                foreach (var Myobject in data)
+                foreach (var data in dataAsList)
                 {
-                    if (Myobject is UserView userView)
+                    foreach (var Myobject in data)
                     {
-                        Valid_User_Views_Table.Add(userView);
-                        //Console.WriteLine($"User_Id: {userView.User_Id}, Timestamp: {userView.Timestamp}, End_Date: {userView.End_Date}, Start_Date: {userView.Start_Date}");
-                    }
-                    else if (Myobject is PageView pageView)
-                    {
-                        Website_logs_table.Add(pageView);
-                        //Console.WriteLine($"SessionId: {pageView.SessionId}, UserId: {pageView.UserId}, PageUrl: {pageView.PageUrl}, PageInfo: {pageView.PageInfo}, ProductId: {pageView.ProductId}, DateTime: {pageView.DateTime}, Start_Time: {pageView.Start_Time}, End_Time: {pageView.End_Time}");
-                    }
-                    else if (Myobject is SaleTransaction saleTransaction)
-                    {
-                        SalesTransactionsTable.Add(saleTransaction);
-                        //Console.WriteLine($"TransactionId: {saleTransaction.TransactionId}, UserId: {saleTransaction.UserId}, TransactionValue: {saleTransaction.TransactionValue}, Date: {saleTransaction.Date}");
-                    }
-                    else if (Myobject is Feedback feedback)
-                    {
-                        FeedbackTable.Add(feedback);
-                        //Console.WriteLine($"FeedbackId: {feedback.FeedbackId}, UserId: {feedback.UserId}, ProductId: {feedback.ProductId}, StarRating: {feedback.StarRating}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Unknown object type");
+                        if (Myobject is UserView userView)
+                        {
+                            Valid_User_Views_Table.Add(userView);
+                            //Console.WriteLine($"User_Id: {userView.User_Id}, Timestamp: {userView.Timestamp}, End_Date: {userView.End_Date}, Start_Date: {userView.Start_Date}");
+                        }
+                        else if (Myobject is PageView pageView)
+                        {
+                            Website_logs_table.Add(pageView);
+                            //Console.WriteLine($"SessionId: {pageView.SessionId}, UserId: {pageView.UserId}, PageUrl: {pageView.PageUrl}, PageInfo: {pageView.PageInfo}, ProductId: {pageView.ProductId}, DateTime: {pageView.DateTime}, Start_Time: {pageView.Start_Time}, End_Time: {pageView.End_Time}");
+                        }
+                        else if (Myobject is SaleTransaction saleTransaction)
+                        {
+                            SalesTransactionsTable.Add(saleTransaction);
+                            //Console.WriteLine($"TransactionId: {saleTransaction.TransactionId}, UserId: {saleTransaction.UserId}, TransactionValue: {saleTransaction.TransactionValue}, Date: {saleTransaction.Date}");
+                        }
+                        else if (Myobject is Feedback feedback)
+                        {
+                            FeedbackTable.Add(feedback);
+                            //Console.WriteLine($"FeedbackId: {feedback.FeedbackId}, UserId: {feedback.UserId}, ProductId: {feedback.ProductId}, StarRating: {feedback.StarRating}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unknown object type");
+                        }
                     }
                 }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
             }
         }
-        public async Task Retrieve_All_Tables()
+        public async Task<bool> Retrieve_All_Tables()
         {
-            All_Tables_Data_Retrive_Link_With_Session_ID = new List<(string, List<List<object>>)>();
+            try
+            {
+                All_Tables_Data_Retrive_Link_With_Session_ID = new List<(string, List<List<object>>)>();
 
-            foreach (var (tableName, sessionID, table) in table_names_link_session_id_table_oject_list)
-            {
-                List<object>? tableData = await table.ReadAllAsync();
-                if (tableData != null)
+                foreach (var (tableName, sessionID, table) in table_names_link_session_id_table_oject_list)
                 {
-                    List<object> dataAsList = tableData.ToList();
-                    All_Tables_Data_Retrive_Link_With_Session_ID.Add((tableName, new List<List<object>> { dataAsList }));
+                    List<object>? tableData = await table.ReadAllAsync();
+                    if (tableData != null)
+                    {
+                        List<object> dataAsList = tableData.ToList();
+                        All_Tables_Data_Retrive_Link_With_Session_ID.Add((tableName, new List<List<object>> { dataAsList }));
+                    }
                 }
+                foreach (var (tableName, dataAsList) in All_Tables_Data_Retrive_Link_With_Session_ID)
+                {
+                    Process_And_Print_Table_Data(dataAsList);
+                }
+                return true;
             }
-            foreach (var (tableName, dataAsList) in All_Tables_Data_Retrive_Link_With_Session_ID)
-            {
-                Process_And_Print_Table_Data(tableName, dataAsList);
-            }
+            catch { return false;}
         }
 
-        public async Task Initialize_Tables(string sessionID)
+        public async Task<bool> Initialize_Tables(string sessionID)
         {
-            await Retrieve_TableName_List();
-
-            foreach (var tableName in table_names_list)
+            try
             {
-                Input_Tables_Template table = Create_Table_ForName(tableName, sessionID);
+                await Retrieve_TableName_List();
 
-                if (table != null)
+                foreach (var tableName in table_names_list)
                 {
-                    // Store the table in the list along with the table name and session ID.
-                    table_names_link_session_id_table_oject_list.Add((tableName, sessionID, table));
+                    Input_Tables_Template table = Create_Table_ForName(tableName, sessionID);
+
+                    if (table != null)
+                    {
+                        // Store the table in the list along with the table name and session ID.
+                        table_names_link_session_id_table_oject_list.Add((tableName, sessionID, table));
+                    }
                 }
-            }
+                return true;
+            }catch { return false;}
         }
         private Input_Tables_Template? Create_Table_ForName(string tableName, string sessionID)
         {
@@ -230,42 +249,60 @@
 
         public static bool Print_UserData(List<UserView> userViews)
         {
-            Console.WriteLine("UserView Data:");
-            foreach (var userView in userViews)
+            if (userViews.Count != 0)
             {
-                Console.WriteLine($"User_Id: {userView.User_Id}, Timestamp: {userView.Timestamp}, End_Date: {userView.End_Date}, Start_Date: {userView.Start_Date}");
+                Console.WriteLine("UserView Data:");
+                foreach (var userView in userViews)
+                {
+                    Console.WriteLine($"User_Id: {userView.User_Id}, Timestamp: {userView.Timestamp}, End_Date: {userView.End_Date}, Start_Date: {userView.Start_Date}");
+                }
+                return true;
             }
-            return true;
+            else { return false;}
         }
 
         public static bool Print_PageViewData(List<PageView> pageViews)
         {
-            Console.WriteLine("PageView Data:");
-            foreach (var pageView in pageViews)
+            if (pageViews.Count != 0)
             {
-                Console.WriteLine($"SessionId: {pageView.SessionId}, UserId: {pageView.UserId}, PageUrl: {pageView.PageUrl}, PageInfo: {pageView.PageInfo}, ProductId: {pageView.ProductId}, DateTime: {pageView.DateTime}, Start_Time: {pageView.Start_Time}, End_Time: {pageView.End_Time}");
+                Console.WriteLine("PageView Data:");
+                foreach (var pageView in pageViews)
+                {
+                    Console.WriteLine($"SessionId: {pageView.SessionId}, UserId: {pageView.UserId}, PageUrl: {pageView.PageUrl}, PageInfo: {pageView.PageInfo}, ProductId: {pageView.ProductId}, DateTime: {pageView.DateTime}, Start_Time: {pageView.Start_Time}, End_Time: {pageView.End_Time}");
+                }
+                return true;
             }
-            return true;
+            else { return false;}
         }
 
         public static bool Print_SaleTransactionData(List<SaleTransaction> saleTransactions)
         {
-            Console.WriteLine("SaleTransaction Data:");
-            foreach (var saleTransaction in saleTransactions)
+            if (saleTransactions.Count != 0)
             {
-                Console.WriteLine($"TransactionId: {saleTransaction.TransactionId}, UserId: {saleTransaction.UserId}, TransactionValue: {saleTransaction.TransactionValue}, Date: {saleTransaction.Date}");
+                Console.WriteLine("SaleTransaction Data:");
+                foreach (var saleTransaction in saleTransactions)
+                {
+                    Console.WriteLine($"TransactionId: {saleTransaction.TransactionId}, UserId: {saleTransaction.UserId}, TransactionValue: {saleTransaction.TransactionValue}, Date: {saleTransaction.Date}");
+                }
+                return true;
+            }else{
+                return false;
             }
-            return true;
         }
 
         public static bool Print_FeedbackData(List<Feedback> feedbackData)
         {
-            Console.WriteLine("Feedback Data:");
-            foreach (var feedback in feedbackData)
+            if (feedbackData.Count != 0)
             {
-                Console.WriteLine($"FeedbackId: {feedback.FeedbackId}, UserId: {feedback.UserId}, ProductId: {feedback.ProductId}, StarRating: {feedback.StarRating}");
+                Console.WriteLine("Feedback Data:");
+                foreach (var feedback in feedbackData)
+                {
+                    Console.WriteLine($"FeedbackId: {feedback.FeedbackId}, UserId: {feedback.UserId}, ProductId: {feedback.ProductId}, StarRating: {feedback.StarRating}");
+                }
+                return true;
+            }else{
+                return false;
             }
-            return true;
         }
     }
 }
