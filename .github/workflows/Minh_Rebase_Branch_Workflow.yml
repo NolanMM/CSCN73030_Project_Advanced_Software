@@ -3,10 +3,10 @@ name: Minh_Rebase_Branch_Workflow
 on:
   push:
     branches: 
-      - NolanM_MainBranch_Rebase
+      - main
   pull_request:
     branches: 
-      - NolanM_MainBranch_Rebase
+      - main
     
   workflow_dispatch:
 
