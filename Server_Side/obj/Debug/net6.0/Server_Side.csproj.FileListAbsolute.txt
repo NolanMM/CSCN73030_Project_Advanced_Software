@@ -52,3 +52,27 @@ C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\refi
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.pdb
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.exe
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.deps.json
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.runtimeconfig.json
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.pdb
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQLParser.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Authorization.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.MicrosoftDI.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Server.Transports.AspNetCore.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Server.Ui.Voyager.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.SystemTextJson.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\MySqlConnector.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.AssemblyReference.cache
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.GeneratedMSBuildEditorConfig.editorconfig
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfoInputs.cache
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfo.cs
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CoreCompileInputs.cache
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CopyComplete
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.pdb
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
+D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll

@@ -12,6 +12,7 @@
     <PackageReference Include="GraphQL.Authorization" Version="7.0.0" />
     <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="7.6.0" />
     <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="7.6.0" />
+    <PackageReference Include="MySqlConnector" Version="2.2.7" />
   </ItemGroup>
 
 </Project>
