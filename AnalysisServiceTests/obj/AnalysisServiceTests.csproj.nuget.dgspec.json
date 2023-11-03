@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {}
+    "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {
+    "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
+        "projectUniqueName": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
         "projectName": "AnalysisServiceTests",
-        "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
-        "packagesPath": "C:\\Users\\gautam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\AnalysisServiceTests\\obj\\",
+        "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
+        "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gautam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj": {
-                "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj"
+              "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {
+                "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj"
               }
             }
           }
@@ -56,6 +61,10 @@
               "target": "Package",
               "version": "[17.5.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -77,21 +86,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj": {
+    "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
+        "projectUniqueName": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
         "projectName": "Server_Side",
-        "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
-        "packagesPath": "C:\\Users\\gautam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\obj\\",
+        "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+        "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gautam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,6 +112,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -136,6 +150,10 @@
             "GraphQL.Server.Ui.Voyager": {
               "target": "Package",
               "version": "[7.6.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -157,7 +175,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

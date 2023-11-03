@@ -218,7 +218,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "Newtonsoft.Json/13.0.2": {
+      "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -542,10 +542,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Newtonsoft.Json/13.0.2": {
-      "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.2",
+      "path": "newtonsoft.json/13.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -567,7 +567,7 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.2.nupkg.sha512",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -604,23 +604,29 @@
       "GraphQL >= 7.6.1",
       "GraphQL.Authorization >= 7.0.0",
       "GraphQL.Server.Transports.AspNetCore >= 7.6.0",
-      "GraphQL.Server.Ui.Voyager >= 7.6.0"
+      "GraphQL.Server.Ui.Voyager >= 7.6.0",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gautam\\.nuget\\packages\\": {}
+    "C:\\Users\\lknap\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
+      "projectUniqueName": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
       "projectName": "Server_Side",
-      "projectPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\Server_Side.csproj",
-      "packagesPath": "C:\\Users\\gautam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gautam\\Desktop\\Project 5\\Project Code\\Server_Side\\obj\\",
+      "projectPath": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+      "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\gautam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -628,6 +634,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -665,6 +672,10 @@
           "GraphQL.Server.Ui.Voyager": {
             "target": "Package",
             "version": "[7.6.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           }
         },
         "imports": [
@@ -686,7 +697,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

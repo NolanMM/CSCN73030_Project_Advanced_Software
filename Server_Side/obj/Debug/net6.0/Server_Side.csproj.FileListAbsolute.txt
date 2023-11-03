@@ -138,3 +138,6 @@ C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\stat
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\scopedcss\bundle\Server_Side.styles.css
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Newtonsoft.Json.dll

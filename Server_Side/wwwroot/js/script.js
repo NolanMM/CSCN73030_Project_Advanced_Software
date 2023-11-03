@@ -6,7 +6,7 @@ const values = [
   "Error: Fetching",
 ];
 function fetchFlexDataFromServer() {
-  fetch("https://localhost:5001/analytic/salesData")
+  fetch("https://localhost:5001/analytics/salesData")
     .then((response) => response.json())
     .then((data) => {
       values[0] = data.salesTotal;
@@ -59,7 +59,7 @@ const Data = [
 
 // Function to fetch table data from the server
 function fetchTableDataFromServer() {
-  fetch("https://localhost:5001/analytic/tableData") // Replace with the actual endpoint
+  fetch("https://localhost:5001/analytics/tableData") // Replace with the actual endpoint
     .then((response) => response.json())
     .then((tableData) => {
       // Call the updateTable function to update the table with the fetched data

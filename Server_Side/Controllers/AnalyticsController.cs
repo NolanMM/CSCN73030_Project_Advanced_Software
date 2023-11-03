@@ -25,7 +25,7 @@ namespace Server_Side.Controllers
             return View();
         }
 
-        [HttpGet("/analytic/salesData")]
+        [HttpGet("/analytics/salesData")]
         public IActionResult GetSalesData()
         {
             var startDate = DateTime.Now.AddMonths(-1);
@@ -43,7 +43,7 @@ namespace Server_Side.Controllers
             return Json(data);
         }
 
-        [HttpGet("/analytic/tableData")]
+        [HttpGet("/analytics/tableData")]
         public IActionResult GettableData()
         {
             var data = new[]
