@@ -1,0 +1,38 @@
+name: Minh_Rebase_Branch_Workflow
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Version 6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Build Solution
+      run: dotnet build Server_Side/Server_Side.sln
+
+    - name: Restore NuGet packages
+      run: dotnet restore Server_Side/Server_Side.sln
+
+    - name: Run Unit Tests In DatabaseAnalysisModuleTests Folder
+      run: dotnet test DatabaseAnalysisModuleTests/DatabaseAnalysisModuleTests.csproj
+
+    - name: Publish Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: DatabseAnalysisModuleTests/TestResults

@@ -1,0 +1,208 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Server_Side/1.0.0": {
+        "dependencies": {
+          "GraphQL": "7.6.1",
+          "GraphQL.Authorization": "7.0.0",
+          "GraphQL.Server.Transports.AspNetCore": "7.6.0",
+          "GraphQL.Server.Ui.Voyager": "7.6.0",
+          "MySqlConnector": "2.2.7"
+        },
+        "runtime": {
+          "Server_Side.dll": {}
+        }
+      },
+      "GraphQL/7.6.1": {
+        "dependencies": {
+          "GraphQL-Parser": "8.4.0"
+        },
+        "runtime": {
+          "lib/net6.0/GraphQL.dll": {
+            "assemblyVersion": "7.6.1.0",
+            "fileVersion": "7.6.1.0"
+          }
+        }
+      },
+      "GraphQL-Parser/8.4.0": {
+        "runtime": {
+          "lib/net6.0/GraphQLParser.dll": {
+            "assemblyVersion": "8.4.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        }
+      },
+      "GraphQL.Authorization/7.0.0": {
+        "dependencies": {
+          "GraphQL": "7.6.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/GraphQL.Authorization.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        }
+      },
+      "GraphQL.MicrosoftDI/7.6.0": {
+        "dependencies": {
+          "GraphQL": "7.6.1",
+          "Microsoft.Extensions.Options": "2.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/GraphQL.MicrosoftDI.dll": {
+            "assemblyVersion": "7.6.0.0",
+            "fileVersion": "7.6.0.0"
+          }
+        }
+      },
+      "GraphQL.Server.Transports.AspNetCore/7.6.0": {
+        "dependencies": {
+          "GraphQL.MicrosoftDI": "7.6.0",
+          "GraphQL.SystemTextJson": "7.6.0"
+        },
+        "runtime": {
+          "lib/net6.0/GraphQL.Server.Transports.AspNetCore.dll": {
+            "assemblyVersion": "7.6.0.0",
+            "fileVersion": "7.6.0.0"
+          }
+        }
+      },
+      "GraphQL.Server.Ui.Voyager/7.6.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/GraphQL.Server.Ui.Voyager.dll": {
+            "assemblyVersion": "7.6.0.0",
+            "fileVersion": "7.6.0.0"
+          }
+        }
+      },
+      "GraphQL.SystemTextJson/7.6.0": {
+        "dependencies": {
+          "GraphQL": "7.6.1"
+        },
+        "runtime": {
+          "lib/net6.0/GraphQL.SystemTextJson.dll": {
+            "assemblyVersion": "7.6.0.0",
+            "fileVersion": "7.6.0.0"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {},
+      "Microsoft.Extensions.Options/2.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Primitives": "2.0.0"
+        }
+      },
+      "Microsoft.Extensions.Primitives/2.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        }
+      },
+      "MySqlConnector/2.2.7": {
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.7.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.4.0": {}
+    }
+  },
+  "libraries": {
+    "Server_Side/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GraphQL/7.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-16UOuR01WG0APHArtNkenSsOivRxZ3Ikdf4zG4GLlvnYuB9g/1MGI2HlZJ3ufa8rVUpdSS/WGpI9ifi779OBjQ==",
+      "path": "graphql/7.6.1",
+      "hashPath": "graphql.7.6.1.nupkg.sha512"
+    },
+    "GraphQL-Parser/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FwDgsaOPEoa7sAACRl9wjQl+J8Z0x9C8HcBWRCzRVRvrvBZsBLX8fnL+6pDnUhn0audU05Cjod4uqJe4cB9OFw==",
+      "path": "graphql-parser/8.4.0",
+      "hashPath": "graphql-parser.8.4.0.nupkg.sha512"
+    },
+    "GraphQL.Authorization/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hPKSxEcWaAvQLqnvFw1vpV0wC7rqLr/yxs/gOoD+wkLRjwBwIH/Y0BBTc+NQgBXxLn29h1ObXzZ42BDq+MiIEw==",
+      "path": "graphql.authorization/7.0.0",
+      "hashPath": "graphql.authorization.7.0.0.nupkg.sha512"
+    },
+    "GraphQL.MicrosoftDI/7.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1S1Y96YL9BsyofTeAIm1UWnSLGvtImTIQ3z2D5uGH5RRc/4xgZa49lV+8SxSOuCpGNkRYCHBHhI2t97qLhVV1A==",
+      "path": "graphql.microsoftdi/7.6.0",
+      "hashPath": "graphql.microsoftdi.7.6.0.nupkg.sha512"
+    },
+    "GraphQL.Server.Transports.AspNetCore/7.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VvfmLhksM3uUsS2FrD2DQ3p62AztP076g7VpGZc1UF8TXkFG14qkC4e3RvcB/nn2xG/G2PnYPRfHGAoJgqfzQg==",
+      "path": "graphql.server.transports.aspnetcore/7.6.0",
+      "hashPath": "graphql.server.transports.aspnetcore.7.6.0.nupkg.sha512"
+    },
+    "GraphQL.Server.Ui.Voyager/7.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1kR29BoDO8TbtnAa0t7TK57xi5K9O7LV4QCoc0GsQzpWfc6H6w5rvkvoQG+SDV4KTgbq/LQUS82wMLadLGTWzg==",
+      "path": "graphql.server.ui.voyager/7.6.0",
+      "hashPath": "graphql.server.ui.voyager.7.6.0.nupkg.sha512"
+    },
+    "GraphQL.SystemTextJson/7.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lVErBl/5kpPBk9k3T6aebPHUDF+hMB9TmjYz8LtwXb2L/titTW8V9t/OlLTWAhTv08t9kLiVNQnbKptFLMF3Ug==",
+      "path": "graphql.systemtextjson/7.6.0",
+      "hashPath": "graphql.systemtextjson.7.6.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eUdJ0Q/GfVyUJc0Jal5L1QZLceL78pvEM9wEKcHeI24KorqMDoVX+gWsMGLulQMfOwsUaPtkpQM2pFERTzSfSg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sAKBgjl2gWsECBLLR9K54T7/uZaP2n9GhMYHay/oOLfvpvX0+iNAlQ2NJgVE352C9Fs5CDV3VbNTK8T2aNKQFA==",
+      "path": "microsoft.extensions.options/2.0.0",
+      "hashPath": "microsoft.extensions.options.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ukg53qNlqTrK38WA30b5qhw0GD7y3jdI9PHHASjdKyTcBHTevFM2o23tyk3pWCgAV27Bbkm+CPQ2zUe1ZOuYSA==",
+      "path": "microsoft.extensions.primitives/2.0.0",
+      "hashPath": "microsoft.extensions.primitives.2.0.0.nupkg.sha512"
+    },
+    "MySqlConnector/2.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rwFa71MlOJ142S+BXDvtLRdAIn7l6PTNWu+Xehs2qRehK8dckjKqwvK8azEADCMkQyXS1LXgh9HkSvItpTi6WA==",
+      "path": "mysqlconnector/2.2.7",
+      "hashPath": "mysqlconnector.2.2.7.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9dLLuBxr5GNmOfl2jSMcsHuteEg32BEfUotmmUkmZjpR3RpVHE8YQwt0ow3p6prwA1ME8WqDVZqrr8z6H8G+Kw==",
+      "path": "system.runtime.compilerservices.unsafe/4.4.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+    }
+  }
+}

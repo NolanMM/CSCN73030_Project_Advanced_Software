@@ -2,22 +2,33 @@
   "format": 1,
   "restore": {
     "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {}
+    "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {}
   },
   "projects": {
     "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {
+    "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\AnalysisServiceTests.csproj": {
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
+        "projectUniqueName": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
         "projectName": "AnalysisServiceTests",
         "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
         "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\AnalysisServiceTests\\obj\\",
+        "projectPath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
+        "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\AnalysisServiceTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,6 +38,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +47,8 @@
             "projectReferences": {
               "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {
                 "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj"
+              "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj": {
+                "projectPath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj"
               }
             }
           }
@@ -57,17 +71,31 @@
               "target": "Package",
               "version": "[2.2.10, )"
             },
+            "Microsoft.CodeCoverage": {
+              "target": "Package",
+              "version": "[17.7.2, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.5.0, )"
+              "version": "[17.7.2, )"
+            },
+            "Microsoft.TestPlatform.ObjectModel": {
+              "target": "Package",
+              "version": "[17.7.2, )"
+            },
+            "Microsoft.TestPlatform.TestHost": {
+              "target": "Package",
+              "version": "[17.7.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
             },
             "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.2.0, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -87,23 +115,34 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj": {
+    "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj": {
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+        "projectUniqueName": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj",
         "projectName": "Server_Side",
         "projectPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
         "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\obj\\",
+        "projectPath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\Server_Side.csproj",
+        "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
+        "outputPath": "D:\\STUDY\\Semester 1 - Level 6\\Project_V\\Server_Side\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -112,6 +151,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -154,6 +194,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.7, )"
             }
           },
           "imports": [
@@ -176,6 +220,7 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

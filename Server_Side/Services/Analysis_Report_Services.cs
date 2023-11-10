@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Server_Side.Services
+﻿namespace Server_Side.Services
 {
+    using Server_Side.Database_Services;
     public class Analysis_Report_Services
     {
-        // Private inner data classes
+        private readonly List<UserView> Valid_User_Views_Table = new List<UserView>();
+        private readonly List<PageView> Website_logs_table = new List<PageView>();
+        private readonly List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
+        private readonly List<Feedback> FeedbackTable = new List<Feedback>();
+        private string Services_Types { get; set; } = "Retrieve Data";
 
-        private class UserView
+        public class UserView
         {
-            public string UserId { get; set; }
+            public string User_Id { get; set; }
             public DateTime Timestamp { get; set; }
+            public DateOnly End_Date { get; set; }
+            public DateOnly Start_Date { get; set; }
         }
 
-        private class PageView
+        public class PageView
         {
             public string SessionId { get; set; }
             public string UserId { get; set; }
@@ -22,9 +25,11 @@ namespace Server_Side.Services
             public string PageInfo { get; set; }
             public string ProductId { get; set; }
             public DateTime DateTime { get; set; }
+            public DateTime Start_Time { get; set; }
+            public DateTime End_Time { get; set; }
         }
 
-        private class SaleTransaction
+        public class SaleTransaction
         {
             public string TransactionId { get; set; }
             public string UserId { get; set; }
@@ -32,19 +37,30 @@ namespace Server_Side.Services
             public DateTime Date { get; set; }
         }
 
-        private class Feedback
+        public class Feedback
         {
+            public int FeedbackId { get; set; }
             public string UserId { get; set; }
             public string ProductId { get; set; }
-            public int StarRating { get; set; }
+            public decimal StarRating { get; set; }
         }
 
-        // Private storage for the data classes
-
-        private List<UserView> Valid_User_Views_Table = new List<UserView>();
-        private List<PageView> Website_logs_table = new List<PageView>();
-        private List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
-        private List<Feedback> FeedbackTable = new List<Feedback>();
+        public bool InitializeData(string SessionID)
+        {
+            try
+            {
+                Services_Types = "Retrieve All Data";
+                Database_Analysis_And_Reporting_Services_Control databaseControl = Database_Analysis_And_Reporting_Services_Control.Retrieve_Database_Analysis_And_Reporting_Services_Control();
+                databaseControl.Initialize_Tables(SessionID).Wait();
+                databaseControl.Retrieve_All_Tables().Wait();
+                databaseControl.Database_Services_Control_NotificationAsync(Services_Types, SessionID).Wait();
+                Valid_User_Views_Table.AddRange(databaseControl.Valid_User_Views_Table);
+                Website_logs_table.AddRange(databaseControl.Website_logs_table);
+                SalesTransactionsTable.AddRange(databaseControl.SalesTransactionsTable);
+                FeedbackTable.AddRange(databaseControl.FeedbackTable);
+                return true;
+            } catch { return false; }
+        }
 
         // Public service methods
 
@@ -52,7 +68,7 @@ namespace Server_Side.Services
         {
             return Valid_User_Views_Table
                 .Where(v => v.Timestamp >= startDate && v.Timestamp <= endDate)
-                .Select(v => v.UserId)
+                .Select(v => v.User_Id)
                 .Distinct()
                 .Count();
         }

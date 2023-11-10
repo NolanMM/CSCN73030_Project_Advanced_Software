@@ -13,6 +13,8 @@
           "GraphQL.Authorization": "7.0.0",
           "GraphQL.Server.Transports.AspNetCore": "7.6.0",
           "GraphQL.Server.Ui.Voyager": "7.6.0",
+          "MySqlConnector": "2.2.7"
+          "GraphQL.Server.Ui.Voyager": "7.6.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
@@ -139,6 +141,15 @@
           }
         }
       },
+      "MySqlConnector/2.2.7": {
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.7.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.4.0": {}
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
     }
   },
@@ -246,6 +257,14 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
+    "MySqlConnector/2.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rwFa71MlOJ142S+BXDvtLRdAIn7l6PTNWu+Xehs2qRehK8dckjKqwvK8azEADCMkQyXS1LXgh9HkSvItpTi6WA==",
+      "path": "mysqlconnector/2.2.7",
+      "hashPath": "mysqlconnector.2.2.7.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.4.0": {
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",
       "serviceable": true,
