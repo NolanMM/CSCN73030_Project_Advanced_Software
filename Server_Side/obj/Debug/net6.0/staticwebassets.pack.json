@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\image\\logo.png",
+      "PackagePath": "staticwebassets\\image\\logo.png"
+    },
+    {
+      "Id": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\chart.js",
+      "PackagePath": "staticwebassets\\js\\chart.js"
+    },
+    {
+      "Id": "c:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Server_Side.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Server_Side.props",
+      "PackagePath": "build\\Server_Side.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Server_Side.props",
+      "PackagePath": "buildMultiTargeting\\Server_Side.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Server_Side.props",
+      "PackagePath": "buildTransitive\\Server_Side.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -52,27 +52,92 @@ C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\refi
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.pdb
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
 C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.exe
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.deps.json
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.runtimeconfig.json
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\Server_Side.pdb
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQLParser.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Authorization.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.MicrosoftDI.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Server.Transports.AspNetCore.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.Server.Ui.Voyager.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\GraphQL.SystemTextJson.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\bin\Debug\net6.0\MySqlConnector.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.AssemblyReference.cache
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.GeneratedMSBuildEditorConfig.editorconfig
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfoInputs.cache
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfo.cs
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CoreCompileInputs.cache
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CopyComplete
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.pdb
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
-D:\STUDY\Semester 1 - Level 6\Project_V\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.exe
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.deps.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.runtimeconfig.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.pdb
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQLParser.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.Authorization.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.MicrosoftDI.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.Server.Transports.AspNetCore.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.Server.Ui.Voyager.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\GraphQL.SystemTextJson.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.csproj.AssemblyReference.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfoInputs.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfo.cs
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CoreCompileInputs.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CopyComplete
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.pdb
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Server_Side.staticwebassets.runtime.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cache
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cs
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.Server_Side.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.build.Server_Side.props
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Server_Side.props
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Server_Side.props
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\scopedcss\bundle\Server_Side.styles.css
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.staticwebassets.runtime.json
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.exe
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.deps.json
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.runtimeconfig.json
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Server_Side.pdb
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQLParser.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.Authorization.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.MicrosoftDI.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.Server.Transports.AspNetCore.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.Server.Ui.Voyager.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\GraphQL.SystemTextJson.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.csproj.AssemblyReference.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfoInputs.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.AssemblyInfo.cs
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CoreCompileInputs.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cs
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cs
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\staticwebassets.build.json
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\staticwebassets.development.json
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\scopedcss\bundle\Server_Side.styles.css
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.csproj.CopyComplete
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\refint\Server_Side.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.pdb
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\VSCode\Repositories\CSCN73030_Project_Advanced_Software-1\Server_Side\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Server_Side.staticwebassets.runtime.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cache
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\Server_Side.RazorAssemblyInfo.cs
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.Server_Side.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.build.Server_Side.props
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Server_Side.props
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Server_Side.props
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\obj\Debug\net6.0\scopedcss\bundle\Server_Side.styles.css
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Debug\net6.0\Newtonsoft.Json.dll

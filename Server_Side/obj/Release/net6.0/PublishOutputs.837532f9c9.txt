@@ -1,0 +1,15 @@
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Server_Side.exe
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Server_Side.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Server_Side.deps.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Server_Side.runtimeconfig.json
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Server_Side.pdb
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\AspNetCoreRateLimit.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQLParser.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.Authorization.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.MicrosoftDI.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.Server.Transports.AspNetCore.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.Server.Ui.Voyager.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\GraphQL.SystemTextJson.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\Server_Side\bin\Release\net6.0\publish\Newtonsoft.Json.dll
