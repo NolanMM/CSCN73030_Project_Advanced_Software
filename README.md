@@ -1,6 +1,6 @@
 # CSCN73030_Project_Advanced_Software
 
-![Main Branch Workflow](https://github.com/NolanMM/CSCN73030_Project_Advanced_Software/actions/workflows/Main_Branch_Workflow.yml/badge.svg)
+![Main Branch Workflow](https://github.com/NolanMM/CSCN73030_Project_Advanced_Software/actions/workflows/main.yml/badge.svg)
 
 - **CSCN73030_Project_Advanced_Software/**
   - .git/
@@ -147,18 +147,18 @@ The functional overview of our analytics dashboard module provides a comprehensi
 >     - `.DS_Store/`
 >   - `README.md`
 >   </details>
->   [Back To Top](#CSCN73030_Project_Advanced_Software)
+>   [Back To Top](#cscn73030_project_advanced_software)
 
 ---
 
 ### II. Table of Contents
 
-- [CSCN73030_Project_Advanced_Software](#cscn73030_project_advanced_software)
+- [CSCN73030\_Project\_Advanced\_Software](#cscn73030_project_advanced_software)
   - [I. Analytics and Report Module Services](#i-analytics-and-report-module-services)
   - [I, Folder Hierarchy](#i-folder-hierarchy)
   - [II. Table of Contents](#ii-table-of-contents)
     - [1. Status Main Branch Deploy](#1-status-main-branch-deploy)
-    - [2. Tech Stack:](#2-tech-stack)
+    - [2. Tech Stack](#2-tech-stack)
     - [3. High Level Module Design](#3-high-level-module-design)
     - [4. Endpoints](#4-endpoints)
     - [5. Analysis Report Services Data Structures](#5-analysis-report-services-data-structures)
@@ -169,23 +169,23 @@ The functional overview of our analytics dashboard module provides a comprehensi
     - [6. MVP Designs](#6-mvp-designs)
       - [6.1 EndPoint 1: .root/](#61-endpoint-1-root)
       - [6.2 EndPoint 2: .root/analytics/charts/](#62-endpoint-2-rootanalyticscharts)
-    - [7. Nuget Packages Install:](#7-nuget-packages-install)
+    - [7. Nuget Packages Install](#7-nuget-packages-install)
 
 ---
 
 #### 1. Status Main Branch Deploy
 
-![Main Work Flow](https://github.com/NolanMM/CSCN73030_Project_Advanced_Software/actions/workflows/Main_Branch_Workflow.yml/badge.svg)
+![Main Work Flow](https://github.com/NolanMM/CSCN73030_Project_Advanced_Software/actions/workflows/main.yml/badge.svg)
 
 ---
 
-#### 2. Tech Stack:
+#### 2. Tech Stack
 
 - `Server:` [ASP.NET]() 6.0 Web API
 - `Front-end:` JavaScript, CsHTML, CSS
 - `Database:` Azure MySQL
 
-[Back To Top](#CSCN73030_Project_Advanced_Software)
+[Back To Top](#cscn73030_project_advanced_software)
 
 ---
 
@@ -195,13 +195,13 @@ The functional overview of our analytics dashboard module provides a comprehensi
   <img src="Documents/Project_Images/High_Level_Design.png" alt="High Level Module Design Image" width="80%">
 </p>
 
-[Back To Top](#CSCN73030_Project_Advanced_Software)
+[Back To Top](#cscn73030_project_advanced_software)
 
 ---
 
 #### 4. Endpoints
 
-<strong>.root:</strong> https://localhost:<\port>
+<strong>.root:</strong> <https://localhost>:<\port>
 
 <details>
   <summary><strong>EndPoint 1: .root/</strong></summary>
@@ -295,7 +295,7 @@ The functional overview of our analytics dashboard module provides a comprehensi
         }
 ```
 
-[Back To Top](#CSCN73030_Project_Advanced_Software)
+[Back To Top](#cscn73030_project_advanced_software)
 
 ---
 
@@ -335,13 +335,13 @@ The functional overview of our analytics dashboard module provides a comprehensi
 
 ---
 
-#### 7. Nuget Packages Install:
+#### 7. Nuget Packages Install
 
 - `GraphQL: 7.6.1`
 - `GraphQL.Authorization: 7.0.0`
 - `GraphQL.Server.Transports.AspNetCore: 7.6.0`
 - `GraphQL.Server.Ui.Voyager: 7.6.0`
 
-[Back To Top](#CSCN73030_Project_Advanced_Software)
+[Back To Top](#cscn73030_project_advanced_software)
 
 ---

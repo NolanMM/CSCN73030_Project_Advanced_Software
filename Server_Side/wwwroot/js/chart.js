@@ -5,7 +5,7 @@
 // Example data for the flex containers/ array to hold data for flex containers
 const values = ["Error: Fetching", "Error: Fetching"];
 function fetchFlexDataFromServer() {
-  fetch("https://localhost:5001/charts/productInfoData")
+    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData")
     .then((response) => response.json())
     .then((data) => {
       values[0] = data.salesRate;
@@ -154,7 +154,7 @@ var myChartSalesAndViews = new Chart(ctxSalesAndViews, {
 
 //Fetch and update data for monthly sales and monthly viesw and sales charts 
 function fetchMonthlySalesFromServer() {
-  fetch("https://localhost:5001/charts/monthlySalesData")
+    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData")
     .then((response) => response.json())
     .then((data) => {
       salesData.datasets[0].data = data.monthlySales;
@@ -169,7 +169,7 @@ window.addEventListener("load", fetchMonthlySalesFromServer);
 
 //Fetch and update data for monthly views chart and monthly viesw and sales charts 
 function fetchMonthlyViewsFromServer() {
-  fetch("https://localhost:5001/charts/monthlyViewsData")
+    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData")
     .then((response) => response.json())
     .then((data) => {
       viewsData.datasets[0].data = data.monthlyViews;
@@ -184,7 +184,7 @@ window.addEventListener("load", fetchMonthlyViewsFromServer);
 
 //Fetch data for monthly satisfaction
 function fetchMonthlySatisfactionFromServer() {
-  fetch("https://localhost:5001/charts/monthlySatisfactionData")
+    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData")
     .then((response) => response.json())
     .then((data) => {
       satisfactionData.datasets[0].data = data.monthlySatisfaction;

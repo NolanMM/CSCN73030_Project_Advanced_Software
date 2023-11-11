@@ -31,6 +31,8 @@ namespace Server_Side.Controllers
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
+            //
+            // Fixing this for the real data
             var data = new
             {
                 salesTotal = _reportServices.GetTotalSales(startDate, endDate),

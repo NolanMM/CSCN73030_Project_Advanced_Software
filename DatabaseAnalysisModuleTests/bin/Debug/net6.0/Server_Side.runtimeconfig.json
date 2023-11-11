@@ -10,6 +10,10 @@
         "name": "Microsoft.AspNetCore.App",
         "version": "6.0.0"
       }
-    ]
+    ],
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
+    }
   }
 }

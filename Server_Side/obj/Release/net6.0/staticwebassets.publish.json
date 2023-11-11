@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ix+Su/BplbIWREPL1NQ2+FhL19rUaZy7WohWoy1f2eo=",
+  "Hash": "yHb3inNomcbsoPYxgU/PThi35JOGmugor8rJGt1y838=",
   "Source": "Server_Side",
   "BasePath": "_content/Server_Side",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Server_Side\\wwwroot",
       "Source": "Server_Side",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\css\\style.css",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\image\\logo.png",
+      "Identity": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\image\\logo.png",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "image/logo.png",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\image\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\chart.js",
+      "Identity": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\js\\chart.js",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "js/chart.js",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\js\\chart.js"
     },
     {
-      "Identity": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\js\\script.js",
+      "Identity": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\js\\script.js",
       "SourceId": "Server_Side",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lknap\\Desktop\\CSCN73030_Project_Advanced_Software\\Server_Side\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\wwwroot\\",
       "BasePath": "_content/Server_Side",
       "RelativePath": "js/script.js",
       "AssetKind": "All",
