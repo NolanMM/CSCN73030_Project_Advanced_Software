@@ -2,37 +2,6 @@
 
 ![Main Branch Workflow](https://github.com/NolanMM/CSCN73030_Project_Advanced_Software/actions/workflows/main.yml/badge.svg)
 
-- **CSCN73030_Project_Advanced_Software/**
-  - .git/
-  - .gitignore/
-  - **AnalysisServiceTests**
-    - **Analysis_Report_Services_Test.cs**
-      - This file stores our regression tests for Services
-    - **GlobalUsings.cs**
-  - **Server_Side/**
-    - **Controllers/**
-      - This class for all Server controllers and endpoints
-    - **Database_Services/**
-      - This class for data models and database-related services
-    - **GraphQL/**
-      - This class for defining GraphQL schema
-    - **Services/**
-      - This class for business logic and services of Analysis Report Module
-    - **Views/**
-      - This class for HTML templates and embedded code
-    - **wwwroot/**
-      - This class for contents and static files of the project
-    - Source.cs (rudiment)
-    - Program.cs
-    - Server_Side.sln
-    - Server_Side.csproj
-  - **Server_Side/**
-    - css/
-    - html/
-    - images/
-    - js/
-  - README.md
-
 The functional overview of our analytics dashboard module provides a comprehensive insight into various key performance metrics for our website. This dashboard is a powerful tool to monitor and analyze the performance and success of our online presence. By leveraging the dashboard's data and insights, we can make informed decisions to drive our business's growth and success.
 
 ### I. Analytics and Report Module Services
@@ -147,7 +116,8 @@ The functional overview of our analytics dashboard module provides a comprehensi
 >     - `.DS_Store/`
 >   - `README.md`
 >   </details>
->   [Back To Top](#cscn73030_project_advanced_software)
+
+[Back To Top](#cscn73030_project_advanced_software)
 
 ---
 
@@ -201,17 +171,16 @@ The functional overview of our analytics dashboard module provides a comprehensi
 
 #### 4. Endpoints
 
-<strong>.root:</strong> <https://localhost>:<\port>
+<strong>.root:</strong> <https://sprint1deploymentgroup1.azurewebsites.net>
 
 <details>
   <summary><strong>EndPoint 1: .root/</strong></summary>
   <ul>
     <li>1. <strong>GET</strong> -> .root/js/script.js</li>
-    <li>2. <strong>GET</strong> -> .root/js/script.js</li>
-    <li>3. <strong>GET</strong> -> .root/css/style.css</li>
-    <li>4. <strong>GET</strong> -> .root/image/logo.png</li>
+    <li>2. <strong>GET</strong> -> .root/css/style.css</li>
+    <li>3. <strong>GET</strong> -> .root/image/logo.png</li>
     <li>
-        5. <strong>GET</strong> -> .root/analytic/salesData
+        4. <strong>GET</strong> -> .root/analytic/salesData
         <ul>
             <li>-> GetTotalSales() -> <strong>SaleTransaction</strong> class </li>
             <li>-> GetPageViews() -> <strong>PageView</strong> class </li>
@@ -219,7 +188,7 @@ The functional overview of our analytics dashboard module provides a comprehensi
             <li>-> GetFeedbackAnalysis() -> <strong>Feedback</strong> class </li>
         </ul>
     </li>
-    <li>6. <strong>GET</strong> -> .root/analytic/tableData</li>
+    <li>5. <strong>GET</strong> -> .root/analytic/tableData</li>
   </ul>
 </details>
 

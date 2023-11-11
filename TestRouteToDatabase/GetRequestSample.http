@@ -1,0 +1,56 @@
+############################################################################################################################
+#                                       1. SET UP                                                                          #
+        ### Address Information ###
+        @hostname = analysisreportingdatabasemodulegroup1.azurewebsites.net
+        @InternalRoute = Group1/DatabaseController/group1
+        ### Table Name ###
+        @TableUserView = 0
+        @TablePageView = 1
+        @TableSaleTransaction = 2
+        @TableFeedback = 3
+        ### Get All Table ###
+        @GetAllTable = GetAllData
+############################################################################################################################
+#                                       2. TEST GET USER VIEW                                                              #
+#       GET https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/0 HTTP/1.1    #
+
+                    GET https://{{hostname}}/{{InternalRoute}}/{{TableUserView}} HTTP/1.1
+    
+#                                                                                                                          #
+############################################################################################################################
+
+############################################################################################################################
+#                                       3. TEST GET PAGE VIEW                                                              #
+#       GET https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/1 HTTP/1.1    #
+
+                    GET https://{{hostname}}/{{InternalRoute}}/{{TablePageView}} HTTP/1.1
+
+#                                                                                                                          #
+############################################################################################################################
+
+############################################################################################################################
+#                                       4. TEST GET SALE TRANSACTION                                                       #
+#       GET https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/2 HTTP/1.1    #
+
+                    GET https://{{hostname}}/{{InternalRoute}}/{{TableSaleTransaction}} HTTP/1.1
+
+#                                                                                                                          #
+############################################################################################################################
+
+############################################################################################################################
+#                                       5. TEST GET FEEDBACK                                                               #
+#       GET https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/3 HTTP/1.1    #
+
+                    GET https://{{hostname}}/{{InternalRoute}}/{{TableFeedback}} HTTP/1.1
+
+#                                                                                                                          #
+############################################################################################################################
+
+############################################################################################################################
+#                                       6. TEST GET ALL DATA TABLES                                                        #
+# GET https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/GetAllData HTTP/1.1 #
+
+                    GET https://{{hostname}}/{{InternalRoute}}/{{GetAllTable}} HTTP/1.1
+
+#                                                                                                                          #
+############################################################################################################################

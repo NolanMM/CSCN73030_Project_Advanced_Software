@@ -1,0 +1,75 @@
+####################################################################################
+#                                      1. SET UP                                   #
+    ### Address Information ###
+    @hostname = analysisreportingdatabasemodulegroup1.azurewebsites.net
+    @InternalRoute = Group1/DatabaseController/POST/group1
+    ### Table Name ###
+    @TableUserView = 0
+    @TablePageView = 1
+    @TableSaleTransaction = 2
+    @TableFeedback = 3
+    ### Content Type ###
+    @contentType = application/json
+
+####################################################################################
+#                              2. TEST POST USER VIEW                              #
+    POST https://{{hostname}}/{{InternalRoute}}/{{TableUserView}} HTTP/1.1
+    Content-Type: {{contentType}}
+
+    {
+        "User_ID": "TestPostUserview",
+        "Start_Date": "2023-12-11",
+        "End_Date": "2023-12-11",
+        "Timestamp": "2023-12-11T00:00:00"
+    }
+
+#                                                                                  #
+####################################################################################
+
+####################################################################################
+#                              3. TEST POST PAGE VIEW                              #
+    POST https://{{hostname}}/{{InternalRoute}}/{{TablePageView}} HTTP/1.1
+    Content-Type: {{contentType}}
+
+    {
+    "SessionId": "TestWrite",
+    "Page_Name": "Homepage",
+    "Page_Info": "Welcome to our website",
+    "Product_ID": "P001",
+    "Start_Time": "2023-12-12T10:00:00",
+    "End_Time": "2023-12-12T11:30:00",
+    "UserID": "TestPostPageView"
+    }
+
+#                                                                                  #
+####################################################################################
+
+####################################################################################
+#                          4. TEST POST SALE TRANSACTION                           #
+    POST https://{{hostname}}/{{InternalRoute}}/{{TableSaleTransaction}} HTTP/1.1
+    Content-Type: {{contentType}}
+
+    {
+    "Transaction_ID": "T123456",
+    "User_ID": "TestPostSaleTransaction",
+    "Order_Value": 150.25,
+    "date": "2023-11-12T14:45:00"
+    }
+
+#                                                                                  #
+####################################################################################
+
+####################################################################################
+#                          4. TEST POST FEEDBACK                                   #
+    POST https://{{hostname}}/{{InternalRoute}}/{{TableFeedback}} HTTP/1.1
+    Content-Type: {{contentType}}
+
+    {
+    "Feedback_ID": 123,
+    "User_ID": "TestPostFeedback",
+    "Product_ID": "product003",
+    "Stars_Rating": 4.5
+    }
+
+#                                                                                   #
+#####################################################################################
