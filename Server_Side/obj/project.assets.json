@@ -650,23 +650,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Minh\\.nuget\\packages\\": {},
+    "C:\\Users\\lknap\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\Server_Side.csproj",
+      "projectUniqueName": "C:\\Users\\lknap\\Source\\Repos\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
       "projectName": "Server_Side",
-      "projectPath": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\Server_Side.csproj",
-      "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\Server_Side\\obj\\",
+      "projectPath": "C:\\Users\\lknap\\Source\\Repos\\CSCN73030_Project_Advanced_Software\\Server_Side\\Server_Side.csproj",
+      "packagesPath": "C:\\Users\\lknap\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lknap\\Source\\Repos\\CSCN73030_Project_Advanced_Software\\Server_Side\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lknap\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

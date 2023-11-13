@@ -56,8 +56,9 @@ This code was used to help build the navigation bar
 }
 /* Responsive Navigation Bar Styles */
 .logo img {
-  width: 175px;
-  margin-top: -30%;
+  width: 110px;
+  height: 110px;
+  margin-top: -25%;
 }
 .navbar {
   display: flex;
