@@ -1,6 +1,8 @@
 ﻿namespace Server_Side.Services
 {
-    using Server_Side.Database_Services;
+    using Server_Side.DatabaseServices;
+    using Server_Side.DatabaseServices.Services.Models.Interfaces;
+
     public class Analysis_Report_Services
     {
         private readonly List<UserView> Valid_User_Views_Table = new List<UserView>();
@@ -45,21 +47,45 @@
             public decimal StarRating { get; set; }
         }
 
-        public bool InitializeData(string SessionID)
+        public async Task<bool> InitializeData(int Table_Number)
         {
             try
             {
                 Services_Types = "Retrieve All Data";
-                Database_Analysis_And_Reporting_Services_Control databaseControl = Database_Analysis_And_Reporting_Services_Control.Retrieve_Database_Analysis_And_Reporting_Services_Control();
-                databaseControl.Initialize_Tables(SessionID).Wait();
-                databaseControl.Retrieve_All_Tables().Wait();
-                databaseControl.Database_Services_Control_NotificationAsync(Services_Types, SessionID).Wait();
-                Valid_User_Views_Table.AddRange(databaseControl.Valid_User_Views_Table);
-                Website_logs_table.AddRange(databaseControl.Website_logs_table);
-                SalesTransactionsTable.AddRange(databaseControl.SalesTransactionsTable);
-                FeedbackTable.AddRange(databaseControl.FeedbackTable);
-                return true;
-            } catch { return false; }
+                List<Group_1_Record_Abstraction>? databaseControl = await Database_Centre.GetDataForDatabaseServiceID(Table_Number);
+                if (databaseControl != null)
+                {
+                    switch (Table_Number)
+                    {
+                        case 0:
+                            Valid_User_Views_Table.AddRange(databaseControl.OfType<UserView>());
+                            break;
+                        case 1:
+                            Website_logs_table.AddRange(databaseControl.OfType<PageView>());
+                            break;
+                        case 2:
+                            SalesTransactionsTable.AddRange(databaseControl.OfType<SaleTransaction>());
+                            break;
+                        case 3:
+                            FeedbackTable.AddRange(databaseControl.OfType<Feedback>());
+                            break;
+                        default:
+                            Console.WriteLine($"Invalid table number: {Table_Number}");
+                            return false;
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to retrieve data for table {Table_Number}");
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // Public service methods
