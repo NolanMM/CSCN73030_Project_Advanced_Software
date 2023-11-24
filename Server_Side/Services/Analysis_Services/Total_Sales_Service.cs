@@ -1,24 +1,40 @@
-﻿using Server_Side.DatabaseServices.Services.Model;
+﻿using Server_Side.DatabaseServices;
+using Server_Side.DatabaseServices.Services.Model;
+using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Server_Side.Services.Analysis_Services
 {
-    public class TotalSalesService : Analysis_Report_Center
+    public class TotalSalesService
     {
-        public TotalSalesService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        public TotalSalesService()
         {
+            // Additional initialization, if needed
         }
 
-        public decimal ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public async Task<decimal?> ProcessRequest(DateTime? startDate, DateTime? endDate)
         {
-            // Ensures that SalesTransactionsTable is not null
-            if (SalesTransactionsTable == null)
-                throw new InvalidOperationException("SalesTransactionsTable is not initialized.");
+            if (startDate == null || endDate == null)
+            {
+                return null;
+            }
 
-            return SalesTransactionsTable
+            var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(7);
+            return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate.Value, endDate.Value);
+        }
+
+        private decimal? ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate)
+        {
+            if (salesTransactionsData == null)
+            {
+                return null;
+            }
+
+            return salesTransactionsData
+                .OfType<SaleTransaction>()
                 .Where(s => s.date >= startDate && s.date <= endDate)
                 .Sum(s => s.Order_Value);
         }

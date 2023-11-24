@@ -1,25 +1,42 @@
-﻿using Server_Side.DatabaseServices.Services.Model;
+﻿using Server_Side.DatabaseServices;
+using Server_Side.DatabaseServices.Services.Model;
+using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Server_Side.Services.Analysis_Services
 {
-    public class PageViewsService : Analysis_Report_Center
+    public class PageViewsService
     {
-        public PageViewsService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        public PageViewsService()
         {
             // Additional initialization, if needed
         }
 
-        public Dictionary<string, int> ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public async Task<Dictionary<string, int>?> ProcessRequest(DateTime? startDate, DateTime? endDate)
         {
-            var relevantPageViews = Website_logs_table
-                .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
-                .ToList();
+            if (startDate == null || endDate == null)
+            {
+                return null;
+            }
 
-            var pageViewsByPageName = relevantPageViews
+            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(4);
+            var relevantPageViews = ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
+            return relevantPageViews;
+        }
+
+        private Dictionary<string, int>? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
+        {
+            if (pageViewsData == null)
+            {
+                return null;
+            }
+
+            var pageViewsByPageName = pageViewsData
+                .OfType<PageView>()
+                .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
                 .GroupBy(pv => pv.Page_Name)
                 .ToDictionary(group => group.Key, group => group.Count());
 

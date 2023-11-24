@@ -21,34 +21,34 @@ public class Analysis_Report_Center
                 BestCategoryAnalysisService BestCategoryAnalysisservice = new BestCategoryAnalysisService(startDate, endDate);
                 Dictionary<string, decimal>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
                 return processedBestCategory;
-                //case 2:
+            case 2:
+                ConversionRateService conversionRateService = new ConversionRateService(startDate.GetValueOrDefault(), endDate.GetValueOrDefault(), productId);
+                var conversionRateResult = await conversionRateService.ProcessRequest();
+                return conversionRateResult;
+            case 3:
                 FeedbackAnalysisService feedbackAnalysisService = new FeedbackAnalysisService(startDate, endDate);
                 var processedFeedback = await feedbackAnalysisService.ProcessRequest();
                 return processedFeedback;
-            //case 3:
-            //    databaseServices = new FeedbackTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
-            //case 4:
-            //    databaseServices = new SaleTransactionTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
-            //case 5:
-            //    databaseServices = new FeedbackTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
-            //case 6:
-            //    databaseServices = new SaleTransactionTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
-            //case 7:
-            //    databaseServices = new FeedbackTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
-            //case 8:
-            //    databaseServices = new SaleTransactionTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
+            case 4:
+                PageViewsService pageViewsService = new PageViewsService();
+                var processedPageViews = await pageViewsService.ProcessRequest(startDate, endDate);
+                return processedPageViews;
+            case 5:
+                PriceAnalysisService priceAnalysisService = new PriceAnalysisService();
+                var processedPriceData = await priceAnalysisService.ProcessRequest(startDate, endDate);
+                return processedPriceData;
+            case 6:
+                TimeAnalysisService timeAnalysisService = new TimeAnalysisService();
+                var processedTimeData = await timeAnalysisService.ProcessRequest(startDate, endDate);
+                return processedTimeData;
+            case 7:
+                TotalSalesService totalSalesService = new TotalSalesService();
+                var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate);
+                return processedTotalSales;
+            case 8:
+                UniqueVisitorsService uniqueVisitorsService = new UniqueVisitorsService();
+                var uniqueVisitorCount = await uniqueVisitorsService.GetUniqueVisitorCountAsync(startDate, endDate);
+                return uniqueVisitorCount;
             default:
                 throw new ArgumentException("Invalid table number");
         }
