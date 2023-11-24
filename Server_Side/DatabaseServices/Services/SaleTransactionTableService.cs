@@ -8,7 +8,7 @@ namespace Server_Side.DatabaseServices.Services
 {
     public class SaleTransactionTableService : IDatabaseServices
     {
-        private readonly string apiUrl = "https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/group1/2";
+        private readonly string apiUrl = "https://analysisreportingdatabasemodulegroup1.azurewebsites.net/Group1/DatabaseController/minhnguyen/Connhenbeo1/group1/2";
 
         public async Task<List<Group_1_Record_Abstraction>?> GetDataServiceAsync()
         {
