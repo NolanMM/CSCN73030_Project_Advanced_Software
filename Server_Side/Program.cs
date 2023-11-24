@@ -48,7 +48,7 @@ builder.Services.Configure<IpRateLimitOptions>(options =>
     };
 });
 
-builder.Services.AddSingleton<Analysis_Report_Services>();
+builder.Services.AddSingleton<Analysis_Report_Center>();
 builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
 builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();

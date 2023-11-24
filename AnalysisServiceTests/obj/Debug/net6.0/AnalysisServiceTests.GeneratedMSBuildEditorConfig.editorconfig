@@ -9,3 +9,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AnalysisServiceTests
 build_property.ProjectDir = C:\Users\gautam\Desktop\Project 5\Project Code\AnalysisServiceTests\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -17,10 +17,12 @@ namespace Server_Side.DatabaseServices.Services.Model
         [Required(ErrorMessage = "Date is required")]
         [DateNotDefault(ErrorMessage = "Date must be filled")]
         public DateTime date { get; set; }
-
+        [Required(ErrorMessage = "The item list cannot be empty")]
+        [MaxLength(10000)]
+        public string Details_Products { get; set; }
         public override string ToString()
         {
-            return $"Transaction_ID: {Transaction_ID}, User_ID: {User_ID}, Product_ID: {Product_ID}, Order_Value: {Order_Value}, date: {date}";
+            return $"Transaction_ID: {Transaction_ID}, User_ID: {User_ID}, Product_ID: {Product_ID}, Order_Value: {Order_Value}, date: {date}, Details_Products List: {Details_Products}";
         }
     }
 }

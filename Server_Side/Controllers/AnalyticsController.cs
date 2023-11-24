@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Server_Side.Services;
+using Server_Side.Services.Analysis_Services;
 using System;
 using System.Linq;
 
@@ -7,9 +8,9 @@ namespace Server_Side.Controllers
 {
     public class AnalyticsController : Controller
     {
-        private readonly Analysis_Report_Services _reportServices;
+        private readonly Analysis_Report_Center _reportServices;
 
-        public AnalyticsController(Analysis_Report_Services reportServices)
+        public AnalyticsController(Analysis_Report_Center reportServices)
         {
             _reportServices = reportServices;
         }
@@ -26,19 +27,22 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/analytics/salesData")]
-        public IActionResult GetSalesData()
+        public async Task<IActionResult> GetSalesData()
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
-            //
-            // Fixing this for the real data
+            var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+            var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
+            var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+            var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+
             var data = new
             {
-                salesTotal = _reportServices.GetTotalSales(startDate, endDate),
-                viewTotal = _reportServices.GetPageViews(startDate, endDate).Sum(x => x.Value),
-                lifetimeSales = _reportServices.GetSalesAnalysis().Sum(x => x.Value),
-                averageSatisfaction = _reportServices.GetFeedbackAnalysis().Average(x => int.Parse(x.Key) * x.Value) // Simplified
+                salesTotal,
+                viewTotal,
+                lifetimeSales,
+                averageSatisfaction
             };
 
             Response.ContentType = "application/json";
@@ -80,14 +84,17 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/productInfoData")]
-        public IActionResult GetProductInfoData()
+        public async Task<IActionResult> GetProductInfoData(string productId)
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
+            var conversionRateService = new ConversionRateService(startDate, endDate, productId);
+            var salesRateResult = await conversionRateService.ProcessRequest();
+
             var data = new
             {
-                salesRate = _reportServices.GetConversionRate("", startDate, endDate), // Placeholder for product ID
+                salesRate = salesRateResult, // Using the result from the ConversionRateService
                 placeHolder = "placeholder"
             };
 
@@ -96,13 +103,17 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlySalesData")]
-        public IActionResult GetMonthlySalesData()
+        public async Task<IActionResult> GetMonthlySalesData()
         {
-            var monthlySales = _reportServices.GetTimeAnalysis().Values.ToArray();
+            var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
+            var endDate = DateTime.Now; // Current date
+
+            var timeAnalysisService = new TimeAnalysisService();
+            var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
 
             var salesData = new
             {
-                monthlySales
+                monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
             };
 
             Response.ContentType = "application/json";
