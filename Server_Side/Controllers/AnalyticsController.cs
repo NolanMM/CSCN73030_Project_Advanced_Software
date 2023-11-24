@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Server_Side.Services;
+using Server_Side.Services.Analysis_Services;
 using System;
 using System.Linq;
 
@@ -7,9 +8,9 @@ namespace Server_Side.Controllers
 {
     public class AnalyticsController : Controller
     {
-        private readonly Analysis_Report_Services _reportServices;
+        private readonly Analysis_Report_Center _reportServices;
 
-        public AnalyticsController(Analysis_Report_Services reportServices)
+        public AnalyticsController(Analysis_Report_Center reportServices)
         {
             _reportServices = reportServices;
         }
@@ -35,7 +36,8 @@ namespace Server_Side.Controllers
             // Fixing this for the real data
             var data = new
             {
-                salesTotal = _reportServices.GetTotalSales(startDate, endDate),
+
+                salesTotal = _reportServices.ProcessAnalysisReportingServicesByID( 0 ,startDate, endDate),
                 viewTotal = _reportServices.GetPageViews(startDate, endDate).Sum(x => x.Value),
                 lifetimeSales = _reportServices.GetSalesAnalysis().Sum(x => x.Value),
                 averageSatisfaction = _reportServices.GetFeedbackAnalysis().Average(x => int.Parse(x.Key) * x.Value) // Simplified

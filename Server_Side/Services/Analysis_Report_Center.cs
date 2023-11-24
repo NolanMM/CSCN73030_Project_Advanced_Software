@@ -1,7 +1,4 @@
-﻿using Server_Side.DatabaseServices.Services;
-using Server_Side.DatabaseServices.Services.Interface_Service;
-using Server_Side.DatabaseServices.Services.Model;
-using Server_Side.DatabaseServices.Services.Models.Interfaces;
+﻿using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using Server_Side.Services.Analysis_Services;
 
 public class Analysis_Report_Center
@@ -11,7 +8,7 @@ public class Analysis_Report_Center
     //public List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
     //public List<Feedback> FeedbackTable = new List<Feedback>();
 
-    public async Task<object> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate)
+    public async Task<object> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId)
     {
         List<Group_1_Record_Abstraction>? processedData = new List<Group_1_Record_Abstraction>();
         switch (ServicesID)
@@ -20,10 +17,10 @@ public class Analysis_Report_Center
                 AverageOrderValueService averageOrderValueservice = new AverageOrderValueService(startDate, endDate);
                 decimal? processedDataAverage = await averageOrderValueservice.ProcessRequest();
                 return processedDataAverage;
-            //case 1:
-            //    databaseServices = new PageViewTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
+            case 1:
+                BestCategoryAnalysisService BestCategoryAnalysisservice = new BestCategoryAnalysisService(startDate, endDate);
+                Dictionary<string, decimal>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
+                return processedBestCategory;
             //case 2:
             //    databaseServices = new SaleTransactionTableService();
             //    processedData = await databaseServices.GetDataServiceAsync();
@@ -55,6 +52,5 @@ public class Analysis_Report_Center
             default:
                 throw new ArgumentException("Invalid table number");
         }
-        return processedData;
     }
 }
