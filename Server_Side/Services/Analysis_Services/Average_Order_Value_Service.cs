@@ -1,8 +1,6 @@
 ﻿using Server_Side.DatabaseServices;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
-using System;
-using System.Linq;
 
 namespace Server_Side.Services.Analysis_Services
 {
@@ -71,5 +69,6 @@ namespace Server_Side.Services.Analysis_Services
 
             return relevantSales.Any() ? relevantSales.Average(s => s.Order_Value) : 0;
         }
+
     }
 }

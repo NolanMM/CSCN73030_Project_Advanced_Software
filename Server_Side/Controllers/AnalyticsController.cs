@@ -32,12 +32,10 @@ namespace Server_Side.Controllers
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
-            //
             // Fixing this for the real data
             var data = new
             {
-
-                salesTotal = _reportServices.ProcessAnalysisReportingServicesByID( 0 ,startDate, endDate),
+                salesTotal = _reportServices.ProcessAnalysisReportingServicesByID(0 ,startDate, endDate, null),
                 viewTotal = _reportServices.GetPageViews(startDate, endDate).Sum(x => x.Value),
                 lifetimeSales = _reportServices.GetSalesAnalysis().Sum(x => x.Value),
                 averageSatisfaction = _reportServices.GetFeedbackAnalysis().Average(x => int.Parse(x.Key) * x.Value) // Simplified

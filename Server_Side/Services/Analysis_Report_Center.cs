@@ -8,7 +8,7 @@ public class Analysis_Report_Center
     //public List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
     //public List<Feedback> FeedbackTable = new List<Feedback>();
 
-    public async Task<object> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId)
+    public async Task<object?> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId)
     {
         List<Group_1_Record_Abstraction>? processedData = new List<Group_1_Record_Abstraction>();
         switch (ServicesID)
