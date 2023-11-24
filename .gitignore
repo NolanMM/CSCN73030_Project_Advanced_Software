@@ -392,3 +392,10 @@ Server_Side/obj/Debug/net6.0/Server_Side.assets.cache
 Server_Side/obj/Debug/net6.0/Server_Side.GeneratedMSBuildEditorConfig.editorconfig
 Server_Side/obj/Debug/net6.0/Server_Side.RazorAssemblyInfo.cache
 Server_Side/obj/Debug/net6.0/Server_Side.RazorAssemblyInfo.cs
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.assets.cache
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.csproj.AssemblyReference.cache
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.csproj.AssemblyReference.cache
+Server_Side/.vs/Server_Side/DesignTimeBuild/.dtbcache.v2
+Server_Side/.vs/Server_Side/v17/.suo
+Server_Side/obj/Debug/net6.0/project.razor.vscode.bin
+Server_Side/obj/Debug/net6.0/Server_Side.csproj.CoreCompileInputs.cache
