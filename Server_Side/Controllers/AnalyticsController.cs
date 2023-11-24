@@ -27,18 +27,22 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/analytics/salesData")]
-        public IActionResult GetSalesData()
+        public async Task<IActionResult> GetSalesData()
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
-            // Fixing this for the real data
+            var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+            var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
+            var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+            var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+
             var data = new
             {
-                salesTotal = _reportServices.ProcessAnalysisReportingServicesByID(0 ,startDate, endDate, null),
-                viewTotal = _reportServices.GetPageViews(startDate, endDate).Sum(x => x.Value),
-                lifetimeSales = _reportServices.GetSalesAnalysis().Sum(x => x.Value),
-                averageSatisfaction = _reportServices.GetFeedbackAnalysis().Average(x => int.Parse(x.Key) * x.Value) // Simplified
+                salesTotal,
+                viewTotal,
+                lifetimeSales,
+                averageSatisfaction
             };
 
             Response.ContentType = "application/json";
