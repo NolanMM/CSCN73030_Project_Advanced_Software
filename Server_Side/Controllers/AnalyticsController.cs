@@ -84,14 +84,17 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/productInfoData")]
-        public IActionResult GetProductInfoData()
+        public async Task<IActionResult> GetProductInfoData(string productId)
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
+            var conversionRateService = new ConversionRateService(startDate, endDate, productId);
+            var salesRateResult = await conversionRateService.ProcessRequest();
+
             var data = new
             {
-                salesRate = _reportServices.GetConversionRate("", startDate, endDate), // Placeholder for product ID
+                salesRate = salesRateResult, // Using the result from the ConversionRateService
                 placeHolder = "placeholder"
             };
 
@@ -100,13 +103,17 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlySalesData")]
-        public IActionResult GetMonthlySalesData()
+        public async Task<IActionResult> GetMonthlySalesData()
         {
-            var monthlySales = _reportServices.GetTimeAnalysis().Values.ToArray();
+            var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
+            var endDate = DateTime.Now; // Current date
+
+            var timeAnalysisService = new TimeAnalysisService();
+            var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
 
             var salesData = new
             {
-                monthlySales
+                monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
             };
 
             Response.ContentType = "application/json";
