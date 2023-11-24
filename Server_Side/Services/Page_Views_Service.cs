@@ -7,19 +7,18 @@ namespace Server_Side.Services
 {
     public class PageViewsService : Analysis_Report_Center
     {
-        public PageViewsService()
+        public PageViewsService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
+            : base(userViews, pageViews, salesTransactions, feedbacks)
         {
-            // Base constructor
+            // Additional initialization, if needed
         }
 
         public Dictionary<string, int> ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            // Filter and group PageView data based on your analysis criteria (e.g., date range)
             var relevantPageViews = Website_logs_table
                 .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
                 .ToList();
 
-            // Group the relevant PageView data by Page Name and count the occurrences
             var pageViewsByPageName = relevantPageViews
                 .GroupBy(pv => pv.Page_Name)
                 .ToDictionary(group => group.Key, group => group.Count());

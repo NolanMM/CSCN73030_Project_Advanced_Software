@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,8 +12,12 @@ namespace Server_Side.Services
         {
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public decimal ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
+            // Ensures that SalesTransactionsTable is not null
+            if (SalesTransactionsTable == null)
+                throw new InvalidOperationException("SalesTransactionsTable is not initialized.");
+
             return SalesTransactionsTable
                 .Where(s => s.date >= startDate && s.date <= endDate)
                 .Sum(s => s.Order_Value);
