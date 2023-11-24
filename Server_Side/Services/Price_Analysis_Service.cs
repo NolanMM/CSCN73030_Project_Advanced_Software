@@ -1,20 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class PriceAnalysisService : Analysis_Service_Center
+    public class PriceAnalysisService : Analysis_Report_Center
     {
-        public PriceAnalysisService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
-        {
+        public PriceAnalysisService(Analysis_Report_Center reportCenter) : base(
+            reportCenter.Valid_User_Views_Table,
+            reportCenter.Website_logs_table,
+            reportCenter.SalesTransactionsTable,
+            reportCenter.FeedbackTable){
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public object ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            // Mock implementation: Requires product prices
-            return new Dictionary<string, decimal>
-            {
-                {"Product1", 99.99M},
-                {"Product2", 49.99M},
-            };
+            // Retrieve sales transactions within the specified date range
+            var relevantSales = SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .ToList();
+
+            // Calculate the average order value if there are any relevant sales
+            decimal averageOrderValue = relevantSales.Any() ? relevantSales.Average(s => s.Order_Value) : 0;
+
+            return averageOrderValue;
         }
+    }
+}

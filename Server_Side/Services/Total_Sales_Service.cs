@@ -1,20 +1,26 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class TotalSalesService : Analysis_Service_Center
+    public class TotalSalesService : Analysis_Report_Center
     {
         public TotalSalesService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
             : base(userViews, pageViews, salesTransactions, feedbacks)
         {
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public decimal ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return SalesTransactions
-                .Where(s => s.Date >= startDate && s.Date <= endDate)
-                .Sum(s => s.TransactionValue);
+            // Ensures that SalesTransactionsTable is not null
+            if (SalesTransactionsTable == null)
+                throw new InvalidOperationException("SalesTransactionsTable is not initialized.");
+
+            return SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .Sum(s => s.Order_Value);
         }
     }
 }

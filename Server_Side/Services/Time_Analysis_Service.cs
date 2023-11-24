@@ -1,20 +1,24 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class TimeAnalysisService : Analysis_Service_Center
+    public class TimeAnalysisService
     {
-        public TimeAnalysisService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        private readonly Analysis_Report_Center _reportCenter;
+
+        public TimeAnalysisService(Analysis_Report_Center reportCenter)
         {
+            _reportCenter = reportCenter ?? throw new ArgumentNullException(nameof(reportCenter));
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public Dictionary<string, int> ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return SalesTransactions
-                .Where(s => s.Date >= startDate && s.Date <= endDate)
-                .GroupBy(s => s.Date.Month)
+            return _reportCenter.SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .GroupBy(s => s.date.Month)
                 .ToDictionary(grp => $"Month {grp.Key}", grp => grp.Count());
         }
     }
