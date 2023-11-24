@@ -1,21 +1,30 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class PageViewsService : Analysis_Service_Center
+    public class PageViewsService : Analysis_Report_Center
     {
-        public PageViewsService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        public PageViewsService()
         {
+            // Base constructor
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public Dictionary<string, int> ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return PageViews
-                .Where(p => p.DateTime >= startDate && p.DateTime <= endDate)
-                .GroupBy(p => p.PageUrl)
-                .ToDictionary(grp => grp.Key, grp => grp.Count());
+            // Filter and group PageView data based on your analysis criteria (e.g., date range)
+            var relevantPageViews = Website_logs_table
+                .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
+                .ToList();
+
+            // Group the relevant PageView data by Page Name and count the occurrences
+            var pageViewsByPageName = relevantPageViews
+                .GroupBy(pv => pv.Page_Name)
+                .ToDictionary(group => group.Key, group => group.Count());
+
+            return pageViewsByPageName;
         }
     }
 }

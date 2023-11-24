@@ -1,19 +1,24 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class FeedbackAnalysisService : Analysis_Service_Center
+    public class FeedbackAnalysisService : Analysis_Report_Center
     {
-        public FeedbackAnalysisService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        public FeedbackAnalysisService() : base()
         {
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        public Dictionary<string, int> ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return Feedbacks
-                .GroupBy(f => f.StarRating.ToString())
+            if (FeedbackTable == null)
+                throw new InvalidOperationException("FeedbackTable data is not initialized.");
+
+            return FeedbackTable
+                .Where(f => f.Date_Updated >= startDate && f.Date_Updated <= endDate)
+                .GroupBy(f => f.Stars_Rating.ToString())
                 .ToDictionary(grp => grp.Key, grp => grp.Count());
         }
     }

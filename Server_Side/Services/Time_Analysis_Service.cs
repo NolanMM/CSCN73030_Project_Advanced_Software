@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class TimeAnalysisService : Analysis_Service_Center
+    public class TimeAnalysisService : Analysis_Report_Center
     {
-        public TimeAnalysisService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        public TimeAnalysisService(Analysis_Report_Center reportCenter)
+            : base(reportCenter.SalesTransactionsTable, reportCenter.Website_logs_table, reportCenter.FeedbackTable, reportCenter.Valid_User_Views_Table)
         {
         }
 
         public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return SalesTransactions
-                .Where(s => s.Date >= startDate && s.Date <= endDate)
-                .GroupBy(s => s.Date.Month)
+            return SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .GroupBy(s => s.date.Month)
                 .ToDictionary(grp => $"Month {grp.Key}", grp => grp.Count());
         }
     }

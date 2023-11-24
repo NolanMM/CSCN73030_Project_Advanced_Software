@@ -1,21 +1,30 @@
-﻿using System;
+﻿using Server_Side.DatabaseServices.Services.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class BestCategoryAnalysisService : Analysis_Service_Center
+    public class BestCategoryAnalysisService
     {
-        public BestCategoryAnalysisService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
-            : base(userViews, pageViews, salesTransactions, feedbacks)
+        private Analysis_Report_Center _analysisReportCenter;
+
+        public BestCategoryAnalysisService(Analysis_Report_Center analysisReportCenter)
         {
+            _analysisReportCenter = analysisReportCenter;
         }
 
-        public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
-        {   //placeholder values
-            return new Dictionary<string, decimal>
-            {
-                {"Category1", 1234.56M},
-                {"Category2", 7890.12M},
-            };
+        public Dictionary<string, decimal> ExecuteAnalysis(DateTime startDate, DateTime endDate)
+        {
+            if (_analysisReportCenter.SalesTransactionsTable == null)
+                throw new InvalidOperationException("SalesTransactions data is not initialized.");
+
+            return _analysisReportCenter.SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .GroupBy(s => s.User_ID) // Grouping by User_ID 
+                .Select(group => new { UserID = group.Key, TotalSales = group.Sum(s => s.Order_Value) })
+                .OrderByDescending(result => result.TotalSales)
+                .ToDictionary(result => result.UserID, result => result.TotalSales);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server_Side.Services
 {
-    public class TotalSalesService : Analysis_Service_Center
+    public class TotalSalesService : Analysis_Report_Center
     {
         public TotalSalesService(List<UserView> userViews, List<PageView> pageViews, List<SaleTransaction> salesTransactions, List<Feedback> feedbacks)
             : base(userViews, pageViews, salesTransactions, feedbacks)
@@ -12,9 +13,9 @@ namespace Server_Side.Services
 
         public override object ExecuteAnalysis(DateTime startDate, DateTime endDate)
         {
-            return SalesTransactions
-                .Where(s => s.Date >= startDate && s.Date <= endDate)
-                .Sum(s => s.TransactionValue);
+            return SalesTransactionsTable
+                .Where(s => s.date >= startDate && s.date <= endDate)
+                .Sum(s => s.Order_Value);
         }
     }
 }
