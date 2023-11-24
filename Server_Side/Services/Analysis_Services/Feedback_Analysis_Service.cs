@@ -1,4 +1,6 @@
-﻿using Server_Side.DatabaseServices.Services.Model;
+﻿using Server_Side.DatabaseServices;
+using Server_Side.DatabaseServices.Services.Model;
+using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +10,42 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class FeedbackAnalysisService
     {
-        private readonly Analysis_Report_Center _reportCenter;
+        private DateTime startDate;
+        private DateTime endDate;
 
-        public FeedbackAnalysisService(Analysis_Report_Center reportCenter)
+        public FeedbackAnalysisService(DateTime? startDate, DateTime? endDate)
         {
-            _reportCenter = reportCenter ?? throw new ArgumentNullException(nameof(reportCenter));
+            if (startDate == null || endDate == null)
+            {
+                throw new ArgumentNullException("Start date and end date cannot be null");
+            }
+            this.startDate = startDate.Value;
+            this.endDate = endDate.Value;
         }
 
-        public async Task<Dictionary<string, int>> ExecuteAnalysisAsync(DateTime startDate, DateTime endDate)
+        public async Task<Dictionary<string, decimal>?> ProcessRequest()
         {
-            if (_reportCenter.FeedbackTable == null || !_reportCenter.FeedbackTable.Any())
-                throw new InvalidOperationException("FeedbackTable data is not initialized.");
-
-            return await Task.Run(() =>
+            var feedbackTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(3);
+            var validDataReturn = ProcessFeedbackDataAsync(feedbackTableFromDatabase);
+            if (validDataReturn)
             {
-                return _reportCenter.FeedbackTable
-                    .Where(f => f.Date_Updated >= startDate && f.Date_Updated <= endDate)
-                    .GroupBy(f => f.Stars_Rating.ToString())
-                    .ToDictionary(grp => grp.Key, grp => grp.Count());
-            });
+                var result = AnalyzeFeedback();
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool ProcessFeedbackDataAsync(List<Group_1_Record_Abstraction>? feedbackData)
+        {
+            return true;
+        }
+
+        private Dictionary<string, decimal> AnalyzeFeedback()
+        {
+            return new Dictionary<string, decimal>();
         }
     }
 }

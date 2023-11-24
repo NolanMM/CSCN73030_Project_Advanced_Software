@@ -21,10 +21,10 @@ public class Analysis_Report_Center
                 BestCategoryAnalysisService BestCategoryAnalysisservice = new BestCategoryAnalysisService(startDate, endDate);
                 Dictionary<string, decimal>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
                 return processedBestCategory;
-            //case 2:
-            //    databaseServices = new SaleTransactionTableService();
-            //    processedData = await databaseServices.GetDataServiceAsync();
-            //    break;
+                //case 2:
+                FeedbackAnalysisService feedbackAnalysisService = new FeedbackAnalysisService(startDate, endDate);
+                var processedFeedback = await feedbackAnalysisService.ProcessRequest();
+                return processedFeedback;
             //case 3:
             //    databaseServices = new FeedbackTableService();
             //    processedData = await databaseServices.GetDataServiceAsync();
