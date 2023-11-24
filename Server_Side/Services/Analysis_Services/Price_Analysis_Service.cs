@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Server_Side.Services
+namespace Server_Side.Services.Analysis_Services
 {
     public class PriceAnalysisService : Analysis_Report_Center
     {
@@ -10,7 +10,8 @@ namespace Server_Side.Services
             reportCenter.Valid_User_Views_Table,
             reportCenter.Website_logs_table,
             reportCenter.SalesTransactionsTable,
-            reportCenter.FeedbackTable){
+            reportCenter.FeedbackTable)
+        {
         }
 
         public object ExecuteAnalysis(DateTime startDate, DateTime endDate)

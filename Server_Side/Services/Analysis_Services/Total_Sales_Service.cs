@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Server_Side.Services
+namespace Server_Side.Services.Analysis_Services
 {
     public class TotalSalesService : Analysis_Report_Center
     {
