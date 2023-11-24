@@ -9,19 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Server_Side
 build_property.RootNamespace = Server_Side
-build_property.ProjectDir = C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\Minh\Desktop\Test_Cloning\Server_Side\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\gautam\Desktop\Project 5\Project Code\Server_Side
+build_property.MSBuildProjectDirectory = C:\Users\Minh\Desktop\Test_Cloning\Server_Side
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/gautam/Desktop/Project 5/Project Code/Server_Side/Views/Analytics/Charts.cshtml]
+[C:/Users/Minh/Desktop/Test_Cloning/Server_Side/Views/Analytics/Charts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXENoYXJ0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gautam/Desktop/Project 5/Project Code/Server_Side/Views/Analytics/Index.cshtml]
+[C:/Users/Minh/Desktop/Test_Cloning/Server_Side/Views/Analytics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
