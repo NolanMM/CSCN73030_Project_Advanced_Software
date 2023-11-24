@@ -361,3 +361,34 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+AnalysisServiceTests/bin/Debug/net6.0/CoverletSourceRootsMapping
+AnalysisServiceTests/obj/AnalysisServiceTests.csproj.nuget.dgspec.json
+AnalysisServiceTests/obj/AnalysisServiceTests.csproj.nuget.g.props
+AnalysisServiceTests/obj/project.assets.json
+AnalysisServiceTests/obj/project.nuget.cache
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.AssemblyInfo.cs
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.AssemblyInfoInputs.cache
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.assets.cache
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.csproj.AssemblyReference.cache
+AnalysisServiceTests/obj/Debug/net6.0/AnalysisServiceTests.GeneratedMSBuildEditorConfig.editorconfig
+DatabaseAnalysisModuleTests/bin/Debug/net6.0/CoverletSourceRootsMapping
+DatabaseAnalysisModuleTests/obj/DatabaseAnalysisModuleTests.csproj.nuget.dgspec.json
+DatabaseAnalysisModuleTests/obj/DatabaseAnalysisModuleTests.csproj.nuget.g.props
+DatabaseAnalysisModuleTests/obj/project.assets.json
+DatabaseAnalysisModuleTests/obj/project.nuget.cache
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.AssemblyInfo.cs
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.AssemblyInfoInputs.cache
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.assets.cache
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.csproj.AssemblyReference.cache
+DatabaseAnalysisModuleTests/obj/Debug/net6.0/DatabaseAnalysisModuleTests.GeneratedMSBuildEditorConfig.editorconfig
+Server_Side/obj/project.assets.json
+Server_Side/obj/project.nuget.cache
+Server_Side/obj/Server_Side.csproj.nuget.dgspec.json
+Server_Side/obj/Server_Side.csproj.nuget.g.props
+Server_Side/obj/Debug/net6.0/project.razor.vscode.bin
+Server_Side/obj/Debug/net6.0/Server_Side.AssemblyInfo.cs
+Server_Side/obj/Debug/net6.0/Server_Side.AssemblyInfoInputs.cache
+Server_Side/obj/Debug/net6.0/Server_Side.assets.cache
+Server_Side/obj/Debug/net6.0/Server_Side.GeneratedMSBuildEditorConfig.editorconfig
+Server_Side/obj/Debug/net6.0/Server_Side.RazorAssemblyInfo.cache
+Server_Side/obj/Debug/net6.0/Server_Side.RazorAssemblyInfo.cs
