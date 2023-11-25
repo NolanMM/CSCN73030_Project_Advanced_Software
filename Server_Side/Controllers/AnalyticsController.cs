@@ -78,7 +78,6 @@ namespace Server_Side.Controllers
                     lifetimeSales,
                     averageSatisfaction
                 };
-
                 return Json(data);
             }
             catch (Exception ex)

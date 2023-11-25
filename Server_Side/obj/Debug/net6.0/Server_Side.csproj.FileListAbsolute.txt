@@ -264,3 +264,4 @@ C:\Users\liamm\source\repos\CSCN73030_Project_Advanced_Software\Server_Side\obj\
 C:\Users\liamm\source\repos\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.pdb
 C:\Users\liamm\source\repos\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\Server_Side.genruntimeconfig.cache
 C:\Users\liamm\source\repos\CSCN73030_Project_Advanced_Software\Server_Side\obj\Debug\net6.0\ref\Server_Side.dll
+C:\Users\Minh\Desktop\Test_Cloning\Server_Side\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

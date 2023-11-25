@@ -22,7 +22,7 @@ namespace Server_Side.Services.Analysis_Services
                 return null;
             }
 
-            var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(7);
+            var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(3);
             return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate.Value, endDate.Value);
         }
 
