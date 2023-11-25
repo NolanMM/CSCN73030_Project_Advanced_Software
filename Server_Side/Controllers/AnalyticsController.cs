@@ -18,7 +18,7 @@ namespace Server_Side.Controllers
         //default route no profile specified
         public IActionResult Index()
         {
-            return NotFound("This endpoint is not found.");
+            return NotFound("This Page is not found! Please Login or check browser connections. ERROR: 404");
         }
 
         [Route("analytics/charts/{productId}")]
@@ -146,7 +146,7 @@ namespace Server_Side.Controllers
 
         [HttpGet("/charts/monthlySalesData/{productId}")]
         //public async Task<IActionResult> GetMonthlySalesData()
-        public IActionResult GetMonthlySalesData()
+        public IActionResult GetMonthlySalesData(string productId)
         {
 
             // Replace with your actual data retrieval logic using the productId
@@ -185,7 +185,7 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlyViewsData/{productId}")]
-        public IActionResult GetMonthlyViewsData()
+        public IActionResult GetMonthlyViewsData(string productId)
         {
 
 
@@ -217,11 +217,11 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlySatisfactionData/{productId}")]
-        public IActionResult GetMonthlySatisfactionData()
+        public IActionResult GetMonthlySatisfactionData(string productId)
         {
 
 
-            // Replace with your actual data retrieval logic using the productId
+          // Replace with your actual data retrieval logic using the productId
 
           //numbers per month basis
           //"January",
