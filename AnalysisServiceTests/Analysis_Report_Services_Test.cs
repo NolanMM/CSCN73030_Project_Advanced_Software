@@ -8,12 +8,12 @@ namespace AnalysisServiceTests
     [TestClass]
     public class AnalysisServiceRegressionTests
     {
-        private Analysis_Report_Services _service;
+        private Analysis_Report_Center _service;
 
         [TestInitialize]
         public void Setup()
         {
-            _service = new Analysis_Report_Services();
+            _service = new Analysis_Report_Center();
 
             // Populate _service with mock data for testing here.
             // This setup will run before each test.

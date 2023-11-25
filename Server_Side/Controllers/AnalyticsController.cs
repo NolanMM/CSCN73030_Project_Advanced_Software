@@ -27,15 +27,22 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/analytics/salesData")]
+        [HttpGet("/analytics/salesData")]
         public async Task<IActionResult> GetSalesData()
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
-            var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-            var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-            var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-            var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+            var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); // Assuming 7 is TotalSalesService
+            var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); // Assuming 4 is PageViewsService
+            var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); // Assuming 7 is TotalSalesService for lifetime sales
+            var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); // Assuming 3 is FeedbackAnalysisService
+
+            // Convert results to int (assuming they are already int or can be safely cast to int)
+            var salesTotal = ConvertToInt(salesTotalResult);
+            var viewTotal = ConvertToInt(viewTotalResult);
+            var lifetimeSales = ConvertToInt(lifetimeSalesResult);
+            var averageSatisfaction = ConvertToInt(averageSatisfactionResult);
 
             var data = new
             {
@@ -48,6 +55,13 @@ namespace Server_Side.Controllers
             Response.ContentType = "application/json";
             return Json(data);
         }
+
+        private int ConvertToInt(object result)
+        {
+            // Safely convert the result to int, returning 0 if the conversion isn't possible
+            return (result != null && int.TryParse(result.ToString(), out int intValue)) ? intValue : 0;
+        }
+
 
         [HttpGet("/analytics/tableData")]
         public IActionResult GettableData()
