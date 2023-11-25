@@ -19,12 +19,12 @@ namespace Server_Side.Controllers
         public IActionResult Index()
         {
             return NotFound("This endpoint is not found.");
-            //return View();
         }
 
-        [Route("analytics/charts")]
-        public IActionResult Charts()
-        {
+        [Route("analytics/charts/{productId}")]
+        public IActionResult Charts(string productId)
+        { 
+            ViewBag.ProductId = productId;
             return View();
         }
 
@@ -32,24 +32,19 @@ namespace Server_Side.Controllers
         [Route("Profile/{userId}")]
         public IActionResult Index(string userId)
         {
-            //return Content("Proile for " + userId);
             ViewBag.UserId = userId;
             return View();
         }
 
         [HttpGet("/analytics/salesData/Profile/{userId}")]
-        public async Task<IActionResult> GetSalesData(string userId)
+        public IActionResult GetSalesData(string userId)
         {
-            var startDate = DateTime.Now.AddMonths(-1);
-            var endDate = DateTime.Now;
 
-            
-
-            //var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-            var salesTotal = 10;
-            var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-            var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-            var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+            // Replace with your actual data retrieval logic using the userId
+            var salesTotal = 100;
+            var viewTotal = 50;
+            var lifetimeSales = 500;
+            var averageSatisfaction = 4.5;
 
             var data = new
             {
@@ -63,6 +58,36 @@ namespace Server_Side.Controllers
             return Json(data);
         }
 
+        //[HttpGet("/analytics/salesData/Profile/{userId}")]
+        //public async Task<IActionResult> GetSalesDataProfile(int userId)
+        //{
+        //    try
+        //    {
+        //        var startDate = DateTime.Now.AddMonths(-1);
+        //        var endDate = DateTime.Now;
+
+        //        var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+        //        var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
+        //        var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+        //        var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+
+        //        var data = new
+        //        {
+        //            salesTotal,
+        //            viewTotal,
+        //            lifetimeSales,
+        //            averageSatisfaction
+        //        };
+
+        //        return Json(data);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
+
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public IActionResult GettableData(string userId)
         {
@@ -70,74 +95,117 @@ namespace Server_Side.Controllers
             {
                 new
                 {
-                    col1 = "Row 1, Col 1",
-                    col2 = "Row 1, Col 2",
-                    col3 = "Row 1, Col 3",
-                    col4 = "Row 1, Col 4",
-                    col5 = "Details"
+                    plist = "Honey",
+                    tsales = "10",
+                    tviews = "50",
+                    pPrice = "$20",
+                    pID = "honey123",
+                    col6 = "Details"
                 },
                 new
                 {
-                    col1 = "Row 2, Col 1",
-                    col2 = "Row 2, Col 2",
-                    col3 = "Row 2, Col 3",
-                    col4 = "Row 2, Col 4",
-                    col5 = "Details"
+                    plist = "Row 2, Col 1",
+                    tsales = "Row 2, Col 2",
+                    tviews = "Row 2, Col 3",
+                    pPrice = "Row 2, Col 4",
+                    pID = "shoes543",
+                    col6 = "Details"
                 },
                 new
                 {
-                    col1 = "Row 3, Col 1",
-                    col2 = "Row 3, Col 2",
-                    col3 = "Row 3, Col 3",
-                    col4 = "Row 3, Col 4",
-                    col5 = "Details"
+                    plist = "Row 3, Col 1",
+                    tsales = "Row 3, Col 2",
+                    tviews = "Row 3, Col 3",
+                    pPrice = "Row 3, Col 4",
+                    pID = "pants8383929",
+                    col6 = "Details"
                 }
             };
+
             Response.ContentType = "application/json";
             return Json(data);
         }
 
-        [HttpGet("/charts/productInfoData")]
-        public async Task<IActionResult> GetProductInfoData(string productId)
+        [HttpGet("/charts/productInfoData/{productId}")]
+        public IActionResult GetProductInfoData(string productId)
         {
-            var startDate = DateTime.Now.AddMonths(-1);
-            var endDate = DateTime.Now;
 
-            var conversionRateService = new ConversionRateService(startDate, endDate, productId);
-            var salesRateResult = await conversionRateService.ProcessRequest();
+            // Replace with your actual data retrieval logic using the productId
+            var salesRate = 100; 
+            var conversionRate = 50;
 
             var data = new
             {
-                salesRate = salesRateResult, // Using the result from the ConversionRateService
-                placeHolder = "placeholder"
+                salesRate, 
+                conversionRate,
             };
 
             Response.ContentType = "application/json";
             return Json(data);
         }
 
-        [HttpGet("/charts/monthlySalesData")]
-        public async Task<IActionResult> GetMonthlySalesData()
+        [HttpGet("/charts/monthlySalesData/{productId}")]
+        //public async Task<IActionResult> GetMonthlySalesData()
+        public IActionResult GetMonthlySalesData()
         {
-            var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
-            var endDate = DateTime.Now; // Current date
 
-            var timeAnalysisService = new TimeAnalysisService();
-            var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
+            // Replace with your actual data retrieval logic using the productId
+
+
+            //numbers per month basis
+            //"January",
+            //"February",
+            //"March",
+            //"April",
+            //"May",
+            //"June",
+            //"July",
+            //"August",
+            //"September",
+            //"October",
+            //"November",
+            //"December",
+            var monthlySales = new[] { 1000, 2500, 3200, 2800, 1500, 7, 100, 600, 9000, 47474, 1, 200 };
+
+
+            //var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
+            //var endDate = DateTime.Now; // Current date
+
+            //var timeAnalysisService = new TimeAnalysisService();
+            //var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
 
             var salesData = new
             {
-                monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
+                monthlySales
+                //monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
             };
 
             Response.ContentType = "application/json";
             return Json(salesData);
         }
 
-        [HttpGet("/charts/monthlyViewsData")]
+        [HttpGet("/charts/monthlyViewsData/{productId}")]
         public IActionResult GetMonthlyViewsData()
         {
-            var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500 };
+
+
+            // Replace with your actual data retrieval logic using the productId
+
+
+            //numbers per month basis
+            //"January",
+            //"February",
+            //"March",
+            //"April",
+            //"May",
+            //"June",
+            //"July",
+            //"August",
+            //"September",
+            //"October",
+            //"November",
+            //"December",
+            var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500, 10, 1, 100, 7000, 400, 3790, 6969 };
 
             var viewsData = new
             {
@@ -148,9 +216,26 @@ namespace Server_Side.Controllers
             return Json(viewsData);
         }
 
-        [HttpGet("/charts/monthlySatisfactionData")]
+        [HttpGet("/charts/monthlySatisfactionData/{productId}")]
         public IActionResult GetMonthlySatisfactionData()
         {
+
+
+            // Replace with your actual data retrieval logic using the productId
+
+          //numbers per month basis
+          //"January",
+          //"February",
+          //"March",
+          //"April",
+          //"May",
+          //"June",
+          //"July",
+          //"August",
+          //"September",
+          //"October",
+          //"November",
+          //"December",
             var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
 
             var satisfactionData = new

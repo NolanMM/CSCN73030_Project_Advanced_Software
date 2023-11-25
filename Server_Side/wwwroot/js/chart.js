@@ -1,40 +1,51 @@
-// Function to request data from c# berkley socket server restful
+var productId = '@ViewBag.ProductId'; // Retrieve the userId from ViewBag or wherever it's set
 
-// Function to receive data from c# berkley socket server restful
 
-// Example data for the flex containers/ array to hold data for flex containers
-const values = ["Error: Fetching", "Error: Fetching"];
-function fetchFlexDataFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData")
-    .then((response) => response.json())
-    .then((data) => {
-      values[0] = data.salesRate;
-      values[1] = data.placeHolder;
-      // Call the updateFlexContainer function to update the containers
-      updateFlexContainer();
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+// Function to fetch data for the flex container from the server based on the productId
+function fetchFlexDataFromServer(productId) {
+    fetch(`http://localhost:8080/charts/productInfoData/${productId}`) //Debugging url
+    //fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/")
+        .then((response) => response.json())
+        .then((data) => {
+            updateFlexContainer(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
 }
-// Call the function to fetch data when the page loads
-window.addEventListener("load", fetchFlexDataFromServer);
-// Function to update the flex containers
-function updateFlexContainer() {
-  const valueElements = document.querySelectorAll(".flex-value");
-  // Loop through the values and update the text content of the corresponding value elements
-  for (let i = 0; i < values.length; i++) {
-    valueElements[i].textContent = values[i];
-  }
+// Function to update the flex container with fetched data
+function updateFlexContainer(data) {
+    const valueElements = document.querySelectorAll(".flex-value");
+    if (valueElements.length !== Object.keys(data).length) {
+        console.error("Data length doesn't match the number of elements.");
+        return;
+    }
+
+    valueElements.forEach((element, index) => {
+        element.textContent = data[Object.keys(data)[index]];
+    });
 }
 
 // Sample data for monthly sales
 var salesData = {
-  labels: ["January", "February", "March", "April", "May"],
+    labels: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ],
   datasets: [
     {
       label: "Monthly Sales",
-      data: [0, 0, 0, 0, 0],
+      data: [],
       backgroundColor: "rgba(75, 192, 192, 0.2)",
       borderColor: "rgba(75, 192, 192, 1)",
       borderWidth: 2,
@@ -57,13 +68,41 @@ var myChartSales = new Chart(ctxSales, {
   },
 });
 
+//Fetch and update data for monthly sales and monthly viesw and sales charts 
+function fetchMonthlySalesFromServer(productId) {
+    fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`) //Debugging url
+        //fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData")
+        .then((response) => response.json())
+        .then((data) => {
+            salesData.datasets[0].data = data.monthlySales;
+            myChartSales.update();
+            myChartSalesAndViews.update();
+        })
+        .catch((error) => {
+            console.error("Error fetching monthly sales data:", error);
+        });
+}
+
 // Sample data for monthly views
 var viewsData = {
-  labels: ["January", "February", "March", "April", "May"],
+    labels: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ],
   datasets: [
     {
       label: "Page Views",
-      data: [0, 0, 0, 0, 0],
+      data: [],
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgba(54, 162, 235, 1)",
       borderWidth: 2,
@@ -81,6 +120,20 @@ var myChartViews = new Chart(ctxViews, {
     responsive: true, // Allow the chart to be responsive
   },
 });
+//Fetch and update data for monthly views chart and monthly viesw and sales charts 
+function fetchMonthlyViewsFromServer(productId) {
+    fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`) //Debugging url
+    //fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData")
+        .then((response) => response.json())
+        .then((data) => {
+            viewsData.datasets[0].data = data.monthlyViews;
+            myChartViews.update();
+            myChartSalesAndViews.update();
+        })
+        .catch((error) => {
+            console.error("Error fetching monthly views data:", error);
+        });
+}
 
 // Sample data for monthly average satisfaction
 var satisfactionData = {
@@ -101,7 +154,7 @@ var satisfactionData = {
   datasets: [
     {
       label: "Average Satisfaction (1-5)",
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      data: [],
       backgroundColor: "rgba(75, 192, 192, 0.2)",
       borderColor: "rgba(75, 192, 192, 1)",
       borderWidth: 2,
@@ -120,6 +173,20 @@ var myChartSatisfaction = new Chart(ctxSatisfaction, {
     responsive: true, // Allow the chart to be responsive
   },
 });
+//Fetch data for monthly satisfaction
+function fetchMonthlySatisfactionFromServer(productId) {
+    fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`) //Debugging url
+    //fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData")
+        .then((response) => response.json())
+        .then((data) => {
+            satisfactionData.datasets[0].data = data.monthlySatisfaction;
+            myChartSatisfaction.update();
+        })
+        .catch((error) => {
+            console.error("Error fetching monthly satisfaction data:", error);
+        });
+}
+
 
 // Create a chart that combines sales and views data
 var ctxSalesAndViews = document
@@ -128,7 +195,20 @@ var ctxSalesAndViews = document
 var myChartSalesAndViews = new Chart(ctxSalesAndViews, {
   type: "line", // Use a line chart for sales and views
   data: {
-    labels: ["January", "February", "March", "April", "May"],
+      labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+      ],
     datasets: [salesData.datasets[0], viewsData.datasets[0]], // Include both sales and views datasets
   },
   options: {
@@ -152,53 +232,21 @@ var myChartSalesAndViews = new Chart(ctxSalesAndViews, {
 });
 
 
-//Fetch and update data for monthly sales and monthly viesw and sales charts 
-function fetchMonthlySalesFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData")
-    .then((response) => response.json())
-    .then((data) => {
-      salesData.datasets[0].data = data.monthlySales;
-      myChartSales.update();
-      myChartSalesAndViews.update();
-    })
-    .catch((error) => {
-      console.error("Error fetching monthly sales data:", error);
-    });
-}
-window.addEventListener("load", fetchMonthlySalesFromServer);
-
-//Fetch and update data for monthly views chart and monthly viesw and sales charts 
-function fetchMonthlyViewsFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData")
-    .then((response) => response.json())
-    .then((data) => {
-      viewsData.datasets[0].data = data.monthlyViews;
-      myChartViews.update();
-      myChartSalesAndViews.update();
-    })
-    .catch((error) => {
-      console.error("Error fetching monthly views data:", error);
-    });
-}
-window.addEventListener("load", fetchMonthlyViewsFromServer);
-
-//Fetch data for monthly satisfaction
-function fetchMonthlySatisfactionFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData")
-    .then((response) => response.json())
-    .then((data) => {
-      satisfactionData.datasets[0].data = data.monthlySatisfaction;
-      myChartSatisfaction.update();
-    })
-    .catch((error) => {
-      console.error("Error fetching monthly satisfaction data:", error);
-    });
-}
-window.addEventListener("load", fetchMonthlySatisfactionFromServer);
-
 // Check if chart3 is the only child
 if (document.querySelectorAll(".chart-container").length === 1) {
   // Add a class for full-width layout
   document.querySelector(".chart-container").classList.add("full-width-chart");
 }
 
+
+// Function to be executed on window load
+window.addEventListener("load", function () {
+    if (productId) {
+        fetchFlexDataFromServer(productId);
+        fetchMonthlySalesFromServer(productId);
+        fetchMonthlyViewsFromServer(productId);
+        fetchMonthlySatisfactionFromServer(productId);
+    } else {
+        console.error("Product ID not found!");
+    }
+});
