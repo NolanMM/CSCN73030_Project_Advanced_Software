@@ -10,11 +10,6 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class PriceAnalysisService
     {
-        public PriceAnalysisService()
-        {
-            //init empty
-        }
-
         public async Task<decimal?> ProcessRequest(DateTime? startDate, DateTime? endDate)
         {
             if (startDate == null || endDate == null)

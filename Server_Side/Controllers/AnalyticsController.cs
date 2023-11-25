@@ -66,17 +66,22 @@ namespace Server_Side.Controllers
                 var startDate = DateTime.Now.AddMonths(-1);
                 var endDate = DateTime.Now;
 
-                var salesTotal = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-                var viewTotal = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-                var lifetimeSales = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-                var averageSatisfaction = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+                var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null);
+                var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null);
+                var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null);
+                var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null);
+
+                var salesTotal = ConvertToInt(salesTotalResult);
+                var viewTotal = ConvertToInt(viewTotalResult);
+                var lifetimeSales = ConvertToInt(lifetimeSalesResult);
+                var averageSatisfaction = ConvertToInt(averageSatisfactionResult); // Convert to integer
 
                 var data = new
                 {
                     salesTotal,
                     viewTotal,
                     lifetimeSales,
-                    averageSatisfaction
+                    averageSatisfaction // This is now an integer
                 };
                 return Json(data);
             }
@@ -86,6 +91,10 @@ namespace Server_Side.Controllers
             }
         }
 
+        private int ConvertToInt(object result)
+        {
+            return (result != null && int.TryParse(result.ToString(), out int intValue)) ? intValue : 0;
+        }
 
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public IActionResult GettableData(string userId)
