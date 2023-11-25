@@ -36,56 +36,56 @@ namespace Server_Side.Controllers
             return View();
         }
 
-        [HttpGet("/analytics/salesData/Profile/{userId}")]
-        public IActionResult GetSalesData(string userId)
-        {
-
-            // Replace with your actual data retrieval logic using the userId
-            var salesTotal = 100;
-            var viewTotal = 50;
-            var lifetimeSales = 500;
-            var averageSatisfaction = 4.5;
-
-            var data = new
-            {
-                salesTotal,
-                viewTotal,
-                lifetimeSales,
-                averageSatisfaction
-            };
-
-            Response.ContentType = "application/json";
-            return Json(data);
-        }
-
         //[HttpGet("/analytics/salesData/Profile/{userId}")]
-        //public async Task<IActionResult> GetSalesDataProfile(int userId)
+        //public IActionResult GetSalesData(string userId)
         //{
-        //    try
+
+        //    // Replace with your actual data retrieval logic using the userId
+        //    var salesTotal = 100;
+        //    var viewTotal = 50;
+        //    var lifetimeSales = 500;
+        //    var averageSatisfaction = 4.5;
+
+        //    var data = new
         //    {
-        //        var startDate = DateTime.Now.AddMonths(-1);
-        //        var endDate = DateTime.Now;
+        //        salesTotal,
+        //        viewTotal,
+        //        lifetimeSales,
+        //        averageSatisfaction
+        //    };
 
-        //        var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-        //        var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-        //        var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-        //        var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-
-        //        var data = new
-        //        {
-        //            salesTotal,
-        //            viewTotal,
-        //            lifetimeSales,
-        //            averageSatisfaction
-        //        };
-
-        //        return Json(data);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
+        //    Response.ContentType = "application/json";
+        //    return Json(data);
         //}
+
+        [HttpGet("/analytics/salesData/Profile/{userId}")]
+        public async Task<IActionResult> GetSalesDataProfile(int userId)
+        {
+            try
+            {
+                var startDate = DateTime.Now.AddMonths(-1);
+                var endDate = DateTime.Now;
+
+                var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+                var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
+                var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+                var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+
+                var data = new
+                {
+                    salesTotal,
+                    viewTotal,
+                    lifetimeSales,
+                    averageSatisfaction
+                };
+
+                return Json(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
 
 
         [HttpGet("/analytics/tableData/Profile/{userId}")]

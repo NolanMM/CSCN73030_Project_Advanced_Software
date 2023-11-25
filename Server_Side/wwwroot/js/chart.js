@@ -3,8 +3,8 @@ var productId = '@ViewBag.ProductId'; // Retrieve the userId from ViewBag or whe
 
 // Function to fetch data for the flex container from the server based on the productId
 function fetchFlexDataFromServer(productId) {
-    //fetch(`http://localhost:8080/charts/productInfoData/${productId}`) //Debugging url
-    fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`) // Release URL
+    fetch(`http://localhost:8080/charts/productInfoData/${productId}`) //Debugging url
+    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`) // Release URL
         .then((response) => response.json())
         .then((data) => {
             updateFlexContainer(data);
@@ -70,8 +70,8 @@ var myChartSales = new Chart(ctxSales, {
 
 //Fetch and update data for monthly sales and monthly viesw and sales charts 
 function fetchMonthlySalesFromServer(productId) {
-    //fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`) //Debugging url
-    fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`) // Release URL
+    fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`) //Debugging url
+    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`) // Release URL
         .then((response) => response.json())
         .then((data) => {
             salesData.datasets[0].data = data.monthlySales;
@@ -122,8 +122,8 @@ var myChartViews = new Chart(ctxViews, {
 });
 //Fetch and update data for monthly views chart and monthly viesw and sales charts 
 function fetchMonthlyViewsFromServer(productId) {
-   // fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`) //Debugging url
-    fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`) // Release URL
+   fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`) //Debugging url
+    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`) // Release URL
         .then((response) => response.json())
         .then((data) => {
             viewsData.datasets[0].data = data.monthlyViews;
@@ -175,8 +175,8 @@ var myChartSatisfaction = new Chart(ctxSatisfaction, {
 });
 //Fetch data for monthly satisfaction
 function fetchMonthlySatisfactionFromServer(productId) {
-    //fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`) //Debugging url
-    fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`) // Release URL
+   fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`) //Debugging url
+    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`) // Release URL
         .then((response) => response.json())
         .then((data) => {
             satisfactionData.datasets[0].data = data.monthlySatisfaction;

@@ -23,7 +23,7 @@
   <!-- Navigation Bar -->
   <section class="navbar">
     <div>
-      <a href="/analytics" class="logo">
+        <a href="/Profile/@ViewBag.UserId" class="logo">
         <img src="~/image/logo.png" alt="logo" />
       </a>
     </div>
@@ -33,11 +33,13 @@
     </label>
     <ul class="menu">
       <li><a href="/analytics">Cart</a></li>
-      <li><a href="/analytics">Profile</a></li>
       <li><a href="/analytics">Home</a></li>
       <li><a href="/analytics">Analytic</a></li>
       <li><a href="/analytics">Products</a></li>
     </ul>
+    <script type="text/javascript">
+        var userId = '@ViewBag.UserId';
+    </script>
   </section>
 
   <!-- Body Code Start -->
