@@ -15,6 +15,7 @@ namespace Server_Side.Controllers
             _reportServices = reportServices;
         }
 
+        //default route no profile specified
         public IActionResult Index()
         {
             return View();
@@ -26,13 +27,25 @@ namespace Server_Side.Controllers
             return View();
         }
 
-        [HttpGet("/analytics/salesData")]
-        public async Task<IActionResult> GetSalesData()
+        //index profile specified
+        [Route("Profile/{userId}")]
+        public IActionResult Index(string userId)
+        {
+            //return Content("Proile for " + userId);
+            ViewBag.UserId = userId;
+            return View();
+        }
+
+        [HttpGet("/analytics/salesData/Profile/{userId}")]
+        public async Task<IActionResult> GetSalesData(string userId)
         {
             var startDate = DateTime.Now.AddMonths(-1);
             var endDate = DateTime.Now;
 
-            var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+            
+
+            //var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
+            var salesTotal = 10;
             var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
             var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
             var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
@@ -49,14 +62,14 @@ namespace Server_Side.Controllers
             return Json(data);
         }
 
-        [HttpGet("/analytics/tableData")]
-        public IActionResult GettableData()
+        [HttpGet("/analytics/tableData/Profile/{userId}")]
+        public IActionResult GettableData(string userId)
         {
             var data = new[]
             {
                 new
                 {
-                    col1 = "Row 1, Col 1",
+                    col1 = "Row 10, Col 1",
                     col2 = "Row 1, Col 2",
                     col3 = "Row 1, Col 3",
                     col4 = "Row 1, Col 4",

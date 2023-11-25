@@ -1,35 +1,37 @@
-// Example data for the flex containers/ array to hold data for flex containers
-const values = [
-  "Error: Fetching",
-  "Error: Fetching",
-  "Error: Fetching",
-  "Error: Fetching",
-];
-function fetchFlexDataFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/analytics/salesData")
-    .then((response) => response.json())
-    .then((data) => {
-      values[0] = data.salesTotal;
-      values[1] = data.viewTotal;
-      values[2] = data.lifetimeSales;
-      values[3] = data.averageSatisfaction;
 
-      // Call the updateFlexContainer function to update the containers
-      updateFlexContainer();
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+//set the userID
+var userId = '@ViewBag.UserId';
+window.addEventListener("load", function () {
+    if (userId) {
+        fetchTableDataFromServer(userId);
+        fetchFlexDataFromServer();
+    } else {
+        console.error("User ID not found!");
+    }
+});
+
+
+function fetchFlexDataFromServer() {
+    fetch(`http://localhost:8080/analytics/salesData/Profile/${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+            const values = [
+                data.salesTotal,
+                data.viewTotal,
+                data.lifetimeSales,
+                data.averageSatisfaction
+            ];
+            updateFlexContainer(values);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
 }
-// Call the function to fetch data when the page loads
-window.addEventListener("load", fetchFlexDataFromServer);
-// Function to update the flex containers
-function updateFlexContainer() {
-  const valueElements = document.querySelectorAll(".flex-value");
-  // Loop through the values and update the text content of the corresponding value elements
-  for (let i = 0; i < values.length; i++) {
-    valueElements[i].textContent = values[i];
-  }
+function updateFlexContainer(values) {
+    const valueElements = document.querySelectorAll(".flex-value");
+    valueElements.forEach((element, index) => {
+        element.textContent = values[index];
+    });
 }
 
 // Example data for the product table
@@ -59,14 +61,16 @@ const Data = [
 
 // Function to fetch table data from the server
 function fetchTableDataFromServer() {
-    fetch("https://sprint1deploymentgroup1.azurewebsites.net/analytics/tableData") // Replace with the actual endpoint
+    fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`)
+    //fetch("https://sprint1deploymentgroup1.azurewebsites.net/analytics/tableData") // Replace with the actual endpoint
     .then((response) => response.json())
     .then((tableData) => {
       // Call the updateTable function to update the table with the fetched data
       updateTable(Data);
     })
     .catch((error) => {
-      console.error("Error fetching table data:", error);
+        console.error("Error fetching table data:", error);
+        clearTable();
     });
 }
 
@@ -76,6 +80,7 @@ window.addEventListener("load", fetchTableDataFromServer);
 // Function to update the table with fetched data
 function updateTable(tableData) {
   const tableBody = document.getElementById("table-body");
+  tableBody.innerHTML = ""; // Clear previous data before populating
   tableData.forEach((rowData, index) => {
     const row = document.createElement("tr");
     for (const key in rowData) {
