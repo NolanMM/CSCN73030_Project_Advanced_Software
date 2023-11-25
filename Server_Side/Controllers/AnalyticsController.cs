@@ -18,7 +18,8 @@ namespace Server_Side.Controllers
         //default route no profile specified
         public IActionResult Index()
         {
-            return View();
+            return NotFound("This endpoint is not found.");
+            //return View();
         }
 
         [Route("analytics/charts")]
@@ -69,7 +70,7 @@ namespace Server_Side.Controllers
             {
                 new
                 {
-                    col1 = "Row 10, Col 1",
+                    col1 = "Row 1, Col 1",
                     col2 = "Row 1, Col 2",
                     col3 = "Row 1, Col 3",
                     col4 = "Row 1, Col 4",

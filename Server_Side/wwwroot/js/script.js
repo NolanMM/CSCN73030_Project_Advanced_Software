@@ -1,72 +1,34 @@
-
-//set the userID
-var userId = '@ViewBag.UserId';
-window.addEventListener("load", function () {
-    if (userId) {
-        fetchTableDataFromServer(userId);
-        fetchFlexDataFromServer();
-    } else {
-        console.error("User ID not found!");
-    }
-});
-
-
+var userId = '@ViewBag.UserId'; // Retrieve the userId from ViewBag or wherever it's set
 function fetchFlexDataFromServer() {
     fetch(`http://localhost:8080/analytics/salesData/Profile/${userId}`)
         .then((response) => response.json())
         .then((data) => {
-            const values = [
-                data.salesTotal,
-                data.viewTotal,
-                data.lifetimeSales,
-                data.averageSatisfaction
-            ];
-            updateFlexContainer(values);
+            updateFlexContainer(data);
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
         });
 }
-function updateFlexContainer(values) {
+function updateFlexContainer(data) {
     const valueElements = document.querySelectorAll(".flex-value");
+    if (valueElements.length !== data.length) {
+        console.error("Data length doesn't match the number of elements.");
+        return;
+    }
+
     valueElements.forEach((element, index) => {
-        element.textContent = values[index];
+        element.textContent = data[index];
     });
 }
 
-// Example data for the product table
-const Data = [
-  {
-    col1: "Row 1, Col 1",
-    col2: "Row 1, Col 2",
-    col3: "Row 1, Col 3",
-    col4: "Row 1, Col 4",
-    col5: "Details",
-  },
-  {
-    col1: "Row 2, Col 1",
-    col2: "Row 2, Col 2",
-    col3: "Row 2, Col 3",
-    col4: "Row 2, Col 4",
-    col5: "Details",
-  },
-  {
-    col1: "Row 3, Col 1",
-    col2: "Row 3, Col 2",
-    col3: "Row 3, Col 3",
-    col4: "Row 3, Col 4",
-    col5: "Details",
-  },
-];
-
 // Function to fetch table data from the server
-function fetchTableDataFromServer() {
-    fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`)
+function fetchTableDataFromServer(userId) {
+    fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`) //Debugging url
     //fetch("https://sprint1deploymentgroup1.azurewebsites.net/analytics/tableData") // Replace with the actual endpoint
     .then((response) => response.json())
     .then((tableData) => {
       // Call the updateTable function to update the table with the fetched data
-      updateTable(Data);
+      updateTable(tableData);
     })
     .catch((error) => {
         console.error("Error fetching table data:", error);
@@ -74,8 +36,17 @@ function fetchTableDataFromServer() {
     });
 }
 
-// Call the function to fetch table data when the page loads
-window.addEventListener("load", fetchTableDataFromServer);
+
+// Function to be executed on window load
+window.addEventListener("load", function () {
+    if (userId) {
+        fetchTableDataFromServer(userId);
+        fetchFlexDataFromServer(userId); 
+    } else {
+        console.error("User ID not found!");
+    }
+});
+
 
 // Function to update the table with fetched data
 function updateTable(tableData) {
