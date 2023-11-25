@@ -71,10 +71,10 @@ namespace Server_Side.Controllers
                 var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null);
                 var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null);
 
-                var salesTotal = ConvertToInt(salesTotalResult);
-                var viewTotal = ConvertToInt(viewTotalResult);
-                var lifetimeSales = ConvertToInt(lifetimeSalesResult);
-                var averageSatisfaction = ConvertToInt(averageSatisfactionResult); // Convert to integer
+                int salesTotal = ConvertToInt(salesTotalResult);
+                int viewTotal = ConvertToInt(viewTotalResult);
+                int lifetimeSales = ConvertToInt(lifetimeSalesResult);
+                int averageSatisfaction = ConvertToInt(averageSatisfactionResult); // Convert to integer
 
                 var data = new
                 {
