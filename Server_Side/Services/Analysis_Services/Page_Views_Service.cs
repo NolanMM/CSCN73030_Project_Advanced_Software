@@ -1,4 +1,49 @@
-﻿//using Server_Side.DatabaseServices;
+﻿using Server_Side.DatabaseServices;
+using Server_Side.DatabaseServices.Services.Model;
+using Server_Side.DatabaseServices.Services.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Server_Side.Services.Analysis_Services
+{
+    public class PageViewsService
+    {
+        public async Task<int?> ProcessRequest(DateTime? startDate, DateTime? endDate)
+        {
+            if (startDate == null || endDate == null)
+            {
+                return null;
+            }
+
+            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
+            return ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
+        }
+
+        private int? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
+        {
+            if (pageViewsData == null)
+            {
+                return null;
+            }
+
+            int count = pageViewsData
+                .OfType<PageView>()
+                .Count(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate);
+
+            return count;
+        }
+    }
+}
+
+
+
+
+
+
+
+//using Server_Side.DatabaseServices;
 //using Server_Side.DatabaseServices.Services.Model;
 //using Server_Side.DatabaseServices.Services.Models.Interfaces;
 //using System;
@@ -44,42 +89,3 @@
 //        }
 //    }
 //}
-
-using Server_Side.DatabaseServices;
-using Server_Side.DatabaseServices.Services.Model;
-using Server_Side.DatabaseServices.Services.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Server_Side.Services.Analysis_Services
-{
-    public class PageViewsService
-    {
-        public async Task<int?> ProcessRequest(DateTime? startDate, DateTime? endDate)
-        {
-            if (startDate == null || endDate == null)
-            {
-                return null;
-            }
-
-            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
-            return ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
-        }
-
-        private int? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
-        {
-            if (pageViewsData == null)
-            {
-                return null;
-            }
-
-            int count = pageViewsData
-                .OfType<PageView>()
-                .Count(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate);
-
-            return count;
-        }
-    }
-}

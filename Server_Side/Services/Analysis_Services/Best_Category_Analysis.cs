@@ -23,7 +23,7 @@ namespace Server_Side.Services.Analysis_Services
                 this.startDate = startDate.Value; this.endDate = endDate.Value;
             }
         }
-        public async Task<Dictionary<string, decimal>?> ProcessRequest()
+        public async Task<Dictionary<string, int>?> ProcessRequest()
         {
             SalesTransactionsTable.Clear();
             var saleTransactionTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(2);
@@ -63,7 +63,7 @@ namespace Server_Side.Services.Analysis_Services
             }
         }
 
-        private Dictionary<string, decimal> ExecuteAnalysis()
+        private Dictionary<string, int> ExecuteAnalysis()
         {
             if (SalesTransactionsTable == null)
                 throw new InvalidOperationException("SalesTransactions data is not initialized.");
@@ -71,9 +71,13 @@ namespace Server_Side.Services.Analysis_Services
             return SalesTransactionsTable
                 .Where(s => s.date >= startDate && s.date <= endDate)
                 .GroupBy(s => s.User_ID) // Grouping by User_ID 
-                .Select(group => new { UserID = group.Key, TotalSales = group.Sum(s => s.Order_Value) })
+                .Select(group => new {
+                    UserID = group.Key,
+                    TotalSales = (int)group.Sum(s => s.Order_Value) // Converting TotalSales to int
+                })
                 .OrderByDescending(result => result.TotalSales)
                 .ToDictionary(result => result.UserID, result => result.TotalSales);
         }
+
     }
 }

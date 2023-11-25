@@ -19,7 +19,7 @@ public class Analysis_Report_Center
                 return processedDataAverage;
             case 1:
                 BestCategoryAnalysisService BestCategoryAnalysisservice = new BestCategoryAnalysisService(startDate, endDate);
-                Dictionary<string, decimal>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
+                Dictionary<string, int>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
                 return processedBestCategory;
             case 2:
                 ConversionRateService conversionRateService = new ConversionRateService(startDate.GetValueOrDefault(), endDate.GetValueOrDefault(), productId);
