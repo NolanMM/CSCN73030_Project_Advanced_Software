@@ -23,7 +23,7 @@ namespace Server_Side.Services.Analysis_Services
             this.endDate = endDate.Value;
         }
 
-        public async Task<Dictionary<string, decimal>?> ProcessRequest()
+        public async Task<Dictionary<string, int>?> ProcessRequest()
         {
             var feedbackTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(3);
             var validDataReturn = ProcessFeedbackDataAsync(feedbackTableFromDatabase);
@@ -43,9 +43,9 @@ namespace Server_Side.Services.Analysis_Services
             return true;
         }
 
-        private Dictionary<string, decimal> AnalyzeFeedback()
+        private Dictionary<string, int> AnalyzeFeedback()
         {
-            return new Dictionary<string, decimal>();
+            return new Dictionary<string, int>();
         }
     }
 }
