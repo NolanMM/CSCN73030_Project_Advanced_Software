@@ -25,7 +25,7 @@ namespace Server_Side.Services.Analysis_Services
         {
             SalesTransactionsTable.Clear();
             var saleTransactionTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(2);
-            var WeblogTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
+            var WeblogTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1); 
             var valid_Weblog = ProcessListWeblogTable_DataAsync(WeblogTableFromDatabase);
             var validDataReturn = ProcessListSaleTransactionTable_DataAsync(saleTransactionTableFromDatabase);
             if (validDataReturn && valid_Weblog)

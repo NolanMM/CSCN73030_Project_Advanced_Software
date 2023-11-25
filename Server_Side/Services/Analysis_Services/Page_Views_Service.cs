@@ -22,7 +22,7 @@ namespace Server_Side.Services.Analysis_Services
                 return null;
             }
 
-            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(4);
+            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
             var relevantPageViews = ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
             return relevantPageViews;
         }
