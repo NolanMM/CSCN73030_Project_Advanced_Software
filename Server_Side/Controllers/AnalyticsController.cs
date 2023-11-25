@@ -91,9 +91,24 @@ namespace Server_Side.Controllers
             }
         }
 
-        private int ConvertToInt(object result)
+        private int ConvertToInt(object? result)
         {
-            return (result != null && int.TryParse(result.ToString(), out int intValue)) ? intValue : 0;
+            if (result is null)
+            {
+                return 0;
+            }
+
+            if (result is int intValue)
+            {
+                return intValue;
+            }
+
+            if (int.TryParse(result.ToString(), out intValue))
+            {
+                return intValue;
+            }
+
+            return 0; // Default value if conversion fails
         }
 
         [HttpGet("/analytics/tableData/Profile/{userId}")]
