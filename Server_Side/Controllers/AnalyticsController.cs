@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Server_Side.DatabaseServices;
 using Server_Side.Services;
 using Server_Side.Services.Analysis_Services;
 using System;
@@ -112,8 +113,10 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/analytics/tableData/Profile/{userId}")]
-        public IActionResult GettableData(string userId)
+        public async Task<IActionResult> GettableData(string userId)
         {
+            List<ProductItemData>? return_list =  (List<ProductItemData>?)await ServiceControllerBridege.ProcessTheRequest("GettableData", userId,null,null);
+
             var data = new[]
             {
                 new

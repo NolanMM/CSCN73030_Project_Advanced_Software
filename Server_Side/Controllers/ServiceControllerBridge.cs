@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Server_Side.DatabaseServices;
 
 namespace Server_Side.Controllers
 {
@@ -42,7 +43,14 @@ namespace Server_Side.Controllers
                 }
                 if (request == "GettableData")
                 {
-                    List<GettableData_Struct> data = new List<GettableData_Struct>
+
+                    List<ProductItemData>? ProcessDataForGetTableCorrespondingUserID = new List<ProductItemData>();
+                    ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID);
+
+
+
+
+                    List <GettableData_Struct> data = new List<GettableData_Struct>
                     {
                         new GettableData_Struct
                         {
