@@ -34,9 +34,10 @@ async function fetchFlexDataFromServer(userId) {
             throw new Error('Network response was not ok.');
         }
         const data = await response.json();
-        updateFlexContainer(data);
+        return data;
     } catch (error) {
         console.error("Error fetching data:", error);
+        throw error;
     }
 }
 
@@ -57,10 +58,10 @@ async function fetchTableDataFromServer(userId) {
     try {
         const response = await fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`);
         const tableData = await response.json();
-        updateTable(tableData);
+        return tableData;
     } catch (error) {
         console.error("Error fetching table data:", error);
-        clearTable();
+        throw error;
     }
 }
 
@@ -107,10 +108,29 @@ function updateTable(tableData) {
 
 
 // Function to be executed on window load
-window.addEventListener("load", function () {
+//window.addEventListener("load", function () {
+//    if (userId) {
+//        fetchTableDataFromServer(userId);
+//        fetchFlexDataFromServer(userId);
+//    } else {
+//        console.error("User ID not found!");
+//    }
+//});
+
+window.addEventListener("load", async function () {
     if (userId) {
-        fetchTableDataFromServer(userId);
-        fetchFlexDataFromServer(userId);
+        try {
+            // Use Promise.all to wait for both fetch operations to complete
+            const [flexData, tableData] = await Promise.all([
+                fetchFlexDataFromServer(userId),
+                fetchTableDataFromServer(userId)
+            ]);
+
+            updateFlexContainer(flexData);
+            updateTable(tableData);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     } else {
         console.error("User ID not found!");
     }
