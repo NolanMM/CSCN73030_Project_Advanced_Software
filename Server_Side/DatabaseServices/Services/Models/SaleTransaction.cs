@@ -19,6 +19,7 @@ namespace Server_Side.DatabaseServices.Services.Model
         [Required(ErrorMessage = "The item list cannot be empty")]
         [MaxLength(10000)]
         public string Details_Products { get; set; }
+
         public override string ToString()
         {
             return $"Transaction_ID: {Transaction_ID}, User_ID: {User_ID}, Order_Value: {Order_Value}, date: {date}, Product List: {Details_Products}";

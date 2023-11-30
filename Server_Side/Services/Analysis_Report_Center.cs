@@ -8,7 +8,7 @@ public class Analysis_Report_Center
     //public List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
     //public List<Feedback> FeedbackTable = new List<Feedback>();
 
-    public async Task<object?> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId)
+    public async Task<object?> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId, string? userID)
     {
         List<Group_1_Record_Abstraction>? processedData = new List<Group_1_Record_Abstraction>();
         switch (ServicesID)
@@ -43,7 +43,7 @@ public class Analysis_Report_Center
                 return processedTimeData;
             case 7:
                 TotalSalesService totalSalesService = new TotalSalesService();
-                var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate);
+                var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate, userID);
                 int results = 0;
                 return results as object;
             case 8:

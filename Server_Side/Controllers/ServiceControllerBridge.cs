@@ -35,10 +35,10 @@ namespace Server_Side.Controllers
                 if (request == "GetSalesDataProfile")
                 {
                     GetSalesDataProfile_Data tempData = new GetSalesDataProfile_Data();
-                    tempData.salesTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-                    tempData.viewTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-                    tempData.lifetimeSales = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-                    tempData.averageSatisfaction = (decimal)await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
+                    tempData.salesTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID); //number needs to be changed
+                    tempData.viewTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID); //number needs to be changed
+                    tempData.lifetimeSales = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
+                    tempData.averageSatisfaction = (decimal)await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
                     return tempData as object;
                 }
                 if (request == "GettableData")

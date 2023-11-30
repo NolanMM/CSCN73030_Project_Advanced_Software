@@ -60,22 +60,27 @@ namespace Server_Side.Controllers
         //}
 
         [HttpGet("/analytics/salesData/Profile/{userId}")]
-        public async Task<IActionResult> GetSalesDataProfile(int userId)
+        public async Task<IActionResult> GetSalesDataProfile(string userID)
         {
             try
             {
                 var startDate = DateTime.Now.AddMonths(-1);
                 var endDate = DateTime.Now;
 
-                var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null);
-                var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null);
-                var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null);
-                var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null);
+                var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
+                var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
+                var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
+                var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
 
-                int salesTotal = ConvertToInt(salesTotalResult);
-                int viewTotal = ConvertToInt(viewTotalResult);
-                int lifetimeSales = ConvertToInt(lifetimeSalesResult);
-                int averageSatisfaction = ConvertToInt(averageSatisfactionResult); // Convert to integer
+                int salesTotal = ConvertToInt(salesTotalResult) -1;
+                int viewTotal = ConvertToInt(viewTotalResult) -1;
+                int lifetimeSales = ConvertToInt(lifetimeSalesResult) - 1;
+                int averageSatisfaction = ConvertToInt(averageSatisfactionResult) - 1;
+
+                if (salesTotal < 0){ salesTotal = 0; }
+                if (viewTotal < 0) {  viewTotal = 0; }
+                if (lifetimeSales < 0) {  lifetimeSales = 0; }
+                if (averageSatisfaction < 0) {  averageSatisfaction = 0; }
 
                 var data = new
                 {
@@ -84,6 +89,7 @@ namespace Server_Side.Controllers
                     lifetimeSales,
                     averageSatisfaction // This is now an integer
                 };
+
                 return Json(data);
             }
             catch (Exception ex)
@@ -112,46 +118,32 @@ namespace Server_Side.Controllers
             return 0; // Default value if conversion fails
         }
 
+
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public async Task<IActionResult> GettableData(string userId)
         {
             userId = "S0006";
-            List<ProductItemData>? return_list =  (List<ProductItemData>?) await ServiceControllerBridege.ProcessTheRequest("GettableData", userId,null,null);
+            List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId);
 
-            var data = new[]
+            if (returnList == null)
             {
-                new
-                {
-                    plist = "Honey",
-                    tsales = "10",
-                    tviews = "50",
-                    pPrice = "$20",
-                    pID = "honey123",
-                    col6 = "Details"
-                },
-                new
-                {
-                    plist = "Row 2, Col 1",
-                    tsales = "Row 2, Col 2",
-                    tviews = "Row 2, Col 3",
-                    pPrice = "Row 2, Col 4",
-                    pID = "shoes543",
-                    col6 = "Details"
-                },
-                new
-                {
-                    plist = "Row 3, Col 1",
-                    tsales = "Row 3, Col 2",
-                    tviews = "Row 3, Col 3",
-                    pPrice = "Row 3, Col 4",
-                    pID = "pants8383929",
-                    col6 = "Details"
-                }
-            };
+                return NotFound(); // Or any other appropriate status code
+            }
+
+            var templateList = returnList.Select(item => new
+            {
+                plist = item.ProductName,
+                tsales = item.TodaySale,
+                tviews = item.TodayViews,
+                pPrice = item.ProductPrices,
+                pID = item.ProductID,
+                col6 = "Details"
+            }).ToList();
 
             Response.ContentType = "application/json";
-            return Json(data);
+            return Json(templateList);
         }
+
 
         [HttpGet("/charts/productInfoData/{productId}")]
         public IActionResult GetProductInfoData(string productId)
