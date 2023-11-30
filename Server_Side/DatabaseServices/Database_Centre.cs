@@ -2,9 +2,19 @@
 using Server_Side.DatabaseServices.Services.Interface_Service;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
+using Server_Side.DatabaseServices.Services.Network_Database_Services;
 
 namespace Server_Side.DatabaseServices
 {
+    public class ProductItemData
+    {
+        public string UserSeller { get; set; }
+        public string ProductName { get; set; }
+        public string TodaySale { get; set; }
+        public string TodayViews { get; set; }
+        public string ProductPrices { get; set; }
+        public string Date { get; set; }
+    }
     public abstract class Database_Centre
     {
         private static string? Id { get; set; }
@@ -54,10 +64,60 @@ namespace Server_Side.DatabaseServices
             return sessionId.ToString();
         }
 
-
         // Return list Dictionary<string,( string, string, string, string)              [Product name, Today sales total corresponding to that product id, total view corresponding to that product ID]
 
-        public static async Task<Dictionary<string, (string, string, string, string)>?> ProcessDataForGetTableCorrespondingUserID(string UserID)
+        public static async Task<List<ProductItemData>?> ProcessDataForGetTableCorrespondingUserID(string UserID)
+        {
+            try
+            {
+                // Retrieve data from the database
+                Dictionary<(string, string), (string, string, string, string)>? return_Product_List_Database = await ProcessDataForGetTableCorrespondingUserID_Database(UserID);
+
+                // Retrieve data from the product module
+                Dictionary<string, (string, string, string, string)>? return_Product_List_Product_Module = await Product_Group_Database_Services.ProcessGetTableRequestByUserIDAsync(UserID);
+
+                // Create the ReturnData list
+                List<ProductItemData> ReturnData = return_Product_List_Database
+                    .Where(entry => return_Product_List_Product_Module.ContainsKey(entry.Key.Item1))
+                    .Select(entry =>
+                    {
+                        var productId = entry.Key.Item1;
+                        var dateKey = entry.Key.Item2;
+
+                        var productModuleData = return_Product_List_Product_Module[productId];
+                        var productModuleDatabase = entry.Value;
+
+                        int.TryParse(productModuleDatabase.Item2, out int int_TodayView);
+
+                        if (int_TodayView == 0)
+                        {
+                            int.TryParse(productModuleDatabase.Item3, out int IntTodaySale);
+                            int_TodayView = IntTodaySale;
+                        }
+
+                        return new ProductItemData
+                        {
+                            UserSeller = productModuleData.Item1,
+                            ProductName = productModuleData.Item2,
+                            TodaySale = productModuleDatabase.Item3,
+                            TodayViews = int_TodayView.ToString(),
+                            ProductPrices = productModuleData.Item3,
+                            Date = productModuleDatabase.Item4
+                        };
+                    })
+                    .ToList();
+
+                return ReturnData;
+            }
+            catch (Exception e)
+            {
+                // Handle exception
+                return null;
+            }
+        }
+
+
+        public static async Task<Dictionary<(string, string), (string, string, string, string)>?> ProcessDataForGetTableCorrespondingUserID_Database(string UserID)
         {
             try
             {
@@ -84,15 +144,15 @@ namespace Server_Side.DatabaseServices
                 Process_And_Print_Table_DataAsync(pageView_table_Data);
                 Process_And_Print_Table_DataAsync(saleTransaction_table_Data);
 
-                Dictionary<string, (string, string)>? return_Data_userView = new Dictionary<string, (string, string)>(); // Product ID, (Count, Date)
-                Dictionary<string, (string, string)>? return_Data_PageView= new Dictionary<string, (string, string)>(); // Product ID, (Count, Date)
-                Dictionary<string, (string, string)>? return_Data_SaleTransactionTable = new Dictionary<string, (string, string)>(); // Product ID, (Total Quantity, Date)
+                Dictionary<(string, string), string>? return_Data_userView = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
+                Dictionary<(string, string), string>? return_Data_PageView = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
+                Dictionary<(string, string), string>? return_Data_SaleTransactionTable = new Dictionary<(string, string), string>(); // (Product ID, Date),Total Quantity
 
-                return_Data_userView = userViewTableService.ProcessUserViewList(Valid_User_Views_Table,UserID);
+                return_Data_userView = userViewTableService.ProcessUserViewList(Valid_User_Views_Table, UserID);
                 return_Data_PageView = pageViewTableService.ProcessPageViewList(Website_logs_table, UserID);
                 return_Data_SaleTransactionTable = saleTransactionTableService.ProcessSaleTransactionList(SalesTransactionsTable, UserID);
 
-                Dictionary<string, (string, string, string, string)> combinedData = FullOuterJoin(return_Data_userView, return_Data_PageView, return_Data_SaleTransactionTable);
+                Dictionary<(string, string), (string, string, string, string)> combinedData = FullOuterJoin(return_Data_userView, return_Data_PageView, return_Data_SaleTransactionTable);
 
                 return combinedData;
 
@@ -102,60 +162,51 @@ namespace Server_Side.DatabaseServices
                 return null;
             }
         }
-        private static Dictionary<string, (string, string, string, string)> FullOuterJoin(
-                Dictionary<string, (string, string)>? userViewData,
-                Dictionary<string, (string, string)>? pageViewData,
-                Dictionary<string, (string, string)>? saleTransactionData)
+
+        private static Dictionary<(string, string), (string, string, string, string)> FullOuterJoin(
+        Dictionary<(string, string), string>? userViewData,
+        Dictionary<(string, string), string>? pageViewData,
+        Dictionary<(string, string), string>? saleTransactionData)
         {
-            userViewData ??= new Dictionary<string, (string, string)>();
-            pageViewData ??= new Dictionary<string, (string, string)>();
-            saleTransactionData ??= new Dictionary<string, (string, string)>();
+            userViewData ??= new Dictionary<(string, string), string>();
+            pageViewData ??= new Dictionary<(string, string), string>();
+            saleTransactionData ??= new Dictionary<(string, string), string>();
 
-            // Combine all unique ProductIDs from the three dictionaries
-            HashSet<string> allProductIDs = new HashSet<string>(userViewData.Keys);
-            allProductIDs.UnionWith(pageViewData.Keys);
-            allProductIDs.UnionWith(saleTransactionData.Keys);
+            // Combine all unique ProductIDs and dates from the three dictionaries
+            HashSet<(string, string)> allProductIDsAndDates = new HashSet<(string, string)>(userViewData.Keys);
+            allProductIDsAndDates.UnionWith(pageViewData.Keys);
+            allProductIDsAndDates.UnionWith(saleTransactionData.Keys);
 
-            Dictionary<string, (string, string, string, string)> result = new Dictionary<string, (string, string, string, string)>();
+            Dictionary<(string, string), (string, string, string, string)> result = new Dictionary<(string, string), (string, string, string, string)>();
 
-            foreach (string productId in allProductIDs)
+            foreach ((string productId, string dateKey) in allProductIDsAndDates)
             {
                 // Get data from each dictionary, defaulting to ("0", "") if not present
-                string? date_process = null;
-                (string userViewCount, string userViewDate) = userViewData.TryGetValue(productId, out var userViewValue)
+                string userViewCount = userViewData.TryGetValue((productId, dateKey), out var userViewValue)
                     ? userViewValue
-                    : ("0", "");
+                    : "0";
 
-                (string pageViewCount, string pageViewDate) = pageViewData.TryGetValue(productId, out var pageViewValue)
+                string pageViewCount = pageViewData.TryGetValue((productId, dateKey), out var pageViewValue)
                     ? pageViewValue
-                    : ("0", "");
+                    : "0";
 
-                (string totalQuantity, string saleTransactionDate) = saleTransactionData.TryGetValue(productId, out var saleTransactionValue)
+                string totalQuantity = saleTransactionData.TryGetValue((productId, dateKey), out var saleTransactionValue)
                     ? saleTransactionValue
-                    : ("0", "");
+                    : "0";
 
-                if (!string.IsNullOrEmpty(userViewDate))
-                {
-                    date_process = userViewDate;
-                }
-                else if (!string.IsNullOrEmpty(pageViewDate))
-                {
-                    date_process = pageViewDate;
-                }
-                else if (!string.IsNullOrEmpty(saleTransactionDate))
-                {
-                    date_process = saleTransactionDate;
-                }
-                else
-                {
-                    date_process = "0";
-                }
-                // Add combined data to the result dictionary
-                result.Add(productId, (userViewCount, pageViewCount, totalQuantity, date_process));
+                string date_process = !string.IsNullOrEmpty(userViewCount) ? dateKey
+                    : !string.IsNullOrEmpty(pageViewCount) ? dateKey
+                    : !string.IsNullOrEmpty(totalQuantity) ? dateKey
+                    : "0";
+
+                // Add combined data to the result dictionary with a composite key
+                result.Add((productId, date_process), (userViewCount, pageViewCount, totalQuantity, date_process));
             }
 
             return result;
         }
+
+
 
         private static bool Process_And_Print_Table_DataAsync(List<Group_1_Record_Abstraction> dataAsList)
         {

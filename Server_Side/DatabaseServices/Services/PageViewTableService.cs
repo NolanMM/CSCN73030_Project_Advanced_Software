@@ -52,14 +52,14 @@ namespace Server_Side.DatabaseServices.Services
             }
             return PageViewData;
         }
-        public Dictionary<string, (string, string)>? ProcessPageViewList(List<PageView>? PageView_Lists, string UserID)
+        public Dictionary<(string, string), string>? ProcessPageViewList(List<PageView>? PageView_Lists, string UserID)
         {
             if (PageView_Lists == null)
             {
                 return null;
             }
 
-            Dictionary<string, (string, string)> return_Data = new Dictionary<string, (string, string)>(); // Product ID, (Count, Date)
+            Dictionary<(string, string), string> return_Data = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
 
             foreach (PageView pageView in PageView_Lists)
             {
@@ -70,28 +70,17 @@ namespace Server_Side.DatabaseServices.Services
                 {
                     string dateKey = pageView.Start_Time.ToShortDateString();
 
-                    if (!return_Data.ContainsKey(productId))
+                    if (!return_Data.ContainsKey((productId, dateKey)))
                     {
-                        // Product ID is unique, add to the dictionary with count 1 and date
-                        return_Data.Add(productId, ("1", dateKey));
+                        // Product ID and date combination is unique, add to the dictionary with count 1
+                        return_Data.Add((productId, dateKey), "1");
                     }
                     else
                     {
-                        // Product ID is duplicated, check if the date is the same
-                        var (count, existingDate) = return_Data[productId];
-
-                        if (existingDate == dateKey)
-                        {
-                            // Same date, increment the count
-                            int countInt = int.Parse(count);
-                            countInt++;
-                            return_Data[productId] = (countInt.ToString(), dateKey);
-                        }
-                        else
-                        {
-                            // Different date, add a new entry with count 1 and the new date
-                            return_Data.Add($"{productId}_{dateKey}", ("1", dateKey));
-                        }
+                        // Product ID and date combination is duplicated, increment the count
+                        int countInt = int.Parse(return_Data[(productId, dateKey)]);
+                        countInt++;
+                        return_Data[(productId, dateKey)] = countInt.ToString();
                     }
                 }
             }

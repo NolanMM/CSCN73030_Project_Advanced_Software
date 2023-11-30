@@ -52,44 +52,36 @@ namespace Server_Side.DatabaseServices.Services
             }
             return feedbackData;
         }
-        
-        public Dictionary<string,(string,string)>? ProcessFeedbackList(List<Feedback>? feedbacks_Lists)
+
+        public Dictionary<(string, string), string>? ProcessFeedbackList(List<Feedback>? feedbacks_Lists)
         {
-            if(feedbacks_Lists == null)
+            if (feedbacks_Lists == null)
             {
                 return null;
             }
-            Dictionary<string, (string, string)> return_Data = new Dictionary<string, (string, string)>();          // Product ID, Date, Star
+
+            Dictionary<(string, string), string> return_Data = new Dictionary<(string, string), string>(); // (Product ID, Date), AveStar
+
             foreach (Feedback feedback in feedbacks_Lists)
             {
                 string productId = feedback.Product_ID;
                 string dateKey = feedback.Date_Updated.ToShortDateString();
                 decimal starsRating = feedback.Stars_Rating;
 
-                if (!return_Data.ContainsKey(productId))
+                if (!return_Data.ContainsKey((productId, dateKey)))
                 {
-                    // Product ID is unique, add to the dictionary
-                    return_Data.Add(productId, (dateKey, starsRating.ToString()));
+                    // Product ID and date combination is unique, add to the dictionary
+                    return_Data.Add((productId, dateKey), starsRating.ToString());
                 }
                 else
                 {
-                    // Product ID is duplicated, calculate the average star rating within the date range 1 day
-                    var (existingDateKey, existingStars) = return_Data[productId];
-
-                    if (existingDateKey == dateKey)
-                    {
-                        // Same date, calculate average
-                        decimal existingStarsDecimal = decimal.Parse(existingStars);
-                        decimal averageStars = (existingStarsDecimal + starsRating) / 2;
-                        return_Data[productId] = (dateKey, averageStars.ToString());
-                    }
-                    else
-                    {
-                        // Different date, add a new entry
-                        return_Data.Add($"{productId}_{dateKey}", (dateKey, starsRating.ToString()));
-                    }
+                    // Product ID and date combination is duplicated, calculate the average star rating within the date range 1 day
+                    decimal existingStarsDecimal = decimal.Parse(return_Data[(productId, dateKey)]);
+                    decimal averageStars = (existingStarsDecimal + starsRating) / 2;
+                    return_Data[(productId, dateKey)] = averageStars.ToString();
                 }
             }
+
             return return_Data;
         }
 

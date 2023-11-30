@@ -51,14 +51,14 @@ namespace Server_Side.DatabaseServices.Services
             }
             return SaleTransactionData;
         }
-        public Dictionary<string, (string, string)>? ProcessSaleTransactionList(List<SaleTransaction>? saleTransactions,string UserID)
+        public Dictionary<(string, string), string>? ProcessSaleTransactionList(List<SaleTransaction>? saleTransactions, string UserID)
         {
             if (saleTransactions == null)
             {
                 return null;
             }
 
-            Dictionary<string, (string, string)> returnData = new Dictionary<string, (string, string)>(); // Product ID, (Total Quantity, Date)
+            Dictionary<(string, string), string> returnData = new Dictionary<(string, string), string>(); // (Product ID, Date), Total Quantity
 
             foreach (SaleTransaction saleTransaction in saleTransactions)
             {
@@ -78,17 +78,16 @@ namespace Server_Side.DatabaseServices.Services
                         // Check if the current product belongs to a different user
                         if (userID != UserID)
                         {
-                            if (!returnData.ContainsKey(productId))
+                            if (!returnData.ContainsKey((productId, dateKey)))
                             {
-                                // Product ID is unique, add to the dictionary with total quantity and date
-                                returnData.Add(productId, (productDetails.Product_Quantity.ToString(), dateKey));
+                                // Product ID and date combination is unique, add to the dictionary with total quantity
+                                returnData.Add((productId, dateKey), productDetails.Product_Quantity.ToString());
                             }
                             else
                             {
-                                // Product ID is duplicated, increment the total quantity
-                                var (totalQuantity, existingDate) = returnData[productId];
-                                int totalQuantityInt = int.Parse(totalQuantity) + productDetails.Product_Quantity;
-                                returnData[productId] = (totalQuantityInt.ToString(), dateKey);
+                                // Product ID and date combination is duplicated, increment the total quantity
+                                int totalQuantityInt = int.Parse(returnData[(productId, dateKey)]) + productDetails.Product_Quantity;
+                                returnData[(productId, dateKey)] = totalQuantityInt.ToString();
                             }
                         }
                     }
