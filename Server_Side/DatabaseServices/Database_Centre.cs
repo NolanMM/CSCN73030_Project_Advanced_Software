@@ -8,6 +8,7 @@ namespace Server_Side.DatabaseServices
 {
     public class ProductItemData
     {
+        public string ProductID { get; set; }
         public string UserSeller { get; set; }
         public string ProductName { get; set; }
         public string TodaySale { get; set; }
@@ -97,6 +98,7 @@ namespace Server_Side.DatabaseServices
 
                         return new ProductItemData
                         {
+                            ProductID = productId,
                             UserSeller = productModuleData.Item1,
                             ProductName = productModuleData.Item2,
                             TodaySale = productModuleDatabase.Item3,

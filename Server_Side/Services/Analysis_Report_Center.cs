@@ -23,8 +23,8 @@ public class Analysis_Report_Center
                 return processedBestCategory;
             case 2:
                 ConversionRateService conversionRateService = new ConversionRateService(startDate.GetValueOrDefault(), endDate.GetValueOrDefault(), productId);
-                var conversionRateResult = await conversionRateService.ProcessRequest();
-                return conversionRateResult;
+                //var conversionRateResult = await conversionRateService.ProcessRequest();
+                return conversionRateService;
             case 3:
                 FeedbackAnalysisService feedbackAnalysisService = new FeedbackAnalysisService(startDate, endDate);
                 var processedFeedback = await feedbackAnalysisService.ProcessRequest();

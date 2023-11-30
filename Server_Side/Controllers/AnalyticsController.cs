@@ -115,7 +115,8 @@ namespace Server_Side.Controllers
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public async Task<IActionResult> GettableData(string userId)
         {
-            List<ProductItemData>? return_list =  (List<ProductItemData>?)await ServiceControllerBridege.ProcessTheRequest("GettableData", userId,null,null);
+            userId = "S0006";
+            List<ProductItemData>? return_list =  (List<ProductItemData>?) await ServiceControllerBridege.ProcessTheRequest("GettableData", userId,null,null);
 
             var data = new[]
             {

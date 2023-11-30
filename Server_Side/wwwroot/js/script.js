@@ -53,20 +53,32 @@ function updateFlexContainer(data) {
 }
 
 
-// Function to fetch table data from the server
-function fetchTableDataFromServer(userId) {
-    fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`) //Debugging url
-    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/analytics/tableData/Profile/${userId}`) // Release URL
-    .then((response) => response.json())
-    .then((tableData) => {
-      // Call the updateTable function to update the table with the fetched data
-      updateTable(tableData);
-    })
-    .catch((error) => {
+async function fetchTableDataFromServer(userId) {
+    try {
+        const response = await fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`);
+        const tableData = await response.json();
+        updateTable(tableData);
+    } catch (error) {
         console.error("Error fetching table data:", error);
         clearTable();
-    });
+    }
 }
+
+
+//// Function to fetch table data from the server
+//function fetchTableDataFromServer(userId) {
+//    fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`) //Debugging url
+//    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/analytics/tableData/Profile/${userId}`) // Release URL
+//    .then((response) => response.json())
+//    .then((tableData) => {
+//      // Call the updateTable function to update the table with the fetched data
+//      updateTable(tableData);
+//    })
+//    .catch((error) => {
+//        console.error("Error fetching table data:", error);
+//        clearTable();
+//    });
+//}
 
 
 // Function to update the table with fetched data

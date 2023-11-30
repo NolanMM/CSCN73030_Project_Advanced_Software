@@ -13,12 +13,12 @@ namespace Server_Side.Controllers
 
     public class GettableData_Struct
     {
-        public string? plist;
-        public string? tsales;
-        public string? tviews;
-        public string? pPrice;
-        public string? pID;
-        public string? col6;
+        public string? plist;       // ProductName
+        public string? tsales;      // TodaySale
+        public string? tviews;      // TodayViews
+        public string? pPrice;      // ProductPrices
+        public string? pID;         // ProductID
+        public string? col6;        // 
     }
     public abstract class ServiceControllerBridege
     {
@@ -43,44 +43,25 @@ namespace Server_Side.Controllers
                 }
                 if (request == "GettableData")
                 {
-
                     List<ProductItemData>? ProcessDataForGetTableCorrespondingUserID = new List<ProductItemData>();
                     ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID);
 
+                    List<GettableData_Struct> data = new List<GettableData_Struct>();
 
-
-
-                    List <GettableData_Struct> data = new List<GettableData_Struct>
+                    foreach(ProductItemData productItemData in ProcessDataForGetTableCorrespondingUserID)
                     {
-                        new GettableData_Struct
+                        GettableData_Struct data_input = new GettableData_Struct
                         {
-                            plist = "Honey",
-                            tsales = "10",
-                            tviews = "50",
-                            pPrice = "$20",
-                            pID = "honey123",
+                            plist = productItemData.ProductName,
+                            tsales = productItemData.TodaySale,
+                            tviews = productItemData.TodaySale,
+                            pPrice = productItemData.ProductPrices,
+                            pID = productItemData.ProductID,
                             col6 = "Details"
-                        },
-                        new GettableData_Struct
-                        {
-                            plist = "Row 2, Col 1",
-                            tsales = "Row 2, Col 2",
-                            tviews = "Row 2, Col 3",
-                            pPrice = "Row 2, Col 4",
-                            pID = "shoes543",
-                            col6 = "Details"
-                        },
-                        new GettableData_Struct
-                        {
-                            plist = "Row 3, Col 1",
-                            tsales = "Row 3, Col 2",
-                            tviews = "Row 3, Col 3",
-                            pPrice = "Row 3, Col 4",
-                            pID = "pants8383929",
-                            col6 = "Details"
-                        }
-                    };
-
+                        };
+                        data.Add(data_input);
+                    }
+ 
                     return data as object;
                 }
                 return null;
