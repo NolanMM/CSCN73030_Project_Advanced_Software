@@ -1,4 +1,4 @@
-var productId = '@ViewBag.ProductId'; // Retrieve the userId from ViewBag or wherever it's set
+var productId;
 
 
 // Function to fetch data for the flex container from the server based on the productId
@@ -241,6 +241,15 @@ if (document.querySelectorAll(".chart-container").length === 1) {
 
 // Function to be executed on window load
 window.addEventListener("load", function () {
+    const productIdElement = document.getElementById("productIdElement").getAttribute("data-productId");
+    const userIdElement = document.getElementById("productIdElement").getAttribute("data-userId");
+    console.log(productIdElement); // Log the userIdElement
+    console.log(userIdElement);
+
+    //set the global variable userID
+    productId = productIdElement;
+
+
     if (productId) {
         fetchFlexDataFromServer(productId);
         fetchMonthlySalesFromServer(productId);

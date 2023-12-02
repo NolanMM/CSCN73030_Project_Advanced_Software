@@ -1,5 +1,5 @@
-var userId = '@ViewBag.UserId'; // Retrieve the userId from ViewBag or wherever it's set
-
+//var userId = '@ViewBag.UserId'; // Retrieve the userId from ViewBag or wherever it's set
+var userId;
 
 // Function to fetch data for the flex container from the server based on the userId
 //function fetchFlexDataFromServer(userId) {
@@ -95,7 +95,7 @@ function updateTable(tableData) {
                 detailsLink.textContent = "Details";
                 // Extracting pID from rowData
                 const productId = rowData['pID']; // Assuming 'pID' is the key for product ID
-                detailsLink.href = `/analytics/charts/${productId}`; // Specify the correct URL here with the productId
+                detailsLink.href = `/analytics/Profile/${userId}/charts/${productId}`; // Specify the correct URL here with the productId
                 cell.appendChild(detailsLink);
             } else {
                 cell.textContent = rowData[key];
@@ -117,7 +117,16 @@ function updateTable(tableData) {
 //    }
 //});
 
+
+
 window.addEventListener("load", async function () {
+    const userIdElement = document.getElementById("profileIdElement").getAttribute("data-userId");
+    console.log(userIdElement); // Log the userIdElement
+
+    //set the global variable userID
+    userId = userIdElement;
+
+
     if (userId) {
         try {
             // Use Promise.all to wait for both fetch operations to complete

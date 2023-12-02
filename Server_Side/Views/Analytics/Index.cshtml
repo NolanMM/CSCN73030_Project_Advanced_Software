@@ -1,3 +1,5 @@
+@model Server_Side.Controllers.ProfileViewModel
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +15,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Analytic Dashboard</title>
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
+
 
 <!-- Navigation Bar -->
 <section class="navbar">
     <div>
-        <a href="/Profile/@ViewBag.UserId" class="logo">
+        <a href="/Profile/@Model.UserId" class="logo">
             <img src="~/image/logo.png" alt="MainLogo" />
         </a>
     </div>
@@ -39,6 +41,11 @@
 <!-- Body Code Start -->
 
 <body onload="document.body.style.opacity='1'">
+
+    <!-- Using Razor to set profileId in a data attribute -->
+    <div id="profileIdElement" data-userId="@Model.UserId"></div>
+
+
     <!-- Welcome message -->
     <div class="section1">
         <center>

@@ -7,6 +7,14 @@ using System.Linq;
 
 namespace Server_Side.Controllers
 {
+    public class ProfileViewModel
+    {
+        // Properties relevant to your view
+        public string UserId { get; set; }
+        public string ProductId { get; set; }
+        // Other properties...
+    }
+
     public class AnalyticsController : Controller
     {
         private readonly Analysis_Report_Center _reportServices;
@@ -19,22 +27,38 @@ namespace Server_Side.Controllers
         //default route no profile specified
         public IActionResult Index()
         {
-            return NotFound("This Page is not found! Please Login or check browser connections. ERROR: 404");
+            return NotFound();
+            //return NotFound("This Page is not found! Please Login or check browser connections. ERROR: 404");
         }
 
-        [Route("analytics/charts/{productId}")]
-        public IActionResult Charts(string productId)
-        { 
-            ViewBag.ProductId = productId;
-            return View();
+        [Route("analytics/Profile/{userId}/charts/{productId}")]
+        public IActionResult Charts(string userId, string productId)
+        {
+
+
+            ProfileViewModel modelProfileProduct = new ProfileViewModel
+            {
+
+                UserId = userId,
+                ProductId = productId,
+
+            };
+
+            return View(modelProfileProduct);
         }
+
 
         //index profile specified
         [Route("Profile/{userId}")]
         public IActionResult Index(string userId)
         {
-            ViewBag.UserId = userId;
-            return View();
+
+            ProfileViewModel modelProfile = new ProfileViewModel
+            {
+                UserId = userId,
+            };
+
+            return View(modelProfile);
         }
 
         //[HttpGet("/analytics/salesData/Profile/{userId}")]
