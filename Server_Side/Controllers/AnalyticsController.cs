@@ -89,7 +89,7 @@ namespace Server_Side.Controllers
         {
             try
             {
-                var startDate = DateTime.Now.AddMonths(-1);
+                var startDate = DateTime.Now.AddMonths(-3);
                 var endDate = DateTime.Now;
 
                 var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);

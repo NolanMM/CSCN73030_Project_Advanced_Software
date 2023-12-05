@@ -1,18 +1,33 @@
 var productId;
 
-
 // Function to fetch data for the flex container from the server based on the productId
-function fetchFlexDataFromServer(productId) {
-    fetch(`http://localhost:8080/charts/productInfoData/${productId}`) //Debugging url
-    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`) // Release URL
-        .then((response) => response.json())
-        .then((data) => {
-            updateFlexContainer(data);
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
+//function fetchFlexDataFromServer(productId) {
+//    fetch(`http://localhost:8080/charts/productInfoData/${productId}`) //Debugging url
+//    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`) // Release URL
+//        .then((response) => response.json())
+//        .then((data) => {
+//               updateFlexContainer(data);
+//        })
+//        .catch((error) => {
+//            console.error("Error fetching data:", error);
+//        });
+//}
+async function fetchFlexDataFromServer(productId) {
+    try {
+        const response = await fetch(`http://localhost:8080/charts/productInfoData/${productId}`);
+        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`); // Release URL
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
 }
+
 // Function to update the flex container with fetched data
 function updateFlexContainer(data) {
     const valueElements = document.querySelectorAll(".flex-value");
@@ -68,19 +83,36 @@ var myChartSales = new Chart(ctxSales, {
   },
 });
 
-//Fetch and update data for monthly sales and monthly viesw and sales charts 
-function fetchMonthlySalesFromServer(productId) {
-    fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`) //Debugging url
-    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`) // Release URL
-        .then((response) => response.json())
-        .then((data) => {
-            salesData.datasets[0].data = data.monthlySales;
-            myChartSales.update();
-            myChartSalesAndViews.update();
-        })
-        .catch((error) => {
-            console.error("Error fetching monthly sales data:", error);
-        });
+//Fetch and update data for monthly sales and monthly viesw and sales charts
+//function fetchMonthlySalesFromServer(productId) {
+//    fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`) //Debugging url
+//    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`) // Release URL
+//        .then((response) => response.json())
+//        .then((data) => {
+//            salesData.datasets[0].data = data.monthlySales;
+//            myChartSales.update();
+//            myChartSalesAndViews.update();
+//        })
+//        .catch((error) => {
+//            console.error("Error fetching monthly sales data:", error);
+//        });
+//}
+async function fetchMonthlySalesFromServer(productId) {
+    try {
+        const response = await fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`);
+        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`); // Release URL
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        //salesData.datasets[0].data = data.monthlySales;
+        //myChartSales.update();
+        return data;
+    } catch (error) {
+        console.error("Error fetching monthly sales data:", error);
+    }
 }
 
 // Sample data for monthly views
@@ -121,18 +153,35 @@ var myChartViews = new Chart(ctxViews, {
   },
 });
 //Fetch and update data for monthly views chart and monthly viesw and sales charts 
-function fetchMonthlyViewsFromServer(productId) {
-   fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`) //Debugging url
-    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`) // Release URL
-        .then((response) => response.json())
-        .then((data) => {
-            viewsData.datasets[0].data = data.monthlyViews;
-            myChartViews.update();
-            myChartSalesAndViews.update();
-        })
-        .catch((error) => {
-            console.error("Error fetching monthly views data:", error);
-        });
+//function fetchMonthlyViewsFromServer(productId) {
+//   fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`) //Debugging url
+//    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`) // Release URL
+//        .then((response) => response.json())
+//        .then((data) => {
+//            viewsData.datasets[0].data = data.monthlyViews;
+//            myChartViews.update();
+//            myChartSalesAndViews.update();
+//        })
+//        .catch((error) => {
+//            console.error("Error fetching monthly views data:", error);
+//        });
+//}
+
+async function fetchMonthlyViewsFromServer(productId) {
+    try {
+        const response = await fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`);
+        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`); // Release URL
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        //viewsData.datasets[0].data = data.monthlyViews;
+        return data;
+
+    } catch (error) {
+        console.error("Error fetching monthly views data:", error);
+    }
 }
 
 // Sample data for monthly average satisfaction
@@ -174,19 +223,34 @@ var myChartSatisfaction = new Chart(ctxSatisfaction, {
   },
 });
 //Fetch data for monthly satisfaction
-function fetchMonthlySatisfactionFromServer(productId) {
-   fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`) //Debugging url
-    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`) // Release URL
-        .then((response) => response.json())
-        .then((data) => {
-            satisfactionData.datasets[0].data = data.monthlySatisfaction;
-            myChartSatisfaction.update();
-        })
-        .catch((error) => {
-            console.error("Error fetching monthly satisfaction data:", error);
-        });
-}
+//function fetchMonthlySatisfactionFromServer(productId) {
+//   fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`) //Debugging url
+//    //fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`) // Release URL
+//        .then((response) => response.json())
+//        .then((data) => {
+//            satisfactionData.datasets[0].data = data.monthlySatisfaction;
+//            myChartSatisfaction.update();
+//        })
+//        .catch((error) => {
+//            console.error("Error fetching monthly satisfaction data:", error);
+//        });
+//}
+async function fetchMonthlySatisfactionFromServer(productId) {
+    try {
+        const response = await fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`);
+        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`); // Release URL
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        //satisfactionData.datasets[0].data = data.monthlySatisfaction;
+        return data;
+    } catch (error) {
+        console.error("Error fetching monthly satisfaction data:", error);
+    }
+}
 
 // Create a chart that combines sales and views data
 var ctxSalesAndViews = document
@@ -238,23 +302,58 @@ if (document.querySelectorAll(".chart-container").length === 1) {
   document.querySelector(".chart-container").classList.add("full-width-chart");
 }
 
-
 // Function to be executed on window load
-window.addEventListener("load", function () {
-    const productIdElement = document.getElementById("productIdElement").getAttribute("data-productId");
-    const userIdElement = document.getElementById("productIdElement").getAttribute("data-userId");
-    console.log(productIdElement); // Log the userIdElement
-    console.log(userIdElement);
+//window.addEventListener("load", function () {
+//    const productIdElement = document.getElementById("productIdElement").getAttribute("data-productId");
+//    const userIdElement = document.getElementById("productIdElement").getAttribute("data-userId");
+//    console.log(productIdElement); // Log the userIdElement
+//    console.log(userIdElement);
 
-    //set the global variable userID
+//    //set the global variable userID
+//    productId = productIdElement;
+
+
+//    if (productId) {
+//        fetchFlexDataFromServer(productId);
+//        fetchMonthlySalesFromServer(productId);
+//        fetchMonthlyViewsFromServer(productId);
+//        fetchMonthlySatisfactionFromServer(productId);
+//    } else {
+//        console.error("Product ID not found!");
+//    }
+//});
+
+window.addEventListener("load", async function () {
+    const productIdElement = document.getElementById("productIdElement").getAttribute("data-productId");
+
     productId = productIdElement;
 
-
     if (productId) {
-        fetchFlexDataFromServer(productId);
-        fetchMonthlySalesFromServer(productId);
-        fetchMonthlyViewsFromServer(productId);
-        fetchMonthlySatisfactionFromServer(productId);
+        try {
+            const [flexData, monthlySalesData, monthlyViewsData, monthlySatisfactionData] = await Promise.all([
+                fetchFlexDataFromServer(productId),
+                fetchMonthlySalesFromServer(productId),
+                fetchMonthlyViewsFromServer(productId),
+                fetchMonthlySatisfactionFromServer(productId)
+            ]);
+
+            if (flexData && monthlySalesData && monthlyViewsData && monthlySatisfactionData) {
+                updateFlexContainer(flexData);
+                salesData.datasets[0].data = monthlySalesData.monthlySales;
+                myChartSales.update();
+                viewsData.datasets[0].data = monthlyViewsData.monthlyViews;
+                myChartViews.update();
+                satisfactionData.datasets[0].data = monthlySatisfactionData.monthlySatisfaction;
+                myChartSatisfaction.update();
+
+                myChartSalesAndViews.update();
+            } else {
+                console.error("One or more responses are null or undefined.");
+            }
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     } else {
         console.error("Product ID not found!");
     }
