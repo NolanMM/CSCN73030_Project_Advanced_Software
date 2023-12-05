@@ -4,6 +4,7 @@ using Server_Side.Services;
 using Server_Side.Services.Analysis_Services;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Server_Side.Controllers
 {
@@ -146,7 +147,6 @@ namespace Server_Side.Controllers
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public async Task<IActionResult> GettableData(string userId)
         {
-            userId = "S0006";
             List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId);
 
             if (returnList == null)
@@ -214,8 +214,8 @@ namespace Server_Side.Controllers
             // Static Range 1 Year
             var startDate = DateTime.Now.AddYears(-1);
             var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
-            var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
-
+            //var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
+            int[]? monthlySales = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(6, startDate, endDate, productId, null);
             var salesData = new
             {
                 monthlySales
@@ -247,7 +247,13 @@ namespace Server_Side.Controllers
             //"October",
             //"November",
             //"December",
-            var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500, 10, 1, 100, 7000, 400, 3790, 6969 };
+            //var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500, 10, 1, 100, 7000, 400, 3790, 6969 };
+
+            // Static Range 1 Year
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            //var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
+            int[]? monthlyViews = (int[]?) await _reportServices.ProcessAnalysisReportingServicesByID(9, startDate, endDate, productId, null);
 
             var viewsData = new
             {

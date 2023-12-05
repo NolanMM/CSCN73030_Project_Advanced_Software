@@ -49,6 +49,9 @@ public class Analysis_Report_Center
                 UniqueVisitorsService uniqueVisitorsService = new UniqueVisitorsService();
                 var uniqueVisitorCount = await uniqueVisitorsService.GetUniqueVisitorCountAsync(startDate, endDate);
                 return uniqueVisitorCount;
+            case 9:
+                var processMonthlyViews = await Monthly_View_Service.Process(startDate.Value, endDate.Value, productId);
+                return processMonthlyViews;
             default:
                 throw new ArgumentException("Invalid table number");
         }
