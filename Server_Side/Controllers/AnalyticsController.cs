@@ -170,7 +170,7 @@ namespace Server_Side.Controllers
 
 
         [HttpGet("/charts/productInfoData/{productId}")]
-        public IActionResult GetProductInfoData(string productId)
+        public async Task<IActionResult> GetProductInfoData(string productId)
         {
 
             // Replace with your actual data retrieval logic using the productId
@@ -189,7 +189,7 @@ namespace Server_Side.Controllers
 
         [HttpGet("/charts/monthlySalesData/{productId}")]
         //public async Task<IActionResult> GetMonthlySalesData()
-        public IActionResult GetMonthlySalesData(string productId)
+        public async Task<IActionResult> GetMonthlySalesData(string productId)
         {
 
             // Replace with your actual data retrieval logic using the productId
@@ -208,14 +208,13 @@ namespace Server_Side.Controllers
             //"October",
             //"November",
             //"December",
-            var monthlySales = new[] { 1000, 2500, 3200, 2800, 1500, 7, 100, 600, 9000, 47474, 1, 200 };
+            //var monthlySales = new[] { 1000, 2500, 3200, 2800, 1500, 7, 100, 600, 9000, 47474, 1, 200 };
 
 
-            //var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
-            //var endDate = DateTime.Now; // Current date
-
-            //var timeAnalysisService = new TimeAnalysisService();
-            //var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
+            // Static Range 1 Year
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
 
             var salesData = new
             {
@@ -228,7 +227,7 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlyViewsData/{productId}")]
-        public IActionResult GetMonthlyViewsData(string productId)
+        public async Task<IActionResult> GetMonthlyViewsData(string productId)
         {
 
 
@@ -260,7 +259,7 @@ namespace Server_Side.Controllers
         }
 
         [HttpGet("/charts/monthlySatisfactionData/{productId}")]
-        public IActionResult GetMonthlySatisfactionData(string productId)
+        public async Task<IActionResult> GetMonthlySatisfactionData(string productId)
         {
 
 

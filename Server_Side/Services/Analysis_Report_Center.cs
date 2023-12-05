@@ -38,8 +38,7 @@ public class Analysis_Report_Center
                 var processedPriceData = await priceAnalysisService.ProcessRequest(startDate, endDate);
                 return processedPriceData;
             case 6:
-                TimeAnalysisService timeAnalysisService = new TimeAnalysisService();
-                var processedTimeData = await timeAnalysisService.ProcessRequest(startDate, endDate);
+                var processedTimeData = await TimeAnalysisService.ProcessRequest(startDate.Value, endDate.Value,productId);
                 return processedTimeData;
             case 7:
                 TotalSalesService totalSalesService = new TotalSalesService();

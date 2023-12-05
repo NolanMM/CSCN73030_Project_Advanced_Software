@@ -1,4 +1,5 @@
-﻿using Server_Side.DatabaseServices;
+﻿using Newtonsoft.Json;
+using Server_Side.DatabaseServices;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using System;
@@ -10,12 +11,7 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class TimeAnalysisService
     {
-        public TimeAnalysisService()
-        {
-            // init empty
-        }
-
-        public async Task<Dictionary<string, int>?> ProcessRequest(DateTime? startDate, DateTime? endDate)
+        public async static Task<int[]?> ProcessRequest(DateTime startDate, DateTime endDate, string ProductID)
         {
             if (startDate == null || endDate == null)
             {
@@ -23,21 +19,53 @@ namespace Server_Side.Services.Analysis_Services
             }
 
             var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(2);
-            return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate.Value, endDate.Value);
+            return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate, endDate, ProductID);
         }
 
-        private Dictionary<string, int>? ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate)
+        private static int[] ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate, string ProductID)
         {
             if (salesTransactionsData == null)
             {
-                return null;
+                return new int[12]; // Return an array with 12 elements initialized to 0
             }
 
-            return salesTransactionsData
-                .OfType<SaleTransaction>()
-                .Where(s => s.date >= startDate && s.date <= endDate)
-                .GroupBy(s => s.date.Month)
-                .ToDictionary(grp => $"Month {grp.Key}", grp => grp.Count());
+            var monthlySales = Enumerable.Range(1, 12)
+                .Select(month =>
+                {
+                    var totalQuantity = salesTransactionsData
+                        .OfType<SaleTransaction>()
+                        .Where(s => s.date.Month == month && s.date >= startDate && s.date <= endDate)
+                        .SelectMany(s => ParseProductDetails(s.Details_Products, month))
+                        .Where(p => p.Product_ID == ProductID)
+                        .Sum(p => p.Product_Quantity);
+
+                    return totalQuantity;
+                })
+                .ToArray();
+
+            return monthlySales;
+        }
+
+        private static List<ProductDetails>  ParseProductDetails(string detailsProducts, int Month)
+        {
+            // Replace single quotes with double quotes
+            detailsProducts = detailsProducts.Replace("'", "\"");
+
+            // Deserialize the modified JSON string
+            var results = JsonConvert.DeserializeObject<List<ProductDetails>>(detailsProducts);
+            foreach(ProductDetails productDetails in results)
+            {
+                productDetails.month = Month;
+            }
+            return results;
+        }
+
+        private class ProductDetails
+        {
+            public string Product_ID { get; set; }
+            public decimal Product_Price { get; set; }
+            public int Product_Quantity { get; set; }
+            public int month {  get; set; }
         }
     }
 }
