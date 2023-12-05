@@ -284,7 +284,12 @@ namespace Server_Side.Controllers
           //"October",
           //"November",
           //"December",
-            var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
+          //  var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
+
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+
+            int[]? monthlySatisfaction = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(3, startDate, endDate, productId, null);
 
             var satisfactionData = new
             {

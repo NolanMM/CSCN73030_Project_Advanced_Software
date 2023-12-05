@@ -20,7 +20,7 @@ namespace Server_Side.Services.Analysis_Services
         {
             if (UserViewTableFromDatabase == null || ProductID == null)
             {
-                return new int[12]; // Return an array with 12 elements initialized to 0
+                return new int[12];
             }
 
             var monthlyViews = Enumerable.Range(1, 12)

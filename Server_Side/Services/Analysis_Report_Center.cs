@@ -26,8 +26,7 @@ public class Analysis_Report_Center
                 //var conversionRateResult = await conversionRateService.ProcessRequest();
                 return conversionRateService;
             case 3:
-                FeedbackAnalysisService feedbackAnalysisService = new FeedbackAnalysisService(startDate, endDate);
-                var processedFeedback = await feedbackAnalysisService.ProcessRequest();
+                var processedFeedback = await FeedbackAnalysisService.Process(startDate.Value,endDate.Value,productId);
                 return processedFeedback;
             case 4:
                 PageViewsService pageViewsService = new PageViewsService();
