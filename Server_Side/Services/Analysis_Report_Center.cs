@@ -22,7 +22,7 @@ public class Analysis_Report_Center
                 Dictionary<string, int>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
                 return processedBestCategory;
             case 2:
-                ConversionRateService conversionRateService = new ConversionRateService(startDate.GetValueOrDefault(), endDate.GetValueOrDefault(), productId);
+                int conversionRateService = await ConversionRateService.Process(startDate, endDate, productId);
                 //var conversionRateResult = await conversionRateService.ProcessRequest();
                 return conversionRateService;
             case 3:

@@ -172,10 +172,11 @@ namespace Server_Side.Controllers
         [HttpGet("/charts/productInfoData/{productId}")]
         public async Task<IActionResult> GetProductInfoData(string productId)
         {
-
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
             // Replace with your actual data retrieval logic using the productId
             var salesRate = 100; 
-            var conversionRate = 50;
+            var conversionRate = (int?) await _reportServices.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null); ;
 
             var data = new
             {
