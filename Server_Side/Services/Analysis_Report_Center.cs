@@ -26,7 +26,8 @@ public class Analysis_Report_Center
                 //var conversionRateResult = await conversionRateService.ProcessRequest();
                 return conversionRateService;
             case 3:
-                var processedFeedback = await FeedbackAnalysisService.Process(startDate.Value,endDate.Value,productId);
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
+                var processedFeedback = await FeedbackAnalysisService.Process(startDate.Value, endDate.Value, productId);
                 return processedFeedback;
             case 4:
                 PageViewsService pageViewsService = new PageViewsService();
@@ -37,7 +38,8 @@ public class Analysis_Report_Center
                 var processedPriceData = await priceAnalysisService.ProcessRequest(startDate, endDate);
                 return processedPriceData;
             case 6:
-                var processedTimeData = await TimeAnalysisService.ProcessRequest(startDate.Value, endDate.Value,productId);
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
+                var processedTimeData = await TimeAnalysisService.ProcessRequest(startDate, endDate,productId);
                 return processedTimeData;
             case 7:
                 TotalSalesService totalSalesService = new TotalSalesService();
@@ -49,6 +51,7 @@ public class Analysis_Report_Center
                 var uniqueVisitorCount = await uniqueVisitorsService.GetUniqueVisitorCountAsync(startDate, endDate);
                 return uniqueVisitorCount;
             case 9:
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
                 var processMonthlyViews = await Monthly_View_Service.Process(startDate.Value, endDate.Value, productId);
                 return processMonthlyViews;
             default:

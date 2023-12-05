@@ -341,3 +341,4 @@ C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\refint\
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\AnalysisServiceTests.pdb
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\AnalysisServiceTests.genruntimeconfig.cache
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\ref\AnalysisServiceTests.dll
+C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\CoverletSourceRootsMapping_AnalysisServiceTests

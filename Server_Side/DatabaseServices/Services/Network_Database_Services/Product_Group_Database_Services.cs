@@ -7,22 +7,22 @@ namespace Server_Side.DatabaseServices.Services.Network_Database_Services
     public class ResponseData
     {
         [JsonPropertyName("pid")]
-        public string pid { get; set; }             // Need Product ID
+        public string pid { get; set; } = string.Empty;             // Need Product ID
 
         [JsonPropertyName("sid")]
-        public string sid { get; set; }             // Need - UserID
+        public string sid { get; set; } = string.Empty;            // Need - UserID
 
         [JsonPropertyName("name")]
-        public string Name { get; set; }                // Need
+        public string Name { get; set; } = string.Empty;             // Need
 
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [JsonPropertyName("image")]
-        public string Image { get; set; }
+        public string Image { get; set; } = string.Empty;
 
         [JsonPropertyName("category")]
-        public string Category { get; set; }
+        public string Category { get; set; } = string.Empty;
 
         [JsonPropertyName("price")]                 // need Product Prices
         public double Price { get; set; }
@@ -85,9 +85,10 @@ namespace Server_Side.DatabaseServices.Services.Network_Database_Services
                         Console.WriteLine($"HTTP Error: {response.StatusCode}");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    //Console.WriteLine($"An error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return responseDatas;
@@ -157,6 +158,7 @@ namespace Server_Side.DatabaseServices.Services.Network_Database_Services
 
         public static bool ValidateDataAnnotations<T>(T data)
         {
+            if (data == null) {  return false; }
             ValidationContext context = new ValidationContext(data, serviceProvider: null, items: null);
             List<ValidationResult> results = new List<ValidationResult>();
 
@@ -169,7 +171,6 @@ namespace Server_Side.DatabaseServices.Services.Network_Database_Services
                     Console.WriteLine(validationResult.ErrorMessage);
                 }
             }
-
             return isValid;
         }
     }

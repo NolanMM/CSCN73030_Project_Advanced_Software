@@ -9,13 +9,13 @@ namespace Server_Side.DatabaseServices
 {
     public class ProductItemData
     {
-        public string ProductID { get; set; }
-        public string UserSeller { get; set; }
-        public string ProductName { get; set; }
-        public string TodaySale { get; set; }
-        public string TodayViews { get; set; }
-        public string ProductPrices { get; set; }
-        public string Date { get; set; }
+        public string ProductID { get; set; } = string.Empty;
+        public string UserSeller { get; set; } = string.Empty;
+        public string ProductName { get; set; } = string.Empty;
+        public string TodaySale { get; set; } = string.Empty;
+        public string TodayViews { get; set; } = string.Empty;
+        public string ProductPrices { get; set; } = string.Empty;
+        public string Date { get; set; } = string.Empty;
     }
     public abstract class Database_Centre
     {
@@ -78,40 +78,42 @@ namespace Server_Side.DatabaseServices
 
                 // Retrieve data from the product module
                 Dictionary<string, (string, string, string, string)>? return_Product_List_Product_Module = await Product_Group_Database_Services.ProcessGetTableRequestByUserIDAsync(UserID);
-
-                // Create the ReturnData list
-                List<ProductItemData> filteredList = return_Product_List_Database
-                    .Where(entry => return_Product_List_Product_Module.ContainsKey(entry.Key.Item1))
-                    .Select(entry =>
-                    {
-                        var productId = entry.Key.Item1;
-                        var dateKey = entry.Key.Item2;
-
-                        var productModuleData = return_Product_List_Product_Module[productId];
-                        var productModuleDatabase = entry.Value;
-
-                        int.TryParse(productModuleDatabase.Item2, out int int_TodayView);
-
-                        if (int_TodayView == 0)
+                if (return_Product_List_Database != null && return_Product_List_Product_Module != null)
+                {
+                    // Create the ReturnData list
+                    List<ProductItemData> filteredList = return_Product_List_Database
+                        .Where(entry => return_Product_List_Product_Module.ContainsKey(entry.Key.Item1))
+                        .Select(entry =>
                         {
-                            int.TryParse(productModuleDatabase.Item3, out int IntTodaySale);
-                            int_TodayView = IntTodaySale;
-                        }
+                            var productId = entry.Key.Item1;
+                            var dateKey = entry.Key.Item2;
 
-                        return new ProductItemData
-                        {
-                            ProductID = productId,
-                            UserSeller = productModuleData.Item1,
-                            ProductName = productModuleData.Item2,
-                            TodaySale = productModuleDatabase.Item3,
-                            TodayViews = int_TodayView.ToString(),
-                            ProductPrices = productModuleData.Item3,
-                            Date = productModuleDatabase.Item4
-                        };
-                    })
-                    .ToList();
+                            var productModuleData = return_Product_List_Product_Module[productId];
+                            var productModuleDatabase = entry.Value;
 
-                ReturnData = ProcessDataGetTable(filteredList, startDate, endDate);
+                            int.TryParse(productModuleDatabase.Item2, out int int_TodayView);
+
+                            if (int_TodayView == 0)
+                            {
+                                int.TryParse(productModuleDatabase.Item3, out int IntTodaySale);
+                                int_TodayView = IntTodaySale;
+                            }
+
+                            return new ProductItemData
+                            {
+                                ProductID = productId,
+                                UserSeller = productModuleData.Item1,
+                                ProductName = productModuleData.Item2,
+                                TodaySale = productModuleDatabase.Item3,
+                                TodayViews = int_TodayView.ToString(),
+                                ProductPrices = productModuleData.Item3,
+                                Date = productModuleDatabase.Item4
+                            };
+                        })
+                        .ToList();
+
+                    ReturnData = ProcessDataGetTable(filteredList, startDate, endDate);
+                }
                 return ReturnData;
             }
             catch (Exception)
@@ -192,24 +194,23 @@ namespace Server_Side.DatabaseServices
                 SaleTransactionTableService saleTransactionTableService = new SaleTransactionTableService();
                 List<Group_1_Record_Abstraction>? saleTransaction_table_Data = await saleTransactionTableService.GetDataServiceAsync();
 
-                Process_And_Print_Table_DataAsync(Userview_table_Data);
-                Process_And_Print_Table_DataAsync(pageView_table_Data);
-                Process_And_Print_Table_DataAsync(saleTransaction_table_Data);
+                if (Userview_table_Data != null && pageView_table_Data != null && saleTransaction_table_Data != null)
+                {
+                    Process_And_Print_Table_DataAsync(Userview_table_Data);
+                    Process_And_Print_Table_DataAsync(pageView_table_Data);
+                    Process_And_Print_Table_DataAsync(saleTransaction_table_Data);
+                }
 
-                Dictionary<(string, string), string>? return_Data_userView = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
-                Dictionary<(string, string), string>? return_Data_PageView = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
-                Dictionary<(string, string), string>? return_Data_SaleTransactionTable = new Dictionary<(string, string), string>(); // (Product ID, Date),Total Quantity
-
-                return_Data_userView = userViewTableService.ProcessUserViewList(Valid_User_Views_Table, UserID);
-                return_Data_PageView = pageViewTableService.ProcessPageViewList(Website_logs_table, UserID);
-                return_Data_SaleTransactionTable = saleTransactionTableService.ProcessSaleTransactionList(SalesTransactionsTable, UserID);
+                Dictionary<(string, string), string>? return_Data_userView = userViewTableService.ProcessUserViewList(Valid_User_Views_Table, UserID);                          // (Product ID, Date), Count
+                Dictionary<(string, string), string>? return_Data_PageView = pageViewTableService.ProcessPageViewList(Website_logs_table, UserID);                              // (Product ID, Date), Count
+                Dictionary<(string, string), string>? return_Data_SaleTransactionTable = saleTransactionTableService.ProcessSaleTransactionList(SalesTransactionsTable, UserID);// (Product ID, Date),Total Quantity
 
                 Dictionary<(string, string), (string, string, string, string)> combinedData = FullOuterJoin(return_Data_userView, return_Data_PageView, return_Data_SaleTransactionTable);
 
                 return combinedData;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -264,6 +265,11 @@ namespace Server_Side.DatabaseServices
         {
             try
             {
+                Valid_User_Views_Table ??= new List<UserView> ();
+                Website_logs_table ??= new List<PageView> ();
+                SalesTransactionsTable ??= new List<SaleTransaction> ();
+                FeedbackTable ??= new List<Feedback> ();
+
                 foreach (var Myobject in dataAsList)
                 {
                     if (Myobject is UserView userView)
@@ -294,7 +300,7 @@ namespace Server_Side.DatabaseServices
                 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

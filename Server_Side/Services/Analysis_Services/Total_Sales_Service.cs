@@ -12,7 +12,7 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class TotalSalesService
     {
-        public async Task<int> ProcessRequest(DateTime? startDate, DateTime? endDate, string UserID)
+        public async Task<int> ProcessRequest(DateTime? startDate, DateTime? endDate, string? UserID)
         {
             if (startDate == null || endDate == null)
             {
@@ -22,8 +22,12 @@ namespace Server_Side.Services.Analysis_Services
             return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate.Value, endDate.Value, UserID);
         }
 
-        private int ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate, string userID)
+        private int ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate, string? userID)
         {
+            if (userID == null)
+            {
+                return 0;
+            }
             List<SaleTransaction> saleTransactionsList = new List<SaleTransaction>();
 
             // Filter SaleTransactions from the given salesTransactionsData
@@ -43,7 +47,6 @@ namespace Server_Side.Services.Analysis_Services
 
             // Check if the date inside the key of the dictionary is valid
             int totalQuantity = 0;
-
             if (returnResultListProductLinkToThatUserId != null)
             {
                 foreach (var kvp in returnResultListProductLinkToThatUserId)

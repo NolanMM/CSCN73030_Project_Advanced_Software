@@ -7,11 +7,11 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class Monthly_View_Service
     {
-        public static async Task<int[]>? Process(DateTime? startDate, DateTime? endDate, string Product_ID)
+        public static async Task<int[]> Process(DateTime? startDate, DateTime? endDate, string Product_ID)
         {
             if (startDate == null || endDate == null)
             {
-                return null;
+                return new int[12];
             }
             var UserViewTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(0);
             return ExecuteAnalysis(UserViewTableFromDatabase, startDate.Value, endDate.Value, Product_ID);

@@ -8,18 +8,18 @@ namespace Server_Side.DatabaseServices.Services.Model
         public int PageView_ID { get; set; }
         [Required]
         [MaxLength(45)]
-        public string Page_Name { get; set; }
+        public string Page_Name { get; set; } = string.Empty;
         [Required]
         [MaxLength(45)]
-        public string Page_Info { get; set; }
+        public string Page_Info { get; set; } = string.Empty;
         [Required]
         [MaxLength(45)]
-        public string Product_ID { get; set; }
+        public string Product_ID { get; set; } = string.Empty;
         [Required]
         public DateTime Start_Time { get; set; }
         [Required]
         [MaxLength(50)]
-        public string UserID { get; set; }
+        public string UserID { get; set; } = string.Empty;
 
         public override string ToString()
         {

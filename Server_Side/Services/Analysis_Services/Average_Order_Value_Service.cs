@@ -39,6 +39,7 @@ namespace Server_Side.Services.Analysis_Services
             try
             {
                 SalesTransactionsTable.Clear();
+                if(dataAsList == null) {  return false; }
                 foreach (var Myobject in dataAsList)
                 {
                     if (Myobject is SaleTransaction saleTransaction)

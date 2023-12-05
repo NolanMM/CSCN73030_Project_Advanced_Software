@@ -45,9 +45,10 @@ namespace Server_Side.DatabaseServices.Services
                         Console.WriteLine($"HTTP Error: {response.StatusCode}");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    //Console.WriteLine($"An error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return feedbackData;

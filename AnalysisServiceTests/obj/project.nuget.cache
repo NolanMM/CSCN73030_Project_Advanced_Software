@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hxiYMNxmOJNxL8YXlTlFGVLeFUzt0Eq2bUsPpSHU6VMpSUAmbarpCbSfzKv5rsAK+aTt3k0SIWHtv5RbGaU4KQ==",
+  "dgSpecHash": "3s5wqDm7BYsN2DppSTxaW48y6EywpdG5PLOed2qdiTOQTJmIMWOnbP1PmmRuGUV6J4Y+aCAwEgpMkfyBywh26w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Minh\\Desktop\\Test_Cloning\\AnalysisServiceTests\\AnalysisServiceTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Minh\\.nuget\\packages\\aspnetcoreratelimit\\5.0.0\\aspnetcoreratelimit.5.0.0.nupkg.sha512",
-    "C:\\Users\\Minh\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
+    "C:\\Users\\Minh\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\graphql\\7.6.1\\graphql.7.6.1.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\graphql-parser\\8.4.0\\graphql-parser.8.4.0.nupkg.sha512",
     "C:\\Users\\Minh\\.nuget\\packages\\graphql.authorization\\7.0.0\\graphql.authorization.7.0.0.nupkg.sha512",

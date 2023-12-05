@@ -7,7 +7,7 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class ConversionRateService
     {
-        public static async Task<int>? Process(DateTime? startDate, DateTime? endDate, string? Product_ID)
+        public static async Task<int> Process(DateTime? startDate, DateTime? endDate, string? Product_ID)
         {
             if (startDate == null || endDate == null || Product_ID == null)
             {
@@ -58,6 +58,7 @@ namespace Server_Side.Services.Analysis_Services
 
             // Deserialize the modified JSON string
             var results = JsonConvert.DeserializeObject<List<ProductDetails>>(detailsProducts);
+            if(results == null) { results = new List<ProductDetails>(); }
             return results;
         }
 

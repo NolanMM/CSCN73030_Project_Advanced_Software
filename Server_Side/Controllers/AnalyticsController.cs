@@ -1,18 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Server_Side.DatabaseServices;
-using Server_Side.Services;
-using Server_Side.Services.Analysis_Services;
-using System;
-using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace Server_Side.Controllers
 {
     public class ProfileViewModel
     {
         // Properties relevant to your view
-        public string UserId { get; set; }
-        public string ProductId { get; set; }
+        public string UserId { get; set; } = string.Empty;
+        public string ProductId { get; set; } = string.Empty;
         // Other properties...
     }
 
@@ -89,9 +84,10 @@ namespace Server_Side.Controllers
         {
             try
             {
-                var startDate = DateTime.Now.AddMonths(-3);
-                var endDate = DateTime.Now;
-
+                //var startDate = DateTime.Now.AddMonths(-3);
+                //var endDate = DateTime.Now;
+                DateTime startDate = DateTime.Now.AddDays(-1);
+                DateTime endDate = DateTime.Now.Date.AddTicks(-1);
                 var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
                 var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
                 var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);

@@ -1,20 +1,16 @@
 ﻿using Server_Side.DatabaseServices;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Server_Side.Services.Analysis_Services
 {
     public class FeedbackAnalysisService
     {
-        public static async Task<int[]>? Process(DateTime? startDate, DateTime? endDate, string Product_ID)
+        public static async Task<int[]> Process(DateTime? startDate, DateTime? endDate, string Product_ID)
         {
             if (startDate == null || endDate == null)
             {
-                return null;
+                return new int[0];
             }
             var FeedBackTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(3);
             return ExecuteAnalysis(FeedBackTableFromDatabase, startDate.Value, endDate.Value, Product_ID);
@@ -36,11 +32,14 @@ namespace Server_Side.Services.Analysis_Services
             // Initialize array to store the count of feedback records for each month
             int[] monthlyCount = new int[12];
 
-            foreach (Feedback feedback in filteredFeedback)
+            foreach (Group_1_Record_Abstraction feedback in filteredFeedback)
             {
-                int monthIndex = feedback.Date_Updated.Month - 1;
-                monthlySum[monthIndex] += (double)feedback.Stars_Rating;
-                monthlyCount[monthIndex]++;
+                if (feedback is Feedback fb)
+                {
+                    int monthIndex = fb.Date_Updated.Month - 1;
+                    monthlySum[monthIndex] += (double)fb.Stars_Rating;
+                    monthlyCount[monthIndex]++;
+                }
             }
 
             int[] monthlyAverage = new int[12];

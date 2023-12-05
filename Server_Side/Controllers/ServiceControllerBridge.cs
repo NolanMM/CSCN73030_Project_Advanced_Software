@@ -35,38 +35,41 @@ namespace Server_Side.Controllers
                 if (request == "GetSalesDataProfile")
                 {
                     GetSalesDataProfile_Data tempData = new GetSalesDataProfile_Data();
-                    tempData.salesTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID); //number needs to be changed
-                    tempData.viewTotal = (int)await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID); //number needs to be changed
-                    tempData.lifetimeSales = (int)await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
-                    tempData.averageSatisfaction = (decimal)await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
+                    tempData.salesTotal = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID); //number needs to be changed
+                    tempData.viewTotal = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID); //number needs to be changed
+                    tempData.lifetimeSales = (int?)await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
+                    tempData.averageSatisfaction = (decimal?)await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID); //number needs to be changed
                     return tempData as object;
                 }
                 if (request == "GettableData")
                 {
-                    List<ProductItemData>? ProcessDataForGetTableCorrespondingUserID = new List<ProductItemData>();
-                    ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID,startDate.Value,endDate.Value);
-
-                    List<GettableData_Struct> data = new List<GettableData_Struct>();
-
-                    foreach(ProductItemData productItemData in ProcessDataForGetTableCorrespondingUserID)
+                    if (userID != null && startDate != null && endDate != null)
                     {
-                        GettableData_Struct data_input = new GettableData_Struct
+                        List<ProductItemData>? ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID, startDate.Value, endDate.Value);
+
+                        List<GettableData_Struct> data = new List<GettableData_Struct>();
+                        if (ProcessDataForGetTableCorrespondingUserID != null)
                         {
-                            plist = productItemData.ProductName,
-                            tsales = productItemData.TodaySale,
-                            tviews = productItemData.TodaySale,
-                            pPrice = productItemData.ProductPrices,
-                            pID = productItemData.ProductID,
-                            col6 = "Details"
-                        };
-                        data.Add(data_input);
+                            foreach (ProductItemData productItemData in ProcessDataForGetTableCorrespondingUserID)
+                            {
+                                GettableData_Struct data_input = new GettableData_Struct
+                                {
+                                    plist = productItemData.ProductName,
+                                    tsales = productItemData.TodaySale,
+                                    tviews = productItemData.TodaySale,
+                                    pPrice = productItemData.ProductPrices,
+                                    pID = productItemData.ProductID,
+                                    col6 = "Details"
+                                };
+                                data.Add(data_input);
+                            }
+                        }
+                        return data as object;
                     }
- 
-                    return data as object;
                 }
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

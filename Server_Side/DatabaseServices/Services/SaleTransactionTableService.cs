@@ -44,9 +44,10 @@ namespace Server_Side.DatabaseServices.Services
                         Console.WriteLine($"HTTP Error: {response.StatusCode}");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    //Console.WriteLine($"An error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return SaleTransactionData;
@@ -69,25 +70,27 @@ namespace Server_Side.DatabaseServices.Services
                 if (!string.IsNullOrEmpty(saleTransaction.Details_Products))
                 {
                     // Parse the Details_Products field
-                    List<ProductDetails> productDetailsList = ParseProductDetails(saleTransaction.Details_Products);
-
-                    foreach (ProductDetails productDetails in productDetailsList)
+                    List<ProductDetails>? productDetailsList = ParseProductDetails(saleTransaction.Details_Products);
+                    if (productDetailsList != null)
                     {
-                        string productId = productDetails.Product_ID;
-
-                        // Check if the current product belongs to a different user
-                        if (userID != UserID)
+                        foreach (ProductDetails productDetails in productDetailsList)
                         {
-                            if (!returnData.ContainsKey((productId, dateKey)))
+                            string productId = productDetails.Product_ID;
+
+                            // Check if the current product belongs to a different user
+                            if (userID != UserID)
                             {
-                                // Product ID and date combination is unique, add to the dictionary with total quantity
-                                returnData.Add((productId, dateKey), productDetails.Product_Quantity.ToString());
-                            }
-                            else
-                            {
-                                // Product ID and date combination is duplicated, increment the total quantity
-                                int totalQuantityInt = int.Parse(returnData[(productId, dateKey)]) + productDetails.Product_Quantity;
-                                returnData[(productId, dateKey)] = totalQuantityInt.ToString();
+                                if (!returnData.ContainsKey((productId, dateKey)))
+                                {
+                                    // Product ID and date combination is unique, add to the dictionary with total quantity
+                                    returnData.Add((productId, dateKey), productDetails.Product_Quantity.ToString());
+                                }
+                                else
+                                {
+                                    // Product ID and date combination is duplicated, increment the total quantity
+                                    int totalQuantityInt = int.Parse(returnData[(productId, dateKey)]) + productDetails.Product_Quantity;
+                                    returnData[(productId, dateKey)] = totalQuantityInt.ToString();
+                                }
                             }
                         }
                     }
@@ -97,7 +100,7 @@ namespace Server_Side.DatabaseServices.Services
             return returnData;
         }
 
-        private List<ProductDetails> ParseProductDetails(string detailsProducts)
+        private List<ProductDetails>? ParseProductDetails(string detailsProducts)
         {
             // Replace single quotes with double quotes
             detailsProducts = detailsProducts.Replace("'", "\"");
@@ -108,7 +111,7 @@ namespace Server_Side.DatabaseServices.Services
 
         private class ProductDetails
         {
-            public string Product_ID { get; set; }
+            public string Product_ID { get; set; } = string.Empty;
             public decimal Product_Price { get; set; }
             public int Product_Quantity { get; set; }
         }

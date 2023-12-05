@@ -7,7 +7,7 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class TimeAnalysisService
     {
-        public async static Task<int[]?> ProcessRequest(DateTime startDate, DateTime endDate, string ProductID)
+        public async static Task<int[]?> ProcessRequest(DateTime? startDate, DateTime? endDate, string ?ProductID)
         {
             if (startDate == null || endDate == null)
             {
@@ -18,7 +18,7 @@ namespace Server_Side.Services.Analysis_Services
             return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate, endDate, ProductID);
         }
 
-        private static int[] ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime startDate, DateTime endDate, string ProductID)
+        private static int[] ExecuteAnalysis(List<Group_1_Record_Abstraction>? salesTransactionsData, DateTime? startDate, DateTime? endDate, string? ProductID)
         {
             if (salesTransactionsData == null)
             {
@@ -49,16 +49,23 @@ namespace Server_Side.Services.Analysis_Services
 
             // Deserialize the modified JSON string
             var results = JsonConvert.DeserializeObject<List<ProductDetails>>(detailsProducts);
-            foreach(ProductDetails productDetails in results)
+            if (results != null)
             {
-                productDetails.month = Month;
+                foreach (ProductDetails productDetails in results)
+                {
+                    productDetails.month = Month;
+                }
+            }
+            else
+            {
+                results ??= new List<ProductDetails>();
             }
             return results;
         }
 
         private class ProductDetails
         {
-            public string Product_ID { get; set; }
+            public string Product_ID { get; set; } = string.Empty;
             public decimal Product_Price { get; set; }
             public int Product_Quantity { get; set; }
             public int month {  get; set; }

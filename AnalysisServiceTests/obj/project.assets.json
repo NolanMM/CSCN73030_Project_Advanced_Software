@@ -20,7 +20,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "coverlet.collector/3.2.0": {
+      "coverlet.collector/6.0.0": {
         "type": "package",
         "build": {
           "build/netstandard1.0/coverlet.collector.targets": {}
@@ -900,10 +900,10 @@
         "lib/net6.0/AspNetCoreRateLimit.dll"
       ]
     },
-    "coverlet.collector/3.2.0": {
-      "sha512": "xjY8xBigSeWIYs4I7DgUHqSNoGqnHi7Fv7/7RZD02rvZyG3hlsjnQKiVKVWKgr9kRKgmV+dEfu8KScvysiC0Wg==",
+    "coverlet.collector/6.0.0": {
+      "sha512": "tW3lsNS+dAEII6YGUX/VMoJjBS1QvsxqJeqLaJXub08y1FSjasFPtQ4UBUsudE9PNrzLjooClMsPtY2cZLdXpQ==",
       "type": "package",
-      "path": "coverlet.collector/3.2.0",
+      "path": "coverlet.collector/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -949,7 +949,7 @@
         "build/netstandard1.0/coverlet.core.dll",
         "build/netstandard1.0/coverlet.core.pdb",
         "coverlet-icon.png",
-        "coverlet.collector.3.2.0.nupkg.sha512",
+        "coverlet.collector.6.0.0.nupkg.sha512",
         "coverlet.collector.nuspec"
       ]
     },
@@ -2987,7 +2987,7 @@
       "Microsoft.TestPlatform.TestHost >= 17.7.2",
       "Newtonsoft.Json >= 13.0.3",
       "Server_Side >= 1.0.0",
-      "coverlet.collector >= 3.2.0"
+      "coverlet.collector >= 6.0.0"
     ]
   },
   "packageFolders": {
@@ -3068,8 +3068,10 @@
             "version": "[13.0.3, )"
           },
           "coverlet.collector": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[3.2.0, )"
+            "version": "[6.0.0, )"
           }
         },
         "imports": [

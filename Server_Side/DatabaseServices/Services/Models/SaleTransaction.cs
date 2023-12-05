@@ -6,9 +6,9 @@ namespace Server_Side.DatabaseServices.Services.Model
     public class SaleTransaction : Group_1_Record_Abstraction
     {
         [Required]
-        public string Transaction_ID { get; set; }
+        public string Transaction_ID { get; set; } = string.Empty;
         [Required]
-        public string User_ID { get; set; }
+        public string User_ID { get; set; } = string.Empty;
         [Required(ErrorMessage = "Order Value is required")]
         [Range(0.00001, double.MaxValue, ErrorMessage = "Required Order value > 0")]
         public decimal Order_Value { get; set; }
@@ -18,7 +18,7 @@ namespace Server_Side.DatabaseServices.Services.Model
 
         [Required(ErrorMessage = "The item list cannot be empty")]
         [MaxLength(10000)]
-        public string Details_Products { get; set; }
+        public string Details_Products { get; set; } = string.Empty;
 
         public override string ToString()
         {

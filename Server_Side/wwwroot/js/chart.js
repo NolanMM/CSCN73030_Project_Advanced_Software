@@ -338,15 +338,14 @@ window.addEventListener("load", async function () {
             ]);
 
             if (flexData && monthlySalesData && monthlyViewsData && monthlySatisfactionData) {
-                updateFlexContainer(flexData);
                 salesData.datasets[0].data = monthlySalesData.monthlySales;
-                myChartSales.update();
                 viewsData.datasets[0].data = monthlyViewsData.monthlyViews;
-                myChartViews.update();
                 satisfactionData.datasets[0].data = monthlySatisfactionData.monthlySatisfaction;
+                myChartSales.update();
+                myChartViews.update();
                 myChartSatisfaction.update();
-
                 myChartSalesAndViews.update();
+                updateFlexContainer(flexData);
             } else {
                 console.error("One or more responses are null or undefined.");
             }
