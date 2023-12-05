@@ -29,7 +29,8 @@ var userId;
 
 async function fetchFlexDataFromServer(userId) {
     try {
-        const response = await fetch(`http://localhost:8080/analytics/salesData/Profile/${userId}`);
+        //const response = await fetch(`http://localhost:8080/analytics/salesData/Profile/${userId}`);
+        const response = await fetch(`https://analysisreportingtestinngroute.azurewebsites.net/analytics/salesData/Profile/${userId}`);
         if (!response.ok) {
             throw new Error('Network response was not ok.');
         }
@@ -56,7 +57,8 @@ function updateFlexContainer(data) {
 
 async function fetchTableDataFromServer(userId) {
     try {
-        const response = await fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`);
+        //const response = await fetch(`http://localhost:8080/analytics/tableData/Profile/${userId}`);
+        const response = await fetch(`https://analysisreportingtestinngroute.azurewebsites.net/analytics/tableData/Profile/${userId}`);
         const tableData = await response.json();
         return tableData;
     } catch (error) {

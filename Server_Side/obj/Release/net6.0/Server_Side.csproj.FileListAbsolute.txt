@@ -77,3 +77,4 @@ C:\Users\Minh\Desktop\Test_Cloning\Server_Side\obj\Release\net6.0\refint\Server_
 C:\Users\Minh\Desktop\Test_Cloning\Server_Side\obj\Release\net6.0\Server_Side.pdb
 C:\Users\Minh\Desktop\Test_Cloning\Server_Side\obj\Release\net6.0\Server_Side.genruntimeconfig.cache
 C:\Users\Minh\Desktop\Test_Cloning\Server_Side\obj\Release\net6.0\ref\Server_Side.dll
+C:\Users\Minh\Desktop\Test_Cloning\Server_Side\bin\Release\net6.0\System.Diagnostics.DiagnosticSource.dll

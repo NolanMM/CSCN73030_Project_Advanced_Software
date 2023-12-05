@@ -1,9 +1,6 @@
 ﻿using Server_Side.DatabaseServices;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Server_Side.Services.Analysis_Services
 {

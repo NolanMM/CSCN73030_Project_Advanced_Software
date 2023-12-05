@@ -2,11 +2,7 @@
 using Server_Side.DatabaseServices.Services;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Server_Side.Services.Analysis_Services
 {
