@@ -44,7 +44,7 @@ namespace Server_Side.Controllers
                 if (request == "GettableData")
                 {
                     List<ProductItemData>? ProcessDataForGetTableCorrespondingUserID = new List<ProductItemData>();
-                    ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID);
+                    ProcessDataForGetTableCorrespondingUserID = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID,startDate.Value,endDate.Value);
 
                     List<GettableData_Struct> data = new List<GettableData_Struct>();
 

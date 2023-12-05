@@ -3,6 +3,7 @@ using Server_Side.DatabaseServices.Services.Interface_Service;
 using Server_Side.DatabaseServices.Services.Model;
 using Server_Side.DatabaseServices.Services.Models.Interfaces;
 using Server_Side.DatabaseServices.Services.Network_Database_Services;
+using System.Collections.Generic;
 
 namespace Server_Side.DatabaseServices
 {
@@ -67,10 +68,11 @@ namespace Server_Side.DatabaseServices
 
         // Return list Dictionary<string,( string, string, string, string)              [Product name, Today sales total corresponding to that product id, total view corresponding to that product ID]
 
-        public static async Task<List<ProductItemData>?> ProcessDataForGetTableCorrespondingUserID(string UserID)
+        public static async Task<List<ProductItemData>?> ProcessDataForGetTableCorrespondingUserID(string UserID, DateTime startDate, DateTime endDate)
         {
             try
             {
+                List<ProductItemData>? ReturnData = new List<ProductItemData>();
                 // Retrieve data from the database
                 Dictionary<(string, string), (string, string, string, string)>? return_Product_List_Database = await ProcessDataForGetTableCorrespondingUserID_Database(UserID);
 
@@ -78,7 +80,7 @@ namespace Server_Side.DatabaseServices
                 Dictionary<string, (string, string, string, string)>? return_Product_List_Product_Module = await Product_Group_Database_Services.ProcessGetTableRequestByUserIDAsync(UserID);
 
                 // Create the ReturnData list
-                List<ProductItemData> ReturnData = return_Product_List_Database
+                List<ProductItemData> filteredList = return_Product_List_Database
                     .Where(entry => return_Product_List_Product_Module.ContainsKey(entry.Key.Item1))
                     .Select(entry =>
                     {
@@ -109,15 +111,63 @@ namespace Server_Side.DatabaseServices
                     })
                     .ToList();
 
+                ReturnData = ProcessDataGetTable(filteredList, startDate, endDate);
                 return ReturnData;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                // Handle exception
                 return null;
             }
         }
 
+        private static List<ProductItemData>? ProcessDataGetTable(List<ProductItemData> productItemDatas, DateTime startDate, DateTime endDate)
+        {
+            if (productItemDatas != null)
+            {
+                // Store unique product IDs and their corresponding data
+                Dictionary<string, ProductItemData> productDataDictionary = new Dictionary<string, ProductItemData>();
+
+                foreach (var item in productItemDatas)
+                {
+                    DateTime itemDate = DateTime.Parse(item.Date);
+
+                    // Check if the item is within the date range
+                    //if (itemDate >= startDate && itemDate <= endDate)
+                    //{
+                        if (productDataDictionary.ContainsKey(item.ProductID))
+                        {
+                            var existingItem = productDataDictionary[item.ProductID];
+                            existingItem.TodaySale = item.TodaySale;
+                            existingItem.TodayViews = item.TodayViews;
+                            existingItem.ProductPrices = item.ProductPrices;
+                            existingItem.Date = item.Date;
+                        }
+                        else
+                        {
+                            productDataDictionary.Add(item.ProductID, item);
+                        }
+                    //}
+                }
+
+                // Ensure that there is data record for each unique product ID for today; if not, set the value to 0
+                foreach (var productId in productDataDictionary.Keys.ToList())
+                {
+                    var productData = productDataDictionary[productId];
+                    DateTime productDate = DateTime.Parse(productData.Date);
+
+                    if (productDate != DateTime.Today)
+                    {
+                        // Set values to 0 for TodaySale and TodayViews
+                        productData.TodaySale = "0";
+                        productData.TodayViews = "0";
+                    }
+                }
+
+                // Convert the dictionary values back to a list and assign it to ReturnData
+                productItemDatas = productDataDictionary.Values.ToList();
+            }
+            return productItemDatas;
+        }
 
         public static async Task<Dictionary<(string, string), (string, string, string, string)>?> ProcessDataForGetTableCorrespondingUserID_Database(string UserID)
         {

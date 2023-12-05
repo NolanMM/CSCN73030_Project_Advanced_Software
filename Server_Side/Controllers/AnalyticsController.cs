@@ -147,7 +147,12 @@ namespace Server_Side.Controllers
         [HttpGet("/analytics/tableData/Profile/{userId}")]
         public async Task<IActionResult> GettableData(string userId)
         {
-            List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId);
+            //var startDate = DateTime.Now.AddYears(-1);
+            //var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            // 1 day previous
+            DateTime startDate = DateTime.Now.AddDays(-1);
+            DateTime endDate = DateTime.Now.Date.AddTicks(-1);
+            List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId,startDate,endDate);
 
             if (returnList == null)
             {
@@ -174,7 +179,6 @@ namespace Server_Side.Controllers
         {
             var startDate = DateTime.Now.AddYears(-1);
             var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
-            // Replace with your actual data retrieval logic using the productId
             var salesRate = 100; 
             var conversionRate = (int?) await _reportServices.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null); ;
 
