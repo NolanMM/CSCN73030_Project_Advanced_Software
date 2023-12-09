@@ -127,7 +127,18 @@ namespace Server_Side.Controllers
 
                         if (monthlySatisfaction != null)
                         {
-                            averageSatisfactionResult += monthlySatisfaction.Average();
+                            int sum_loop = 0;
+                            int counter = 0;
+                            foreach(int i  in monthlySatisfaction)
+                            {
+                                if(i != 0)
+                                {
+                                    sum_loop += i;
+                                    counter++;
+                                }
+                            }
+                            if(counter == 0) { counter = 1; }
+                            averageSatisfactionResult += (sum_loop/counter);
                         }
                     }
 
@@ -141,7 +152,6 @@ namespace Server_Side.Controllers
                 //var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
                 //var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
                 //var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
-
 
                 int salesTotal = ConvertToInt(salesTotalResult);
                 int viewTotal = ConvertToInt(viewTotalResult);
