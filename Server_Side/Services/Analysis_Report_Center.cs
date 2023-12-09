@@ -44,8 +44,7 @@ public class Analysis_Report_Center
             case 7:
                 TotalSalesService totalSalesService = new TotalSalesService();
                 var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate, userID);
-                int results = 0;
-                return results as object;
+                return processedTotalSales as object;
             case 8:
                 UniqueVisitorsService uniqueVisitorsService = new UniqueVisitorsService();
                 var uniqueVisitorCount = await uniqueVisitorsService.GetUniqueVisitorCountAsync(startDate, endDate);

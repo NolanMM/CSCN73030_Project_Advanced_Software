@@ -51,7 +51,7 @@ namespace Server_Side.Services.Analysis_Services
             {
                 foreach (var kvp in returnResultListProductLinkToThatUserId)
                 {
-                    if (DateTime.TryParseExact(kvp.Key.Item2, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime transactionDate)
+                    if (DateTime.TryParseExact(kvp.Key.Item2, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime transactionDate)
                         && startDate <= transactionDate && transactionDate <= endDate)
                     {
                         // Valid date, add quantity to total

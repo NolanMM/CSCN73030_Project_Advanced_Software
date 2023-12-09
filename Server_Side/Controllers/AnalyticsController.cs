@@ -86,17 +86,17 @@ namespace Server_Side.Controllers
             {
                 //var startDate = DateTime.Now.AddMonths(-3);
                 //var endDate = DateTime.Now;
-                DateTime startDate = DateTime.Now.AddDays(-1);
+                DateTime startDate = DateTime.Now.Date.AddDays(-1);
                 DateTime endDate = DateTime.Now.Date.AddTicks(-1);
                 var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
                 var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
                 var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
                 var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
 
-                int salesTotal = ConvertToInt(salesTotalResult) -1;
-                int viewTotal = ConvertToInt(viewTotalResult) -1;
-                int lifetimeSales = ConvertToInt(lifetimeSalesResult) - 1;
-                int averageSatisfaction = ConvertToInt(averageSatisfactionResult) - 1;
+                int salesTotal = ConvertToInt(salesTotalResult);
+                int viewTotal = ConvertToInt(viewTotalResult);
+                int lifetimeSales = ConvertToInt(lifetimeSalesResult);
+                int averageSatisfaction = ConvertToInt(averageSatisfactionResult);
 
                 if (salesTotal < 0){ salesTotal = 0; }
                 if (viewTotal < 0) {  viewTotal = 0; }
@@ -146,7 +146,7 @@ namespace Server_Side.Controllers
             //var startDate = DateTime.Now.AddYears(-1);
             //var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
             // 1 day previous
-            DateTime startDate = DateTime.Now.AddDays(-1);
+            DateTime startDate = DateTime.Now.Date.AddDays(-1);
             DateTime endDate = DateTime.Now.Date.AddTicks(-1);
             List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId,startDate,endDate);
 

@@ -134,8 +134,8 @@ namespace Server_Side.DatabaseServices
                     DateTime itemDate = DateTime.Parse(item.Date);
 
                     // Check if the item is within the date range
-                    //if (itemDate >= startDate && itemDate <= endDate)
-                    //{
+                    if (itemDate >= startDate && itemDate <= endDate)
+                    {
                         if (productDataDictionary.ContainsKey(item.ProductID))
                         {
                             var existingItem = productDataDictionary[item.ProductID];
@@ -148,7 +148,7 @@ namespace Server_Side.DatabaseServices
                         {
                             productDataDictionary.Add(item.ProductID, item);
                         }
-                    //}
+                    }
                 }
 
                 // Ensure that there is data record for each unique product ID for today; if not, set the value to 0
@@ -157,7 +157,7 @@ namespace Server_Side.DatabaseServices
                     var productData = productDataDictionary[productId];
                     DateTime productDate = DateTime.Parse(productData.Date);
 
-                    if (productDate != DateTime.Today)
+                    if (productDate != startDate)
                     {
                         // Set values to 0 for TodaySale and TodayViews
                         productData.TodaySale = "0";
