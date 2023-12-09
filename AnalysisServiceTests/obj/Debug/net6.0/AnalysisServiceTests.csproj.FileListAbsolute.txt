@@ -225,7 +225,6 @@ C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\AnalysisServiceTests\
 C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\AnalysisServiceTests\obj\Debug\net6.0\AnalysisServiceTests.pdb
 C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\AnalysisServiceTests\obj\Debug\net6.0\AnalysisServiceTests.genruntimeconfig.cache
 C:\Users\lknap\Desktop\CSCN73030_Project_Advanced_Software\AnalysisServiceTests\obj\Debug\net6.0\ref\AnalysisServiceTests.dll
-C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\CoverletSourceRootsMapping
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\testhost.exe
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\testhost.dll
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
@@ -342,3 +341,4 @@ C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\Analysi
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\AnalysisServiceTests.genruntimeconfig.cache
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\obj\Debug\net6.0\ref\AnalysisServiceTests.dll
 C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\CoverletSourceRootsMapping_AnalysisServiceTests
+C:\Users\Minh\Desktop\Test_Cloning\AnalysisServiceTests\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

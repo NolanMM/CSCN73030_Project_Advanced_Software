@@ -1,20 +1,8 @@
-namespace AnalysisServiceRegressionTests
+namespace AnalysisServiceModuleTests
 {
     [TestClass]
-    public class AnalysisServiceRegressionTests
+    public class DatabaseCentreTests
     {
-        public Analysis_Report_Center _service;
-
-        [TestInitialize]
-        public void Setup()
-        {
-            _service = new Analysis_Report_Center();
-
-            // Populate _service with mock data for testing here.
-            // This setup will run before each test.
-            // Fill the inner private lists like Valid_User_Views_Table, Website_logs_table, etc.
-        }
-
         [TestMethod]
         public async void Test_GetUniqueVisitors_ShouldReturnExpectedCount()
         {
@@ -49,8 +37,8 @@ namespace AnalysisServiceRegressionTests
             DateTime endDate = DateTime.UtcNow;
             string productId = "P0006";
             var conversionRate = (int?)await service.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null);
+
             Assert.IsTrue(conversionRate >= 0 && conversionRate <= 1);
         }
-
     }
 }

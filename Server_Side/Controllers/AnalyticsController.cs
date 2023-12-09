@@ -240,7 +240,7 @@ namespace Server_Side.Controllers
             var startDate = DateTime.Now.AddYears(-1);
             var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
             var salesRate = 100; 
-            var conversionRate = (int?) await _reportServices.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null); ;
+            var conversionRate = (int?) await _reportServices.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null);
 
             var data = new
             {
