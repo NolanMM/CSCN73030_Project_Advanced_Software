@@ -1,24 +1,94 @@
-using Server_Side.Database_Services;
-using Server_Side.Database_Services.Output_Schema.Log_Database_Schema;
-using Server_Side.Services;
+using Server_Side.DatabaseServices;
 
-namespace DatabaseAnalysisModuleTests
+namespace Databbase_Tests
 {
     [TestClass]
-    public class Test_Database_Services
+    public class DatabaseCentreTests
     {
         [TestMethod]
-        public void Test_Integrate_With_Feedback_Analysis_Services()
+        public async Task ProcessDataForGetTableCorrespondingUserID_ValidInput_ReturnsResult()
         {
-            //Create an instance of the Analysis_Report_Services class
-            Analysis_Report_Services analysisServices = new Analysis_Report_Services();
-            bool result_InitializeData = analysisServices.InitializeData("Test_Integrate_Feedback");
-            //Task.WaitAll();
-            Dictionary<string, int> feedbackAnalysis = analysisServices.GetFeedbackAnalysis();
-            //Task.WaitAll();
-            Assert.IsTrue(result_InitializeData);
-            Assert.IsNotNull(feedbackAnalysis);
+            // Arrange
+            string UserID = "None";
+            DateTime startDate = DateTime.Now.AddDays(-1);
+            DateTime endDate = DateTime.Now.Date.AddTicks(-1);
+
+            // Act
+            List<ProductItemData>? result = await Database_Centre.ProcessDataForGetTableCorrespondingUserID(UserID,startDate,endDate);
+
+            // Assert
+            Assert.IsNotNull(result);
+
         }
 
+        [TestMethod]
+        public async Task GetDataForDatabaseServiceID_UserView_ValidInput_ReturnsResult()
+        {
+            // Arrange
+            int TableID = 0;
+
+            // Act
+            var data = await Database_Centre.GetDataForDatabaseServiceID(TableID);
+
+            // Assert
+            Assert.IsNotNull(data);
+
+        }
+
+        [TestMethod]
+        public async Task GetDataForDatabaseServiceID_PageView_ValidInput_ReturnsResult()
+        {
+            // Arrange
+            int TableID = 1;
+
+            // Act
+            var data = await Database_Centre.GetDataForDatabaseServiceID(TableID);
+
+            // Assert
+            Assert.IsNotNull(data);
+
+        }
+
+        [TestMethod]
+        public async Task GetDataForDatabaseServiceID_SaleTransaction_ValidInput_ReturnsResult()
+        {
+            // Arrange
+            int TableID = 2;
+
+            // Act
+            var data = await Database_Centre.GetDataForDatabaseServiceID(TableID);
+
+            // Assert
+            Assert.IsNotNull(data);
+
+        }
+
+        [TestMethod]
+        public async Task GetDataForDatabaseServiceID_Feedback_ValidInput_ReturnsResult()
+        {
+            // Arrange
+            int TableID = 3;
+
+            // Act
+            var data = await Database_Centre.GetDataForDatabaseServiceID(TableID);
+
+            // Assert
+            Assert.IsNotNull(data);
+
+        }
+
+        [TestMethod]
+        public async Task GetDataForDatabaseServiceID_InValidInput_ReturnsNull()
+        {
+            // Arrange
+            int TableID = 6;
+
+            // Act
+            var data = await Database_Centre.GetDataForDatabaseServiceID(TableID);
+
+            // Assert
+            Assert.IsNull(data);
+
+        }
     }
 }

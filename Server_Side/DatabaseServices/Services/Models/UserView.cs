@@ -7,9 +7,9 @@ namespace Server_Side.DatabaseServices.Services.Model
     {
         public int UserView_ID { get; set; }
         [Required]
-        public string User_ID { get; set; }
+        public string User_ID { get; set; } = string.Empty;
         [Required]
-        public string Product_ID { get; set; }
+        public string Product_ID { get; set; } = string.Empty;
         [Required]
         public decimal Time_Count { get; set; }
         [Required]

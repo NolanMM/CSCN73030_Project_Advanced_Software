@@ -39,6 +39,7 @@ namespace Server_Side.Services.Analysis_Services
             try
             {
                 SalesTransactionsTable.Clear();
+                if(dataAsList == null) {  return false; }
                 foreach (var Myobject in dataAsList)
                 {
                     if (Myobject is SaleTransaction saleTransaction)
@@ -58,7 +59,7 @@ namespace Server_Side.Services.Analysis_Services
                 return false;
             }
         }
-        private decimal ExecuteAnalysis()
+        private int ExecuteAnalysis()
         {
             if (SalesTransactionsTable == null)
                 throw new InvalidOperationException("SalesTransactions data is not initialized.");
@@ -67,8 +68,9 @@ namespace Server_Side.Services.Analysis_Services
                 .Where(s => s.date >= startDate && s.date <= endDate)
                 .ToList();
 
-            return relevantSales.Any() ? relevantSales.Average(s => s.Order_Value) : 0;
+            return relevantSales.Any() ? (int)Math.Round(relevantSales.Average(s => s.Order_Value)) : 0;
         }
+
 
     }
 }

@@ -10,37 +10,82 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class PageViewsService
     {
-        public PageViewsService()
-        {
-            // Additional initialization, if needed
-        }
-
-        public async Task<Dictionary<string, int>?> ProcessRequest(DateTime? startDate, DateTime? endDate)
+        public async Task<int?> ProcessRequest(DateTime? startDate, DateTime? endDate)
         {
             if (startDate == null || endDate == null)
             {
                 return null;
             }
 
-            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(4);
-            var relevantPageViews = ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
-            return relevantPageViews;
+            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
+            return ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
         }
 
-        private Dictionary<string, int>? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
+        private int? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
         {
             if (pageViewsData == null)
             {
                 return null;
             }
 
-            var pageViewsByPageName = pageViewsData
+            int count = pageViewsData
                 .OfType<PageView>()
-                .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
-                .GroupBy(pv => pv.Page_Name)
-                .ToDictionary(group => group.Key, group => group.Count());
+                .Count(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate);
 
-            return pageViewsByPageName;
+            return count;
         }
     }
 }
+
+
+
+
+
+
+
+//using Server_Side.DatabaseServices;
+//using Server_Side.DatabaseServices.Services.Model;
+//using Server_Side.DatabaseServices.Services.Models.Interfaces;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+
+//namespace Server_Side.Services.Analysis_Services
+//{
+//    public class PageViewsService
+//    {
+//        public PageViewsService()
+//        {
+//            // Additional initialization, if needed
+//        }
+
+//        public async Task<Dictionary<string, int>?> ProcessRequest(DateTime? startDate, DateTime? endDate)
+//        {
+//            if (startDate == null || endDate == null)
+//            {
+//                return null;
+//            }
+
+//            var pageViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(1);
+//            var relevantPageViews = ProcessPageViewsData(pageViewsTableFromDatabase, startDate.Value, endDate.Value);
+//            return relevantPageViews;
+//        }
+
+//        private Dictionary<string, int>? ProcessPageViewsData(List<Group_1_Record_Abstraction>? pageViewsData, DateTime startDate, DateTime endDate)
+//        {
+//            if (pageViewsData == null)
+//            {
+//                return null;
+//            }
+
+//            var pageViewsByPageName = pageViewsData
+//                .OfType<PageView>()
+//                .Where(pv => pv.Start_Time >= startDate && pv.Start_Time <= endDate)
+//                .GroupBy(pv => pv.Page_Name)
+//                .ToDictionary(group => group.Key, group => group.Count());
+
+//            return pageViewsByPageName;
+//        }
+//    }
+//}

@@ -10,11 +10,6 @@ namespace Server_Side.Services.Analysis_Services
 {
     public class PriceAnalysisService
     {
-        public PriceAnalysisService()
-        {
-            //init empty
-        }
-
         public async Task<decimal?> ProcessRequest(DateTime? startDate, DateTime? endDate)
         {
             if (startDate == null || endDate == null)
@@ -22,7 +17,7 @@ namespace Server_Side.Services.Analysis_Services
                 return null;
             }
 
-            var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(5);
+            var salesTransactionsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(2); //changed from 5 to 2
             return ExecuteAnalysis(salesTransactionsTableFromDatabase, startDate.Value, endDate.Value);
         }
 

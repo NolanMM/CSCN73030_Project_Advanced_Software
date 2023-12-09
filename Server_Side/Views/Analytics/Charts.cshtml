@@ -1,3 +1,5 @@
+@model Server_Side.Controllers.ProfileViewModel
+
 <!DOCTYPE html>
 <html lang="en">
   <style>
@@ -12,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Product Detail</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -23,7 +24,7 @@
   <!-- Navigation Bar -->
   <section class="navbar">
     <div>
-      <a href="/analytics" class="logo">
+        <a href="/Profile/@Model.UserId" class="logo">
         <img src="~/image/logo.png" alt="logo" />
       </a>
     </div>
@@ -32,16 +33,20 @@
       <div class="menu-button"></div>
     </label>
     <ul class="menu">
-      <li><a href="/analytics">Cart</a></li>
-      <li><a href="/analytics">Profile</a></li>
-      <li><a href="/analytics">Home</a></li>
-      <li><a href="/analytics">Analytic</a></li>
-      <li><a href="/analytics">Products</a></li>
+        <li><a href="https://shoppingcart.honeybeeks.net/">Cart</a></li>
+        <li><a href="http://39.106.68.52:8111/">Home</a></li>
+        <li><a href="http://172.105.25.146:8081/index.html?uid=U1&page=1">Products</a></li>
     </ul>
+    <script type="text/javascript">
+    </script>
   </section>
 
   <!-- Body Code Start -->
   <body onload="document.body.style.opacity='1'">
+
+    <!-- Using Razor to set profileId in a data attribute -->
+    <div id="productIdElement" data-userId="@Model.UserId" data-productId="@Model.ProductId"></div>
+
     <!-- Welcome message -->
     <div class="section1">
       <center><h1>Welcome to Product Info</h1></center>
@@ -55,7 +60,7 @@
           <div class="flex-value">Placeholder</div>
         </div>
         <div class="flex-item">
-          <div class="flex-title">Placeholder</div>
+          <div class="flex-title">Conversion Rate</div>
           <div class="flex-value">Placeholder</div>
         </div>
       </div>

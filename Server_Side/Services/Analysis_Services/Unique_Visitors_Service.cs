@@ -27,7 +27,7 @@ namespace Server_Side.Services.Analysis_Services
                 throw new ArgumentException("Start date must be less than or equal to end date.");
             }
 
-            var userViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(8);
+            var userViewsTableFromDatabase = await Database_Centre.GetDataForDatabaseServiceID(0);
             return CalculateUniqueVisitors(userViewsTableFromDatabase, startDate.Value, endDate.Value);
         }
 

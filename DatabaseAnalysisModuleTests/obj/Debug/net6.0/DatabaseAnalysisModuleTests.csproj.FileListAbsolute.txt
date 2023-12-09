@@ -227,3 +227,4 @@ C:\Users\Minh\Desktop\Test_Cloning\DatabaseAnalysisModuleTests\obj\Debug\net6.0\
 C:\Users\Minh\Desktop\Test_Cloning\DatabaseAnalysisModuleTests\obj\Debug\net6.0\DatabaseAnalysisModuleTests.pdb
 C:\Users\Minh\Desktop\Test_Cloning\DatabaseAnalysisModuleTests\obj\Debug\net6.0\DatabaseAnalysisModuleTests.genruntimeconfig.cache
 C:\Users\Minh\Desktop\Test_Cloning\DatabaseAnalysisModuleTests\obj\Debug\net6.0\ref\DatabaseAnalysisModuleTests.dll
+C:\Users\Minh\Desktop\Test_Cloning\DatabaseAnalysisModuleTests\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

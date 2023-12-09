@@ -9,10 +9,10 @@ namespace Server_Side.DatabaseServices.Services.Model
         public int Feedback_ID { get; set; }
         [Required]
         [MaxLength(50)]
-        public string User_ID { get; set; }
+        public string User_ID { get; set; } = string.Empty;
         [Required]
         [MaxLength(50)]
-        public string Product_ID { get; set; }
+        public string Product_ID { get; set; } = string.Empty;
         [Required(ErrorMessage = "Stars Rating is required")]
         public decimal Stars_Rating { get; set; }
         [Required(ErrorMessage = "Date is required")]

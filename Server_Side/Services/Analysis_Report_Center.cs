@@ -8,7 +8,7 @@ public class Analysis_Report_Center
     //public List<SaleTransaction> SalesTransactionsTable = new List<SaleTransaction>();
     //public List<Feedback> FeedbackTable = new List<Feedback>();
 
-    public async Task<object?> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId)
+    public async Task<object?> ProcessAnalysisReportingServicesByID(int ServicesID, DateTime? startDate, DateTime? endDate, string? productId, string? userID)
     {
         List<Group_1_Record_Abstraction>? processedData = new List<Group_1_Record_Abstraction>();
         switch (ServicesID)
@@ -19,15 +19,15 @@ public class Analysis_Report_Center
                 return processedDataAverage;
             case 1:
                 BestCategoryAnalysisService BestCategoryAnalysisservice = new BestCategoryAnalysisService(startDate, endDate);
-                Dictionary<string, decimal>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
+                Dictionary<string, int>? processedBestCategory = await BestCategoryAnalysisservice.ProcessRequest();
                 return processedBestCategory;
             case 2:
-                ConversionRateService conversionRateService = new ConversionRateService(startDate.GetValueOrDefault(), endDate.GetValueOrDefault(), productId);
-                var conversionRateResult = await conversionRateService.ProcessRequest();
-                return conversionRateResult;
+                int conversionRateService = await ConversionRateService.Process(startDate, endDate, productId);
+                //var conversionRateResult = await conversionRateService.ProcessRequest();
+                return conversionRateService;
             case 3:
-                FeedbackAnalysisService feedbackAnalysisService = new FeedbackAnalysisService(startDate, endDate);
-                var processedFeedback = await feedbackAnalysisService.ProcessRequest();
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
+                var processedFeedback = await FeedbackAnalysisService.Process(startDate.Value, endDate.Value, productId);
                 return processedFeedback;
             case 4:
                 PageViewsService pageViewsService = new PageViewsService();
@@ -38,17 +38,21 @@ public class Analysis_Report_Center
                 var processedPriceData = await priceAnalysisService.ProcessRequest(startDate, endDate);
                 return processedPriceData;
             case 6:
-                TimeAnalysisService timeAnalysisService = new TimeAnalysisService();
-                var processedTimeData = await timeAnalysisService.ProcessRequest(startDate, endDate);
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
+                var processedTimeData = await TimeAnalysisService.ProcessRequest(startDate, endDate,productId);
                 return processedTimeData;
             case 7:
                 TotalSalesService totalSalesService = new TotalSalesService();
-                var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate);
-                return processedTotalSales;
+                var processedTotalSales = await totalSalesService.ProcessRequest(startDate, endDate, userID);
+                return processedTotalSales as object;
             case 8:
                 UniqueVisitorsService uniqueVisitorsService = new UniqueVisitorsService();
                 var uniqueVisitorCount = await uniqueVisitorsService.GetUniqueVisitorCountAsync(startDate, endDate);
                 return uniqueVisitorCount;
+            case 9:
+                if (startDate == null || endDate == null || productId == null) { return new int[12]; }
+                var processMonthlyViews = await Monthly_View_Service.Process(startDate.Value, endDate.Value, productId);
+                return processMonthlyViews;
             default:
                 throw new ArgumentException("Invalid table number");
         }

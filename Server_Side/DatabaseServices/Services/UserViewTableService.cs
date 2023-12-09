@@ -44,15 +44,52 @@ namespace Server_Side.DatabaseServices.Services
                         Console.WriteLine($"HTTP Error: {response.StatusCode}");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    //Console.WriteLine($"An error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return UserViewData;
         }
+        public Dictionary<(string, string), string>? ProcessUserViewList(List<UserView>? UserView_Lists, string UserID)
+        {
+            if (UserView_Lists == null)
+            {
+                return null;
+            }
 
-        private static bool ValidateDataAnnotations(UserView userView)
+            Dictionary<(string, string), string> return_Data = new Dictionary<(string, string), string>(); // (Product ID, Date), Count
+
+            foreach (UserView userView in UserView_Lists)
+            {
+                string productId = userView.Product_ID;
+
+                // Check if the UserID is not equal to the specified UserID
+                if (userView.User_ID != UserID)
+                {
+                    string dateKey = userView.Date_Access.ToShortDateString();
+
+                    if (!return_Data.ContainsKey((productId, dateKey)))
+                    {
+                        // Product ID and date combination is unique, add to the dictionary with count 1
+                        return_Data.Add((productId, dateKey), "1");
+                    }
+                    else
+                    {
+                        // Product ID and date combination is duplicated, increment the count
+                        int countInt = int.Parse(return_Data[(productId, dateKey)]);
+                        countInt++;
+                        return_Data[(productId, dateKey)] = countInt.ToString();
+                    }
+                }
+            }
+
+            return return_Data;
+        }
+
+
+        public static bool ValidateDataAnnotations(UserView userView)
         {
             ValidationContext context = new ValidationContext(userView, serviceProvider: null, items: null);
             List<ValidationResult>? results = new List<ValidationResult>();

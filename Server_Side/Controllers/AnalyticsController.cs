@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Server_Side.Services;
-using Server_Side.Services.Analysis_Services;
-using System;
-using System.Linq;
+using Server_Side.DatabaseServices;
 
 namespace Server_Side.Controllers
 {
+    public class ProfileViewModel
+    {
+        // Properties relevant to your view
+        public string UserId { get; set; } = string.Empty;
+        public string ProductId { get; set; } = string.Empty;
+    }
+
     public class AnalyticsController : Controller
     {
         private readonly Analysis_Report_Center _reportServices;
@@ -15,115 +19,306 @@ namespace Server_Side.Controllers
             _reportServices = reportServices;
         }
 
+        //default route no profile specified
         public IActionResult Index()
         {
-            return View();
+            return NotFound();
+            //return NotFound("This Page is not found! Please Login or check browser connections. ERROR: 404");
         }
 
-        [Route("analytics/charts")]
-        public IActionResult Charts()
+        [Route("analytics/Profile/{userId}/charts/{productId}")]
+        public IActionResult Charts(string userId, string productId)
         {
-            return View();
-        }
 
-        [HttpGet("/analytics/salesData")]
-        public async Task<IActionResult> GetSalesData()
-        {
-            var startDate = DateTime.Now.AddMonths(-1);
-            var endDate = DateTime.Now;
 
-            var salesTotal = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null); //number needs to be changed
-            var viewTotal = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null); //number needs to be changed
-            var lifetimeSales = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-            var averageSatisfaction = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null); //number needs to be changed
-
-            var data = new
+            ProfileViewModel modelProfileProduct = new ProfileViewModel
             {
-                salesTotal,
-                viewTotal,
-                lifetimeSales,
-                averageSatisfaction
+
+                UserId = userId,
+                ProductId = productId,
+
             };
 
-            Response.ContentType = "application/json";
-            return Json(data);
+            return View(modelProfileProduct);
         }
 
-        [HttpGet("/analytics/tableData")]
-        public IActionResult GettableData()
+
+        //index profile specified
+        [Route("Profile/{userId}")]
+        public IActionResult Index(string userId)
         {
-            var data = new[]
+
+            ProfileViewModel modelProfile = new ProfileViewModel
             {
-                new
+                UserId = userId,
+            };
+
+            return View(modelProfile);
+        }
+
+        //[HttpGet("/analytics/salesData/Profile/{userId}")]
+        //public IActionResult GetSalesData(string userId)
+        //{
+
+        //    // Replace with your actual data retrieval logic using the userId
+        //    var salesTotal = 100;
+        //    var viewTotal = 50;
+        //    var lifetimeSales = 500;
+        //    var averageSatisfaction = 4.5;
+
+        //    var data = new
+        //    {
+        //        salesTotal,
+        //        viewTotal,
+        //        lifetimeSales,
+        //        averageSatisfaction
+        //    };
+
+        //    Response.ContentType = "application/json";
+        //    return Json(data);
+        //}
+
+        [HttpGet("/analytics/salesData/Profile/{userId}")]
+        public async Task<IActionResult> GetSalesDataProfile(string userID)
+        {
+            try
+            {
+                //var startDate = DateTime.Now.AddMonths(-3);
+                //var endDate = DateTime.Now;
+                DateTime startDate = DateTime.Now.Date.AddDays(-1);
+                DateTime endDate = DateTime.Now.Date.AddTicks(-1);
+                var startDate_Year = DateTime.Now.AddYears(-1);
+                var endDate_Year = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+                List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID, startDate, endDate);
+                int salesTotalResult = 0;
+                int viewTotalResult = 0;
+                int lifetimeSalesResult = 0;
+                double averageSatisfactionResult = 0;
+
+                if (returnList == null)
                 {
-                    col1 = "Row 1, Col 1",
-                    col2 = "Row 1, Col 2",
-                    col3 = "Row 1, Col 3",
-                    col4 = "Row 1, Col 4",
-                    col5 = "Details"
-                },
-                new
-                {
-                    col1 = "Row 2, Col 1",
-                    col2 = "Row 2, Col 2",
-                    col3 = "Row 2, Col 3",
-                    col4 = "Row 2, Col 4",
-                    col5 = "Details"
-                },
-                new
-                {
-                    col1 = "Row 3, Col 1",
-                    col2 = "Row 3, Col 2",
-                    col3 = "Row 3, Col 3",
-                    col4 = "Row 3, Col 4",
-                    col5 = "Details"
+                    return NotFound(); // Or any other appropriate status code
                 }
-            };
-            Response.ContentType = "application/json";
-            return Json(data);
+
+                if (returnList != null)
+                {
+                    foreach (var item in returnList)
+                    {
+                        // Ensure that TodaySale and TodayViews are valid integers before adding to the totals
+                        if (int.TryParse(item.TodaySale, out int todaySale))
+                        {
+                            salesTotalResult += todaySale;
+                        }
+
+                        if (int.TryParse(item.TodayViews, out int todayViews))
+                        {
+                            viewTotalResult += todayViews;
+                        }
+
+                        int[]? monthlySales = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(6, startDate_Year, endDate_Year, item.ProductID, null);
+                        int[]? monthlySatisfaction = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(3, startDate_Year, endDate_Year, item.ProductID, null);
+
+                        // Check if monthlySales and monthlySatisfaction are not null before calculating
+                        if (monthlySales != null)
+                        {
+                            lifetimeSalesResult += monthlySales.Sum();
+                        }
+
+                        if (monthlySatisfaction != null)
+                        {
+                            int sum_loop = 0;
+                            int counter = 0;
+                            foreach(int i  in monthlySatisfaction)
+                            {
+                                if(i != 0)
+                                {
+                                    sum_loop += i;
+                                    counter++;
+                                }
+                            }
+                            if(counter == 0) { counter = 1; }
+                            averageSatisfactionResult += (sum_loop/counter);
+                        }
+                    }
+
+                    // Calculate averageSatisfactionResult as the average of all monthly satisfaction results
+                    if (returnList.Count > 0)
+                    {
+                        averageSatisfactionResult /= returnList.Count;
+                    }
+                }
+                //var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
+                //var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
+                //var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
+                //var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
+
+                int salesTotal = ConvertToInt(salesTotalResult);
+                int viewTotal = ConvertToInt(viewTotalResult);
+                int lifetimeSales = ConvertToInt(lifetimeSalesResult);
+                int averageSatisfaction = ConvertToInt(averageSatisfactionResult);
+
+                if (salesTotal < 0){ salesTotal = 0; }
+                if (viewTotal < 0) {  viewTotal = 0; }
+                if (lifetimeSales < 0) {  lifetimeSales = 0; }
+                if (averageSatisfaction < 0) {  averageSatisfaction = 0; }
+
+                var data = new
+                {
+                    salesTotal,
+                    viewTotal,
+                    lifetimeSales,
+                    averageSatisfaction // This is now an integer
+                };
+
+                return Json(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
-        [HttpGet("/charts/productInfoData")]
+        private int ConvertToInt(object? result)
+        {
+            if (result is null)
+            {
+                return 0;
+            }
+
+            if (result is int intValue)
+            {
+                return intValue;
+            }
+
+            if (result is double double_val)
+            {
+                return (int)double_val;
+            }
+
+            if (int.TryParse(result.ToString(), out intValue))
+            {
+                return intValue;
+            }
+
+            return 0; // Default value if conversion fails
+        }
+
+
+        [HttpGet("/analytics/tableData/Profile/{userId}")]
+        public async Task<IActionResult> GettableData(string userId)
+        {
+            //var startDate = DateTime.Now.AddYears(-1);
+            //var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            // 1 day previous
+            DateTime startDate = DateTime.Now.Date.AddDays(-1);
+            DateTime endDate = DateTime.Now.Date.AddTicks(-1);
+            List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userId,startDate,endDate);
+
+            if (returnList == null)
+            {
+                return NotFound(); // Or any other appropriate status code
+            }
+
+            var templateList = returnList.Select(item => new
+            {
+                plist = item.ProductName,
+                tsales = item.TodaySale,
+                tviews = item.TodayViews,
+                pPrice = item.ProductPrices,
+                pID = item.ProductID,
+                col6 = "Details"
+            }).ToList();
+
+            Response.ContentType = "application/json";
+            return Json(templateList);
+        }
+
+
+        [HttpGet("/charts/productInfoData/{productId}")]
         public async Task<IActionResult> GetProductInfoData(string productId)
         {
-            var startDate = DateTime.Now.AddMonths(-1);
-            var endDate = DateTime.Now;
-
-            var conversionRateService = new ConversionRateService(startDate, endDate, productId);
-            var salesRateResult = await conversionRateService.ProcessRequest();
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            var salesRate = 100; 
+            var conversionRate = (int?) await _reportServices.ProcessAnalysisReportingServicesByID(2, startDate, endDate, productId, null); ;
 
             var data = new
             {
-                salesRate = salesRateResult, // Using the result from the ConversionRateService
-                placeHolder = "placeholder"
+                salesRate, 
+                conversionRate,
             };
 
             Response.ContentType = "application/json";
             return Json(data);
         }
 
-        [HttpGet("/charts/monthlySalesData")]
-        public async Task<IActionResult> GetMonthlySalesData()
+        [HttpGet("/charts/monthlySalesData/{productId}")]
+        //public async Task<IActionResult> GetMonthlySalesData()
+        public async Task<IActionResult> GetMonthlySalesData(string productId)
         {
-            var startDate = new DateTime(DateTime.Now.Year, 1, 1); // Start of the current year
-            var endDate = DateTime.Now; // Current date
 
-            var timeAnalysisService = new TimeAnalysisService();
-            var monthlySalesResult = await timeAnalysisService.ProcessRequest(startDate, endDate);
+            // Replace with your actual data retrieval logic using the productId
 
+
+            //numbers per month basis
+            //"January",
+            //"February",
+            //"March",
+            //"April",
+            //"May",
+            //"June",
+            //"July",
+            //"August",
+            //"September",
+            //"October",
+            //"November",
+            //"December",
+            //var monthlySales = new[] { 1000, 2500, 3200, 2800, 1500, 7, 100, 600, 9000, 47474, 1, 200 };
+
+
+            // Static Range 1 Year
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            //var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
+            int[]? monthlySales = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(6, startDate, endDate, productId, null);
             var salesData = new
             {
-                monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
+                monthlySales
+                //monthlySales = monthlySalesResult.Values.ToArray() // Using the values from the TimeAnalysisService
             };
 
             Response.ContentType = "application/json";
             return Json(salesData);
         }
 
-        [HttpGet("/charts/monthlyViewsData")]
-        public IActionResult GetMonthlyViewsData()
+        [HttpGet("/charts/monthlyViewsData/{productId}")]
+        public async Task<IActionResult> GetMonthlyViewsData(string productId)
         {
-            var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500 };
+
+
+            // Replace with your actual data retrieval logic using the productId
+
+
+            //numbers per month basis
+            //"January",
+            //"February",
+            //"March",
+            //"April",
+            //"May",
+            //"June",
+            //"July",
+            //"August",
+            //"September",
+            //"October",
+            //"November",
+            //"December",
+            //var monthlyViews = new[] { 3000, 3500, 4200, 2800, 5500, 10, 1, 100, 7000, 400, 3790, 6969 };
+
+            // Static Range 1 Year
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+            //var monthlySales = await TimeAnalysisService.ProcessRequest(startDate, endDate, productId);
+            int[]? monthlyViews = (int[]?) await _reportServices.ProcessAnalysisReportingServicesByID(9, startDate, endDate, productId, null);
 
             var viewsData = new
             {
@@ -134,10 +329,32 @@ namespace Server_Side.Controllers
             return Json(viewsData);
         }
 
-        [HttpGet("/charts/monthlySatisfactionData")]
-        public IActionResult GetMonthlySatisfactionData()
+        [HttpGet("/charts/monthlySatisfactionData/{productId}")]
+        public async Task<IActionResult> GetMonthlySatisfactionData(string productId)
         {
-            var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
+
+
+          // Replace with your actual data retrieval logic using the productId
+
+          //numbers per month basis
+          //"January",
+          //"February",
+          //"March",
+          //"April",
+          //"May",
+          //"June",
+          //"July",
+          //"August",
+          //"September",
+          //"October",
+          //"November",
+          //"December",
+          //  var monthlySatisfaction = new[] { 3, 3.5, 4, 4.1, 4.25, 3.85, 4.45, 4.9, 4.4, 4.3, 2.7, 4 };
+
+            var startDate = DateTime.Now.AddYears(-1);
+            var endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+
+            int[]? monthlySatisfaction = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(3, startDate, endDate, productId, null);
 
             var satisfactionData = new
             {

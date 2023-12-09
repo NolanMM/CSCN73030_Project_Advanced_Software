@@ -45,15 +45,48 @@ namespace Server_Side.DatabaseServices.Services
                         Console.WriteLine($"HTTP Error: {response.StatusCode}");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    //Console.WriteLine($"An error occurred: {ex.Message}");
+                    return null;
                 }
             }
             return feedbackData;
         }
 
-        private static bool ValidateDataAnnotations(Feedback feedback)
+        public Dictionary<(string, string), string>? ProcessFeedbackList(List<Feedback>? feedbacks_Lists)
+        {
+            if (feedbacks_Lists == null)
+            {
+                return null;
+            }
+
+            Dictionary<(string, string), string> return_Data = new Dictionary<(string, string), string>(); // (Product ID, Date), AveStar
+
+            foreach (Feedback feedback in feedbacks_Lists)
+            {
+                string productId = feedback.Product_ID;
+                string dateKey = feedback.Date_Updated.ToShortDateString();
+                decimal starsRating = feedback.Stars_Rating;
+
+                if (!return_Data.ContainsKey((productId, dateKey)))
+                {
+                    // Product ID and date combination is unique, add to the dictionary
+                    return_Data.Add((productId, dateKey), starsRating.ToString());
+                }
+                else
+                {
+                    // Product ID and date combination is duplicated, calculate the average star rating within the date range 1 day
+                    decimal existingStarsDecimal = decimal.Parse(return_Data[(productId, dateKey)]);
+                    decimal averageStars = (existingStarsDecimal + starsRating) / 2;
+                    return_Data[(productId, dateKey)] = averageStars.ToString();
+                }
+            }
+
+            return return_Data;
+        }
+
+        public static bool ValidateDataAnnotations(Feedback feedback)
         {
             ValidationContext context = new ValidationContext(feedback, serviceProvider: null, items: null);
             List<ValidationResult>? results = new List<ValidationResult>();
