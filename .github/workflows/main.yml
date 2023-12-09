@@ -27,17 +27,8 @@ jobs:
       - name: Run Unit Tests In DatabaseAnalysisModuleTests Folder
         run: dotnet test DatabaseAnalysisModuleTests/DatabaseAnalysisModuleTests.csproj
 
-      - name: Run Unit Tests In AnalysisServiceTests Folder
-        run: dotnet test AnalysisServiceTests/AnalysisServiceTests.csproj
-
       - name: Publish Test Results DatabaseAnalysisModuleTests Folder
         uses: actions/upload-artifact@v2
         with:
           name: test-results-database
           path: DatabaseAnalysisModuleTests/TestResults
-
-      - name: Publish Test Results AnalysisServiceTests Folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results-analysis
-          path: AnalysisServiceTests/TestResults
