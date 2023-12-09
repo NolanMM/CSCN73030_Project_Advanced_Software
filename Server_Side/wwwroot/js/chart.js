@@ -14,8 +14,8 @@ var productId;
 //}
 async function fetchFlexDataFromServer(productId) {
     try {
-        const response = await fetch(`http://localhost:8080/charts/productInfoData/${productId}`);
-        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`); // Release URL
+        //const response = await fetch(`http://localhost:8080/charts/productInfoData/${productId}`);
+         const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/productInfoData/${productId}`); // Release URL
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -99,8 +99,8 @@ var myChartSales = new Chart(ctxSales, {
 //}
 async function fetchMonthlySalesFromServer(productId) {
     try {
-        const response = await fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`);
-        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`); // Release URL
+        //const response = await fetch(`http://localhost:8080/charts/monthlySalesData/${productId}`);
+         const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySalesData/${productId}`); // Release URL
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -169,8 +169,8 @@ var myChartViews = new Chart(ctxViews, {
 
 async function fetchMonthlyViewsFromServer(productId) {
     try {
-        const response = await fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`);
-        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`); // Release URL
+        //const response = await fetch(`http://localhost:8080/charts/monthlyViewsData/${productId}`);
+         const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlyViewsData/${productId}`); // Release URL
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -237,8 +237,8 @@ var myChartSatisfaction = new Chart(ctxSatisfaction, {
 //}
 async function fetchMonthlySatisfactionFromServer(productId) {
     try {
-        const response = await fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`);
-        // const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`); // Release URL
+        //const response = await fetch(`http://localhost:8080/charts/monthlySatisfactionData/${productId}`);
+         const response = await fetch(`https://sprint1deploymentgroup1.azurewebsites.net/charts/monthlySatisfactionData/${productId}`); // Release URL
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

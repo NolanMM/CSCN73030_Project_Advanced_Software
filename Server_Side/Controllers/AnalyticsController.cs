@@ -8,7 +8,6 @@ namespace Server_Side.Controllers
         // Properties relevant to your view
         public string UserId { get; set; } = string.Empty;
         public string ProductId { get; set; } = string.Empty;
-        // Other properties...
     }
 
     public class AnalyticsController : Controller
