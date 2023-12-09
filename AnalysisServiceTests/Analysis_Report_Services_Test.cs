@@ -3,8 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Server_Side.Services;
 using System.Linq;
 
-namespace AnalysisServiceTests
-{
     [TestClass]
     public class AnalysisServiceRegressionTests
     {
