@@ -88,10 +88,60 @@ namespace Server_Side.Controllers
                 //var endDate = DateTime.Now;
                 DateTime startDate = DateTime.Now.Date.AddDays(-1);
                 DateTime endDate = DateTime.Now.Date.AddTicks(-1);
-                var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
-                var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
-                var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
-                var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
+                var startDate_Year = DateTime.Now.AddYears(-1);
+                var endDate_Year = DateTime.Now.Date.AddDays(1).AddTicks(-1);
+                List<ProductItemData>? returnList = (List<ProductItemData>?)await Database_Centre.ProcessDataForGetTableCorrespondingUserID(userID, startDate, endDate);
+                int salesTotalResult = 0;
+                int viewTotalResult = 0;
+                int lifetimeSalesResult = 0;
+                double averageSatisfactionResult = 0;
+
+                if (returnList == null)
+                {
+                    return NotFound(); // Or any other appropriate status code
+                }
+
+                if (returnList != null)
+                {
+                    foreach (var item in returnList)
+                    {
+                        // Ensure that TodaySale and TodayViews are valid integers before adding to the totals
+                        if (int.TryParse(item.TodaySale, out int todaySale))
+                        {
+                            salesTotalResult += todaySale;
+                        }
+
+                        if (int.TryParse(item.TodayViews, out int todayViews))
+                        {
+                            viewTotalResult += todayViews;
+                        }
+
+                        int[]? monthlySales = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(6, startDate_Year, endDate_Year, item.ProductID, null);
+                        int[]? monthlySatisfaction = (int[]?)await _reportServices.ProcessAnalysisReportingServicesByID(3, startDate_Year, endDate_Year, item.ProductID, null);
+
+                        // Check if monthlySales and monthlySatisfaction are not null before calculating
+                        if (monthlySales != null)
+                        {
+                            lifetimeSalesResult += monthlySales.Sum();
+                        }
+
+                        if (monthlySatisfaction != null)
+                        {
+                            averageSatisfactionResult += monthlySatisfaction.Average();
+                        }
+                    }
+
+                    // Calculate averageSatisfactionResult as the average of all monthly satisfaction results
+                    if (returnList.Count > 0)
+                    {
+                        averageSatisfactionResult /= returnList.Count;
+                    }
+                }
+                //var salesTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, startDate, endDate, null, userID);
+                //var viewTotalResult = await _reportServices.ProcessAnalysisReportingServicesByID(4, startDate, endDate, null, userID);
+                //var lifetimeSalesResult = await _reportServices.ProcessAnalysisReportingServicesByID(7, DateTime.MinValue, DateTime.MaxValue, null, userID);
+                //var averageSatisfactionResult = await _reportServices.ProcessAnalysisReportingServicesByID(3, DateTime.MinValue, DateTime.MaxValue, null, userID);
+
 
                 int salesTotal = ConvertToInt(salesTotalResult);
                 int viewTotal = ConvertToInt(viewTotalResult);
@@ -129,6 +179,11 @@ namespace Server_Side.Controllers
             if (result is int intValue)
             {
                 return intValue;
+            }
+
+            if (result is double double_val)
+            {
+                return (int)double_val;
             }
 
             if (int.TryParse(result.ToString(), out intValue))

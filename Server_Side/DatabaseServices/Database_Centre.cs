@@ -265,10 +265,27 @@ namespace Server_Side.DatabaseServices
         {
             try
             {
-                Valid_User_Views_Table ??= new List<UserView> ();
-                Website_logs_table ??= new List<PageView> ();
-                SalesTransactionsTable ??= new List<SaleTransaction> ();
-                FeedbackTable ??= new List<Feedback> ();
+                Group_1_Record_Abstraction? firstElementOrDefault = dataAsList.FirstOrDefault();
+                if (firstElementOrDefault is UserView userView_)
+                {
+                    Valid_User_Views_Table = new List<UserView>();
+                }
+                else if (firstElementOrDefault is PageView pageView_)
+                {
+                    Website_logs_table = new List<PageView>();
+                }
+                else if (firstElementOrDefault is SaleTransaction saleTransaction_)
+                {
+                    SalesTransactionsTable = new List<SaleTransaction>();
+                }
+                else if (firstElementOrDefault is Feedback feedback_)
+                {
+                    FeedbackTable = new List<Feedback>();
+                }
+                else
+                {
+                    Console.WriteLine("Unknown object type");
+                }
 
                 foreach (var Myobject in dataAsList)
                 {
